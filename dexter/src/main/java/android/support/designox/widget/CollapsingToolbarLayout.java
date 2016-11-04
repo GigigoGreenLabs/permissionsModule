@@ -1033,10 +1033,10 @@ public class CollapsingToolbarLayout extends FrameLayout {
             TypedArray a = c.obtainStyledAttributes(attrs,
                     R.styleable.CollapsingAppBarLayout_LayoutParams);
             mCollapseMode = a.getInt(
-                    R.styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode,
+                    R.styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode_ox,
                     COLLAPSE_MODE_OFF);
             setParallaxMultiplier(a.getFloat(
-                    R.styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier,
+                    R.styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier_ox,
                     DEFAULT_PARALLAX_MULTIPLIER));
             a.recycle();
         }

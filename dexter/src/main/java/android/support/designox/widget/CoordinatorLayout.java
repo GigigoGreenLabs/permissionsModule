@@ -2275,20 +2275,20 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             this.gravity = a.getInteger(
                     R.styleable.CoordinatorLayout_LayoutParams_android_layout_gravity,
                     Gravity.NO_GRAVITY);
-            mAnchorId = a.getResourceId(R.styleable.CoordinatorLayout_LayoutParams_layout_anchor,
+            mAnchorId = a.getResourceId(R.styleable.CoordinatorLayout_LayoutParams_layout_anchor_ox,
                     View.NO_ID);
             this.anchorGravity = a.getInteger(
-                    R.styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity,
+                    R.styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity_ox,
                     Gravity.NO_GRAVITY);
 
-            this.keyline = a.getInteger(R.styleable.CoordinatorLayout_LayoutParams_layout_keyline,
+            this.keyline = a.getInteger(R.styleable.CoordinatorLayout_LayoutParams_layout_keyline_ox,
                     -1);
 
             mBehaviorResolved = a.hasValue(
-                    R.styleable.CoordinatorLayout_LayoutParams_layout_behavior);
+                    R.styleable.CoordinatorLayout_LayoutParams_layout_behavior_ox);
             if (mBehaviorResolved) {
                 mBehavior = parseBehavior(context, attrs, a.getString(
-                        R.styleable.CoordinatorLayout_LayoutParams_layout_behavior));
+                        R.styleable.CoordinatorLayout_LayoutParams_layout_behavior_ox));
             }
 
             a.recycle();

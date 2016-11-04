@@ -25,12 +25,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.designox.widget.Snackbar;
 //import android.support.v4ox.content.ContextCompat;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import com.karumi.dexterox.Dexter;
 import com.karumi.dexterox.PermissionToken;
@@ -47,13 +45,16 @@ import com.karumi.dexterox.listener.single.SnackbarOnDeniedPermissionListener;
  */
 public class SampleActivity extends Activity {
 
-    @Bind(R.id.audio_permission_feedback)
+
     TextView audioPermissionFeedbackView;
-    @Bind(R.id.camera_permission_feedback)
     TextView cameraPermissionFeedbackView;
-    @Bind(R.id.contacts_permission_feedback)
     TextView contactsPermissionFeedbackView;
-    @Bind(android.R.id.content)
+
+    Button contacts_permission_button,
+            camera_permission_button,
+            audio_permission_button,
+            all_permissions_button;
+
     ViewGroup rootView;
 
     private MultiplePermissionsListener allPermissionsListener;
@@ -65,8 +66,45 @@ public class SampleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
-        ButterKnife.bind(this);
+        audioPermissionFeedbackView = (TextView) findViewById(R.id.audio_permission_feedback);
+        cameraPermissionFeedbackView = (TextView) findViewById(R.id.camera_permission_feedback);
+        contactsPermissionFeedbackView = (TextView) findViewById(R.id.contacts_permission_feedback);
+
+        contacts_permission_button = (Button) findViewById(R.id.contacts_permission_button);
+        camera_permission_button = (Button) findViewById(R.id.camera_permission_button);
+        audio_permission_button = (Button) findViewById(R.id.audio_permission_button);
+        all_permissions_button = (Button) findViewById(R.id.all_permissions_button);
+
+        contacts_permission_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onContactsPermissionButtonClicked();
+            }
+        });
+
+        camera_permission_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCameraPermissionButtonClicked();
+            }
+        });
+        audio_permission_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onAudioPermissionButtonClicked();
+
+            }
+        });
+        all_permissions_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onAllPermissionsButtonClicked();
+            }
+        });
+
+        rootView = (ViewGroup) findViewById(R.id.myContent);
         createPermissionListeners();
+
     /*
      * If during the rotate screen process the activity has been restarted you can call this method
      * to start with the check permission process without keep in an Android Bundle the state of
@@ -75,7 +113,7 @@ public class SampleActivity extends Activity {
         Dexter.continuePendingRequestsIfPossible(allPermissionsListener);
     }
 
-    @OnClick(R.id.all_permissions_button)
+
     public void onAllPermissionsButtonClicked() {
         if (Dexter.isRequestOngoing()) {
             return;
@@ -84,7 +122,7 @@ public class SampleActivity extends Activity {
                 Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO);
     }
 
-    @OnClick(R.id.camera_permission_button)
+
     public void onCameraPermissionButtonClicked() {
         if (Dexter.isRequestOngoing()) {
             return;
@@ -97,7 +135,7 @@ public class SampleActivity extends Activity {
         }).start();
     }
 
-    @OnClick(R.id.contacts_permission_button)
+
     public void onContactsPermissionButtonClicked() {
         if (Dexter.isRequestOngoing()) {
             return;
@@ -105,7 +143,6 @@ public class SampleActivity extends Activity {
         Dexter.checkPermission(contactsPermissionListener, Manifest.permission.READ_CONTACTS);
     }
 
-    @OnClick(R.id.audio_permission_button)
     public void onAudioPermissionButtonClicked() {
         if (Dexter.isRequestOngoing()) {
             return;

@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
 import android.support.designox.widget.Snackbar;
@@ -47,8 +48,8 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
      * @param buttonText            Message displayed in the snackbar button
      * @param onButtonClickListener Action performed when the user clicks the snackbar button
      */
-    private SnackbarOnDeniedPermissionListener(ViewGroup rootView, String text, String buttonText,
-                                               View.OnClickListener onButtonClickListener,
+    private SnackbarOnDeniedPermissionListener(@NonNull ViewGroup rootView, @NonNull  String text, @NonNull  String buttonText,
+                                               @NonNull  View.OnClickListener onButtonClickListener,
                                                Snackbar.Callback snackbarCallback) {
         this.rootView = rootView;
         this.text = text;
@@ -67,7 +68,6 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
     private void showMessage() {
         new android.app.AlertDialog.Builder(rootView.getContext())
                 .setTitle("Permission")
-                .setMessage(text)
                 .setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

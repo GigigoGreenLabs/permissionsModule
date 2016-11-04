@@ -161,8 +161,8 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.BottomSheetBehavior_Params);
         setPeekHeight(a.getDimensionPixelSize(
-                R.styleable.BottomSheetBehavior_Params_behavior_peekHeight, 0));
-        setHideable(a.getBoolean(R.styleable.BottomSheetBehavior_Params_behavior_hideable, false));
+                R.styleable.BottomSheetBehavior_Params_behavior_peekHeight_ox, 0));
+        setHideable(a.getBoolean(R.styleable.BottomSheetBehavior_Params_behavior_hideable_ox, false));
         a.recycle();
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();

@@ -123,7 +123,7 @@ public class FloatingActionButton extends VisibilityAwareImageButton {
         mBackgroundTintMode = parseTintMode(a.getInt(
                 R.styleable.FloatingActionButton_backgroundTintMode_ox, -1), null);
         mRippleColor = a.getColor(R.styleable.FloatingActionButton_rippleColor, 0);
-        mSize = a.getInt(R.styleable.FloatingActionButton_fabSize, SIZE_NORMAL);
+        mSize = a.getInt(R.styleable.FloatingActionButton_fabSize_ox, SIZE_NORMAL);
         mBorderWidth = a.getDimensionPixelSize(R.styleable.FloatingActionButton_borderWidth, 0);
         final float elevation = a.getDimension(R.styleable.FloatingActionButton_elevation, 0f);
         final float pressedTranslationZ = a.getDimension(

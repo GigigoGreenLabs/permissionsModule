@@ -38,7 +38,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 final class DexterInstance {
 
-  private static final int PERMISSIONS_REQUEST_CODE = 42;
+  private static final int PERMISSIONS_REQUEST_CODE = 420;//change
   private static final MultiplePermissionsListener EMPTY_LISTENER =
       new EmptyMultiplePermissionsListener();
 

@@ -559,10 +559,10 @@ public class AppBarLayout extends LinearLayout {
         public LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
             TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.AppBarLayout_LayoutParams);
-            mScrollFlags = a.getInt(R.styleable.AppBarLayout_LayoutParams_layout_scrollFlags, 0);
-            if (a.hasValue(R.styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator)) {
+            mScrollFlags = a.getInt(R.styleable.AppBarLayout_LayoutParams_layout_scrollFlags_ox, 0);
+            if (a.hasValue(R.styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator_ox)) {
                 int resId = a.getResourceId(
-                        R.styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator, 0);
+                        R.styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator_ox, 0);
                 mScrollInterpolator = android.view.animation.AnimationUtils.loadInterpolator(
                         c, resId);
             }
@@ -1158,7 +1158,7 @@ public class AppBarLayout extends LinearLayout {
             final TypedArray a = context.obtainStyledAttributes(attrs,
                     R.styleable.ScrollingViewBehavior_Params);
             setOverlayTop(a.getDimensionPixelSize(
-                    R.styleable.ScrollingViewBehavior_Params_behavior_overlapTop, 0));
+                    R.styleable.ScrollingViewBehavior_Params_behavior_overlapTop_ox, 0));
             a.recycle();
         }
 

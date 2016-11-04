@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
 import android.support.designox.widget.Snackbar;
@@ -42,8 +43,10 @@ public class SnackbarOnAnyDeniedMultiplePermissionsListener extends EmptyMultipl
     private final Snackbar.Callback snackbarCallback;
 
 
-    private SnackbarOnAnyDeniedMultiplePermissionsListener(ViewGroup rootView, String text,
-                                                           String buttonText, View.OnClickListener onButtonClickListener, Snackbar.Callback snackbarCallback) {
+    private SnackbarOnAnyDeniedMultiplePermissionsListener(@NonNull ViewGroup rootView, @NonNull String text,
+                                                           @NonNull String buttonText,
+                                                           @NonNull View.OnClickListener onButtonClickListener,
+                                                            Snackbar.Callback snackbarCallback) {
         this.rootView = rootView;
         this.text = text;
         this.buttonText = buttonText;
