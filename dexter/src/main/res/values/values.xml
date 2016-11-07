@@ -5,13 +5,6 @@
 
         </declare-styleable>-->
 
-    <color name="design_fab_shadow_end_color">@android:color/transparent</color>
-    <color name="design_fab_shadow_mid_color">#14000000</color>
-    <color name="design_fab_shadow_start_color">#44000000</color>
-    <color name="design_fab_stroke_end_inner_color">#0A000000</color>
-    <color name="design_fab_stroke_end_outer_color">#0F000000</color>
-    <color name="design_fab_stroke_top_inner_color">#1AFFFFFF</color>
-    <color name="design_fab_stroke_top_outer_color">#2EFFFFFF</color>
     <color name="design_snackbar_background_color">#323232</color>
     <color name="design_textinput_error_color_dark">#FFFF6E6E</color>
     <color name="design_textinput_error_color_light">#FFD50000</color>
@@ -62,36 +55,20 @@
     <dimen name="design_bottom_sheet_modal_peek_height">256dp</dimen>
     <dimen name="design_fab_border_width">0.5dp</dimen>
     <dimen name="design_fab_elevation">6dp</dimen>
-    <dimen name="design_fab_image_size">24dp</dimen>
-    <dimen name="design_fab_size_mini">40dp</dimen>
-    <dimen name="design_fab_size_normal">56dp</dimen>
     <dimen name="design_fab_translation_z_pressed">6dp</dimen>
     <dimen name="design_navigation_elevation">16dp</dimen>
-    <dimen name="design_navigation_icon_padding">32dp</dimen>
-    <dimen name="design_navigation_icon_size">24dp</dimen>
     <dimen name="design_navigation_max_width">280dp</dimen>
-    <dimen name="design_navigation_padding_bottom">8dp</dimen>
-    <dimen name="design_navigation_separator_vertical_padding">8dp</dimen>
     <dimen name="design_snackbar_action_inline_max_width">128dp</dimen>
     <dimen name="design_snackbar_background_corner_radius">0dp</dimen>
     <dimen name="design_snackbar_elevation">6dp</dimen>
-    <dimen name="design_snackbar_extra_spacing_horizontal">0dp</dimen>
     <dimen name="design_snackbar_max_width">-1px</dimen>
     <dimen name="design_snackbar_min_width">-1px</dimen>
     <dimen name="design_snackbar_padding_horizontal">12dp</dimen>
-    <dimen name="design_snackbar_padding_vertical">14dp</dimen>
-    <dimen name="design_snackbar_padding_vertical_2lines">24dp</dimen>
     <dimen name="design_snackbar_text_size">14sp</dimen>
     <dimen name="design_tab_max_width">264dp</dimen>
-    <dimen name="design_tab_scrollable_min_width">72dp</dimen>
     <dimen name="design_tab_text_size">14sp</dimen>
-    <dimen name="design_tab_text_size_2line">12sp</dimen>
-    <item name="view_offset_helper" type="id"/>
     <integer name="bottom_sheet_slide_duration">150</integer>
-    <integer name="design_snackbar_text_max_lines">2</integer>
-    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
-    <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+
     <style name="Animation.Design.BottomSheetDialog" parent="Animation.AppCompat.Dialog">
         <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in_ox</item>
         <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out_ox</item>
@@ -211,15 +188,8 @@
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
     <attr format="string" name="title"/>
-    <bool name="abc_action_bar_embed_tabs">true</bool>
-    <bool name="abc_action_bar_embed_tabs_pre_jb">false</bool>
-    <bool name="abc_action_bar_expanded_action_views_exclusive">true</bool>
     <bool name="abc_allow_stacked_button_bar">true</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
-    <bool name="abc_config_allowActionMenuItemTextWithIcon">false</bool>
-    <bool name="abc_config_closeDialogWhenTouchOutside">true</bool>
-    <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
-    <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
@@ -231,29 +201,19 @@
     <color name="background_material_light">@color/material_grey_50</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
-    <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
-    <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
-    <color name="dim_foreground_disabled_material_light">#80323232</color>
-    <color name="dim_foreground_material_dark">#ffbebebe</color>
-    <color name="dim_foreground_material_light">#ff323232</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <color name="material_blue_grey_800">#ff37474f</color>
-    <color name="material_blue_grey_900">#ff263238</color>
-    <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
     <color name="material_grey_100">#fff5f5f5</color>
-    <color name="material_grey_300">#ffe0e0e0</color>
     <color name="material_grey_50">#fffafafa</color>
     <color name="material_grey_600">#ff757575</color>
     <color name="material_grey_800">#ff424242</color>
@@ -427,14 +387,9 @@
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_end_material">0dp</dimen>
     <dimen name="abc_action_bar_default_padding_start_material">0dp</dimen>
-    <dimen name="abc_action_bar_icon_vertical_padding_material">16dp</dimen>
     <dimen name="abc_action_bar_overflow_padding_end_material">10dp</dimen>
     <dimen name="abc_action_bar_overflow_padding_start_material">6dp</dimen>
     <dimen name="abc_action_bar_progress_bar_size">40dp</dimen>
-    <dimen name="abc_action_bar_stacked_max_height">48dp</dimen>
-    <dimen name="abc_action_bar_stacked_tab_max_width">180dp</dimen>
-    <dimen name="abc_action_bar_subtitle_bottom_margin_material">5dp</dimen>
-    <dimen name="abc_action_bar_subtitle_top_margin_material">-3dp</dimen>
     <dimen name="abc_action_button_min_height_material">48dp</dimen>
     <dimen name="abc_action_button_min_width_material">48dp</dimen>
     <dimen name="abc_action_button_min_width_overflow_material">36dp</dimen>
@@ -443,7 +398,6 @@
     <dimen name="abc_button_inset_vertical_material">6dp</dimen>
     <dimen name="abc_button_padding_horizontal_material">8dp</dimen>
     <dimen name="abc_button_padding_vertical_material">@dimen/abc_control_padding_material</dimen>
-    <dimen name="abc_config_prefDialogWidth">320dp</dimen>
     <dimen name="abc_control_corner_material">2dp</dimen>
     <dimen name="abc_control_inset_material">4dp</dimen>
     <dimen name="abc_control_padding_material">4dp</dimen>
@@ -464,13 +418,9 @@
     <dimen name="abc_edit_text_inset_bottom_material">7dp</dimen>
     <dimen name="abc_edit_text_inset_horizontal_material">4dp</dimen>
     <dimen name="abc_edit_text_inset_top_material">10dp</dimen>
-    <dimen name="abc_floating_window_z">16dp</dimen>
     <dimen name="abc_list_item_padding_horizontal_material">@dimen/abc_action_bar_content_inset_material</dimen>
     <dimen name="abc_panel_menu_list_width">296dp</dimen>
-    <dimen name="abc_search_view_preferred_width">320dip</dimen>
     <dimen name="abc_search_view_text_min_width">160dip</dimen>
-    <dimen name="abc_seekbar_track_background_height_material">2dp</dimen>
-    <dimen name="abc_seekbar_track_progress_height_material">2dp</dimen>
     <dimen name="abc_select_dialog_padding_start_material">20dp</dimen>
     <dimen name="abc_switch_padding">3dp</dimen>
     <dimen name="abc_text_size_body_1_material">14sp</dimen>
@@ -490,49 +440,19 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
-    <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
-    <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
-    <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
-    <dimen name="notification_large_icon_height">64dp</dimen>
-    <dimen name="notification_large_icon_width">64dp</dimen>
-    <dimen name="notification_subtext_size">12dp</dimen>
-    <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
-    <item name="action_bar_activity_content" type="id"/>
-    <item name="action_bar_spinner" type="id"/>
-    <item name="action_menu_divider" type="id"/>
-    <item name="action_menu_presenter" type="id"/>
-    <item name="home" type="id"/>
-    <item name="progress_circular" type="id"/>
-    <item name="progress_horizontal" type="id"/>
-    <item name="split_action_bar" type="id"/>
-    <item name="up" type="id"/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
-    <integer name="abc_max_action_buttons">2</integer>
-    <integer name="cancel_button_image_alpha">127</integer>
-    <integer name="status_bar_notification_info_maxnum">999</integer>
-    <string name="abc_action_bar_home_description">Navigate home</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
     <string name="abc_action_mode_done">Done</string>
-    <string name="abc_activity_chooser_view_see_all">See all</string>
-    <string name="abc_activitychooserview_choose_application">Choose an app</string>
     <string name="abc_capital_off">OFF</string>
     <string name="abc_capital_on">ON</string>
     <string name="abc_search_hint">Search…</string>
     <string name="abc_searchview_description_clear">Clear query</string>
-    <string name="abc_searchview_description_query">Search query</string>
     <string name="abc_searchview_description_search">Search</string>
     <string name="abc_searchview_description_submit">Submit query</string>
     <string name="abc_searchview_description_voice">Voice search</string>
-    <string name="abc_shareactionprovider_share_with">Share with</string>
-    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
+
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
