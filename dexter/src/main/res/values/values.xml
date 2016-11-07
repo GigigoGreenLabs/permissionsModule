@@ -458,11 +458,11 @@
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
-        <item name="android:layout">@layout/abc_alert_dialog_material</item>
-        <item name="listLayout">@layout/abc_select_dialog_material</item>
-        <item name="listItemLayout">@layout/select_dialog_item_material</item>
-        <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material</item>
-        <item name="singleChoiceItemLayout">@layout/select_dialog_singlechoice_material</item>
+        <item name="android:layout">@layout/abc_alert_dialog_material_ox</item>
+        <item name="listLayout">@layout/abc_select_dialog_material_ox</item>
+        <item name="listItemLayout">@layout/select_dialog_item_material_ox</item>
+        <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material_ox</item>
+        <item name="singleChoiceItemLayout">@layout/select_dialog_singlechoice_material_ox</item>
     </style>
     <style name="Base.AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat"/>
     <style name="Base.Animation.AppCompat.Dialog" parent="android:Animation">
@@ -1186,7 +1186,7 @@
         <item name="height">?attr/actionBarSize_ox</item>
         <item name="titleTextStyle">@style/TextAppearance.AppCompat.Widget.ActionMode.Title</item>
         <item name="subtitleTextStyle">@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle</item>
-        <item name="closeItemLayout">@layout/abc_action_mode_close_item_material</item>
+        <item name="closeItemLayout">@layout/abc_action_mode_close_item_material_ox</item>
     </style>
     <style name="Base.Widget.AppCompat.ActivityChooserView" parent="">
         <item name="android:gravity">center</item>
@@ -1347,7 +1347,7 @@
         <item name="android:thumb">@null</item>
     </style>
     <style name="Base.Widget.AppCompat.SearchView" parent="android:Widget">
-        <item name="layout">@layout/abc_search_view</item>
+        <item name="layout">@layout/abc_search_view_ox</item>
         <item name="queryBackground">@drawable/abc_textfield_search_material_ox</item>
         <item name="submitBackground">@drawable/abc_textfield_search_material_ox</item>
         <item name="closeIcon">@drawable/abc_ic_clear_mtrl_alpha_ox</item>
@@ -1356,7 +1356,7 @@
 
         <item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha_ox</item>
 
-        <item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line</item>
+        <item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line_ox</item>
     </style>
     <style name="Base.Widget.AppCompat.SearchView.ActionBar">
         <item name="queryBackground">@null</item>

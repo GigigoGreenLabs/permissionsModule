@@ -113,6 +113,6 @@
                 android:layout_height="wrap_content"/>
     </FrameLayout>
 
-    <include layout="@layout/abc_alert_dialog_button_bar_material" />
+    <include layout="@layout/abc_alert_dialog_button_bar_material_ox" />
 
 </LinearLayout>
