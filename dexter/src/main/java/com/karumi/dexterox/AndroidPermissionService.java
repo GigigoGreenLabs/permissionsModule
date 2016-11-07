@@ -19,8 +19,8 @@ package com.karumi.dexterox;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotationox.NonNull;
-import android.support.v4ox.app.ActivityCompat;
-import android.support.v4ox.content.ContextCompat;
+import android.support.permissions.ActivityCompat;
+import android.support.permissions.ContextCompat;
 
 /**
  * Wrapper class for all the static calls to the Android permission system

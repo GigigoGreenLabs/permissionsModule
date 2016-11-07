@@ -24,7 +24,7 @@ import android.provider.Settings;
 import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
-import android.support.designox.widget.Snackbar;
+//import android.support.designox.widget.Snackbar;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,7 +40,7 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
     private final String text;
     private final String buttonText;
     private final View.OnClickListener onButtonClickListener;
-    private final Snackbar.Callback snackbarCallback;
+   // private final Snackbar.Callback snackbarCallback;
 
     /**
      * @param rootView              Parent view to show the snackbar
@@ -49,13 +49,13 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
      * @param onButtonClickListener Action performed when the user clicks the snackbar button
      */
     private SnackbarOnDeniedPermissionListener(@NonNull ViewGroup rootView, @NonNull  String text, @NonNull  String buttonText,
-                                               @NonNull  View.OnClickListener onButtonClickListener,
-                                               Snackbar.Callback snackbarCallback) {
+                                               @NonNull  View.OnClickListener onButtonClickListener){
+             //,Snackbar.Callback snackbarCallback) {
         this.rootView = rootView;
         this.text = text;
         this.buttonText = buttonText;
         this.onButtonClickListener = onButtonClickListener;
-        this.snackbarCallback = snackbarCallback;
+       // this.snackbarCallback = snackbarCallback;
     }
 
 
@@ -102,7 +102,7 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
         private final String text;
         private String buttonText;
         private View.OnClickListener onClickListener;
-        private Snackbar.Callback snackbarCallback;
+      //  private Snackbar.Callback snackbarCallback;
 
         private Builder(ViewGroup rootView, String text) {
             this.rootView = rootView;
@@ -162,18 +162,18 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
 
         /**
          * Adds a callback to handle the snackbar {@code onDismissed} and {@code onShown} events.
-         */
+
         public Builder withCallback(Snackbar.Callback callback) {
             this.snackbarCallback = callback;
             return this;
         }
-
+        */
         /**
          * Builds a new instance of {@link SnackbarOnDeniedPermissionListener}
          */
         public SnackbarOnDeniedPermissionListener build() {
             return
-                    new SnackbarOnDeniedPermissionListener(rootView, text, buttonText, onClickListener, snackbarCallback);
+                    new SnackbarOnDeniedPermissionListener(rootView, text, buttonText, onClickListener);// snackbarCallback);
         }
     }
 }

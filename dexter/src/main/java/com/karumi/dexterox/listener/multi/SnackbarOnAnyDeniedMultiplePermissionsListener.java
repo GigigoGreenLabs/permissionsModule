@@ -24,7 +24,7 @@ import android.provider.Settings;
 import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
-import android.support.designox.widget.Snackbar;
+//import android.support.designox.widget.Snackbar;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,18 +40,20 @@ public class SnackbarOnAnyDeniedMultiplePermissionsListener extends EmptyMultipl
     private final String text;
     private final String buttonText;
     private final View.OnClickListener onButtonClickListener;
-    private final Snackbar.Callback snackbarCallback;
+  //  private final Snackbar.Callback snackbarCallback;
 
 
     private SnackbarOnAnyDeniedMultiplePermissionsListener(@NonNull ViewGroup rootView, @NonNull String text,
                                                            @NonNull String buttonText,
-                                                           @NonNull View.OnClickListener onButtonClickListener,
-                                                            Snackbar.Callback snackbarCallback) {
+                                                           @NonNull View.OnClickListener onButtonClickListener)
+       //     ,                                                            Snackbar.Callback snackbarCallback)
+
+    {
         this.rootView = rootView;
         this.text = text;
         this.buttonText = buttonText;
         this.onButtonClickListener = onButtonClickListener;
-        this.snackbarCallback = snackbarCallback;
+      //  this.snackbarCallback = snackbarCallback;
     }
 
     @Override
@@ -102,7 +104,7 @@ public class SnackbarOnAnyDeniedMultiplePermissionsListener extends EmptyMultipl
         private final String text;
         private String buttonText;
         private View.OnClickListener onClickListener;
-        private Snackbar.Callback snackbarCallback;
+      //  private Snackbar.Callback snackbarCallback;
 
         private Builder(ViewGroup rootView, String text) {
             this.rootView = rootView;
@@ -172,8 +174,8 @@ public class SnackbarOnAnyDeniedMultiplePermissionsListener extends EmptyMultipl
          * Builds a new instance of {@link SnackbarOnAnyDeniedMultiplePermissionsListener}
          */
         public SnackbarOnAnyDeniedMultiplePermissionsListener build() {
-            return new SnackbarOnAnyDeniedMultiplePermissionsListener(rootView, text, buttonText, onClickListener,
-                    snackbarCallback);
+            return new SnackbarOnAnyDeniedMultiplePermissionsListener(rootView, text, buttonText, onClickListener);
+                    //,snackbarCallback);
         }
     }
 }

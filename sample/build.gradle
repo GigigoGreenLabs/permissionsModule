@@ -118,18 +118,18 @@ dependencies {
 
 //compile 'com.github.Gigigo-Android-Devs.gigigo-imageLoader-library-android:imageloader-glide:v1.0'
 
-    /*dependencies Whoah*/
+    /*dependencies Whoah
     compile 'com.github.Gigigo-Android-Devs:gigigo-baseRecyclerAdapter-library-android:v1.2.1'
     compile 'me.panavtec:threaddecoratedview-common:1.5.3'
     compile 'me.panavtec:threaddecoratedview-compiler:1.5.3'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile 'com.google.code.gson:gson:2.3.1'
-
-    compile 'com.google.android.gms:play-services-base:9.8.0'
-    compile 'com.google.android.gms:play-services-location:9.8.0'
-    compile 'com.google.android.gms:play-services-gcm:9.8.0'
+    compile 'com.google.code.gson:gson:2.3.1'*/
+//
+//    compile 'com.google.android.gms:play-services-base:9.8.0'
+//    compile 'com.google.android.gms:play-services-location:9.8.0'
+//    compile 'com.google.android.gms:play-services-gcm:9.8.0'
 
 
 /* compile ('com.github.orchextra.Orchextra-android-sdk:orchextrasdk:0.3-ocm:play9Release@aar')
