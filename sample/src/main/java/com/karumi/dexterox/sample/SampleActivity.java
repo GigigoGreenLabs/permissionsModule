@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 //import android.support.designox.widget.Snackbar;
 //import android.support.v4ox.content.ContextCompat;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -152,7 +153,9 @@ public class SampleActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void showPermissionRationale(final PermissionToken token) {
-        new AlertDialog.Builder(this).setTitle(R.string.permission_rationale_title)
+
+        new android.app.AlertDialog.Builder(new ContextThemeWrapper(this, com.karumi.dexterox.R.style.AlertDialogTheme_OX))
+                .setTitle(R.string.permission_rationale_title)
                 .setMessage(R.string.permission_rationale_message)
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override

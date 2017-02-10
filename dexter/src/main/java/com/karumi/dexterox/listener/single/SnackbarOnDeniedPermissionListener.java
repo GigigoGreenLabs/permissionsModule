@@ -25,9 +25,11 @@ import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
 //import android.support.designox.widget.Snackbar;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.karumi.dexterox.R;
 import com.karumi.dexterox.listener.PermissionDeniedResponse;
 
 /**
@@ -66,7 +68,9 @@ public class SnackbarOnDeniedPermissionListener extends EmptyPermissionListener 
     }
 //todo checknew implementation, callback?
     private void showMessage() {
-        new android.app.AlertDialog.Builder(rootView.getContext())
+
+        //todo this is call the same in SnackBarOnAnyDenied
+        new android.app.AlertDialog.Builder(new ContextThemeWrapper(rootView.getContext(), R.style.AlertDialogTheme_OX))
                 .setTitle("Permission")
                 .setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
                     @Override

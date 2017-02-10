@@ -25,10 +25,12 @@ import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
 //import android.support.designox.widget.Snackbar;
 //import android.support.designox.widget.Snackbar;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.karumi.dexterox.MultiplePermissionsReport;
+import com.karumi.dexterox.R;
 
 /**
  * Utility listener that shows a {@link Snackbar} with a custom text whenever a permission has been
@@ -67,7 +69,7 @@ public class SnackbarOnAnyDeniedMultiplePermissionsListener extends EmptyMultipl
 
     private void showSnackbar() {
 
-        new android.app.AlertDialog.Builder(rootView.getContext())
+        new android.app.AlertDialog.Builder(new ContextThemeWrapper(rootView.getContext(), R.style.AlertDialogTheme_OX))
                 .setTitle("Permissions")
                 .setMessage(text)
                 .setPositiveButton(buttonText, new DialogInterface.OnClickListener() {

@@ -23,7 +23,9 @@ import android.graphics.drawable.Drawable;
 import android.support.annotationox.DrawableRes;
 import android.support.annotationox.NonNull;
 import android.support.annotationox.StringRes;
+import android.view.ContextThemeWrapper;
 
+import com.karumi.dexterox.R;
 import com.karumi.dexterox.listener.PermissionDeniedResponse;
 
 /**
@@ -51,7 +53,7 @@ public class DialogOnDeniedPermissionListener extends EmptyPermissionListener {
     public void onPermissionDenied(PermissionDeniedResponse response) {
         super.onPermissionDenied(response);
 
-        new AlertDialog.Builder(context)
+        new android.app.AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogTheme_OX))
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
