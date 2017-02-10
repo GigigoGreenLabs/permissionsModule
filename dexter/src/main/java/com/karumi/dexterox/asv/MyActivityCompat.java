@@ -49,36 +49,6 @@ public class MyActivityCompat extends Activity implements MyRequestPermissionsRe
         //return getPackageName();
          }
     /**/
-
-//
-//    private Instrumentation mInstrumentation;
-//    private IBinder mToken;
-//    ActivityThread mMainThread;
-//    public void startActivityForResult(
-//            String who, Intent intent, int requestCode, @Nullable Bundle options) {
-//        final int version = Build.VERSION.SDK_INT;
-//        if (version >= 23) {
-//            Uri referrer = null;// onProvideReferrer();
-//            if (referrer != null) {
-//                intent.putExtra(Intent.EXTRA_REFERRER, referrer);
-//            }
-//           // Instrumentation.ActivityResult ar =
-//                    startActivityForResult(who,
-//                    intent, requestCode, options);
-//              /*
-//                    mInstrumentation.execStartActivity(
-//                            this, mMainThread.getApplicationThread(), mToken, who,
-//                            intent, requestCode, options);
-//            if (ar != null) {
-//                mMainThread.sendActivityResult(
-//                        mToken, who, requestCode,
-//                        ar.getResultCode(), ar.getResultData());
-//            }
-//            cancelInputsAndStartExitTransition(options);
-//            */
-//        }
-//    }
-
     public void requestPermissions(final @NonNull Activity activity,
                                    final @NonNull String[] permissions, final int requestCode) {
         if (Build.VERSION.SDK_INT >= 23) {
