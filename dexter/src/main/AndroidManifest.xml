@@ -21,8 +21,9 @@
   <application>
     <activity
         android:name="com.karumi.dexterox.DexterActivity"
-        android:theme="@style/Theme.Transparent"
+        android:theme="@style/Transparent"
         android:launchMode="singleTask"
+        android:screenOrientation="portrait"
         />
   </application>
 

@@ -205,6 +205,7 @@ final class DexterInstance {
   private void startTransparentActivityIfNeeded() {
     Intent intent = intentProvider.get(context, DexterActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
     context.startActivity(intent);
   }
 

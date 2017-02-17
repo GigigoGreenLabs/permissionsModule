@@ -33,6 +33,14 @@ public final class Dexter {
 
   private static DexterInstance instance;
 
+  public static Activity mDexterActivity;
+
+  public static void closeActivity() {
+    if (mDexterActivity != null) {
+      mDexterActivity.finish();
+    }
+  }
+
   /**
    * Initializes the library
    *
@@ -41,8 +49,7 @@ public final class Dexter {
    */
   public static void initialize(Context context) {
     if (instance == null) {
-      AndroidPermissionService androidPermissionService
-              = new AndroidPermissionService( );
+      AndroidPermissionService androidPermissionService = new AndroidPermissionService();
       IntentProvider intentProvider = new IntentProvider();
       instance = new DexterInstance(context, androidPermissionService, intentProvider);
     }
@@ -88,8 +95,7 @@ public final class Dexter {
   public static void checkPermissionsOnSameThread(MultiplePermissionsListener listener,
       String... permissions) {
     checkInstanceNotNull();
-    instance.checkPermissions(listener, Arrays.asList(permissions),
-        ThreadFactory.makeSameThread());
+    instance.checkPermissions(listener, Arrays.asList(permissions), ThreadFactory.makeSameThread());
   }
 
   /**
@@ -103,8 +109,7 @@ public final class Dexter {
    */
   public static void checkPermissions(MultiplePermissionsListener listener, String... permissions) {
     checkInstanceNotNull();
-    instance.checkPermissions(listener, Arrays.asList(permissions),
-        ThreadFactory.makeMainThread());
+    instance.checkPermissions(listener, Arrays.asList(permissions), ThreadFactory.makeMainThread());
   }
 
   /**
@@ -162,6 +167,7 @@ public final class Dexter {
    */
   static void onActivityReady(Activity activity) {
     instance.onActivityReady(activity);
+    mDexterActivity = activity;
   }
 
   /**

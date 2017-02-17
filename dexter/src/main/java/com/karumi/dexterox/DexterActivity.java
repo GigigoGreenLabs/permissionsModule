@@ -19,6 +19,7 @@ package com.karumi.dexterox;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -31,6 +32,17 @@ public final class DexterActivity extends Activity {
     super.onCreate(savedInstanceState);
     Dexter.onActivityReady(this);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      getWindow().setExitTransition(null);
+      getWindow().setEnterTransition(null);
+      overridePendingTransition(0,0);
+    }
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    Dexter.mDexterActivity = null;
   }
 
   @Override protected void onNewIntent(Intent intent) {
