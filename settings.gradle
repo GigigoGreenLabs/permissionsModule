@@ -1,1 +1,1 @@
-include ':dexter'//, ':sample'
+include ':permission-library', ':sample'

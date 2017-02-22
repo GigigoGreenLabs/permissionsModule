@@ -16,6 +16,7 @@
 
 package com.karumi.dexterox.sample;
 
+import android.widget.Toast;
 import com.karumi.dexterox.MultiplePermissionsReport;
 import com.karumi.dexterox.PermissionToken;
 import com.karumi.dexterox.listener.PermissionDeniedResponse;
@@ -34,11 +35,13 @@ public class SampleMultiplePermissionListener implements MultiplePermissionsList
 
   @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
     for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
-      activity.showPermissionGranted(response.getPermissionName());
+      //activity.showPermissionGranted(response.getPermissionName());
+      Toast.makeText(activity, "Permiso Concedido", Toast.LENGTH_SHORT).show();
     }
 
     for (PermissionDeniedResponse response : report.getDeniedPermissionResponses()) {
-      activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
+      //activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
+      Toast.makeText(activity, "Permiso Denegado", Toast.LENGTH_SHORT).show();
     }
   }
 

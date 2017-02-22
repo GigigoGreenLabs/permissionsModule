@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.karumi.dexter.sample"
@@ -10,18 +10,21 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        jackOptions {
-            enabled true
-        }
+//        jackOptions {
+//            enabled true
+//        }
     }
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
             minifyEnabled false
         }
     }
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility 1.7
+        sourceCompatibility 1.7
     }
 
     packagingOptions {
@@ -107,7 +110,7 @@ dependencies {
 //compile 'com.google.android.gms:play-services-gcm:9.2.1'//verified
 //compile 'com.google.android.gms:play-services-location:9.2.1'//verified
 
-    compile project(':dexter')
+    compile project(':permission-library')
     //compile 'com.github.GigigoGreenLabs.repackagedLibs:dagger-compiler:2.2.2'
     // compile 'com.github.GigigoGreenLabs.repackagedLibs:dagger:2.2.2'
 

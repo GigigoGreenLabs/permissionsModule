@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 Karumi.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+  <string name="continueRequestPermissionAllowedFeedback">All permissions have been allowed</string>
+  <string name="continueRequestPermissionSettingsDeniedFeedback">SETTINGS</string>
+  <string name="continueRequestPermissionDeniedFeedback">Permissions denied are necessary for doing some tasks</string>
+  <string name="continueRequestPermissionRationaleMessage">Permissions denied are necessary for doing some tasks, allow it!</string>
+  <string name="continueRequestPermissionRationaleTitle">Permission Request</string>
+
+  <string name="ggg_permission_settings">Settings</string>
+
+  <string name="ggg_permission_denied_location">Denied location device</string>
+  <string name="ggg_permission_rationale_title_location">Location Permissions</string>
+  <string name="ggg_permission_rationale_message_location">App needs the device location</string>
+
+  <string name="ggg_permission_denied_camera">Denied camera device</string>
+  <string name="ggg_permission_rationale_title_camera">Camera Permissions</string>
+  <string name="ggg_permission_rationale_message_camera">App needs the device camera functionality</string>
+
+  <string name="ggg_permission_denied_phone">Denied phone device</string>
+  <string name="ggg_permission_rationale_title_phone">Phone Permissions</string>
+  <string name="ggg_permission_rationale_message_phone">App needs phone permission</string>
+
+  <string name="ggg_permission_denied_storage">Denied external storage device</string>
+  <string name="ggg_permission_rationale_title_storage">External Storage Permissions</string>
+  <string name="ggg_permission_rationale_message_storage">App needs external storage permission</string>
+
+  <string name="ggg_permission_denied_contacts">Denied contacts permission</string>
+  <string name="ggg_permission_rationale_title_contacts">Contacts Permissions</string>
+  <string name="ggg_permission_rationale_message_contacts">App needs to access to your contacts</string>
+
+  <string name="ggg_permission_denied_microphone">Denied microphone permission</string>
+  <string name="ggg_permission_rationale_title_microphone">Microphone Permissions</string>
+  <string name="ggg_permission_rationale_message_microphone">App needs to access to your device microphone</string>
+
+</resources>

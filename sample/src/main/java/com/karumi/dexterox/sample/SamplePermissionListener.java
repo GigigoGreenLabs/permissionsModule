@@ -31,11 +31,11 @@ public class SamplePermissionListener implements PermissionListener {
   }
 
   @Override public void onPermissionGranted(PermissionGrantedResponse response) {
-    activity.showPermissionGranted(response.getPermissionName());
+    //activity.showPermissionGranted(response.getPermissionName());
   }
 
   @Override public void onPermissionDenied(PermissionDeniedResponse response) {
-    activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
+    //activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
   }
 
   @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission,

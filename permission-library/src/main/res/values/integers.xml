@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="ggg_permission_retries_location">3</integer>
+  <integer name="ggg_permission_retries_camera">3</integer>
+  <integer name="ggg_permission_retries_phone">3</integer>
+  <integer name="ggg_permission_retries_storage">3</integer>
+  <integer name="ggg_permission_retries_contacts">3</integer>
+  <integer name="ggg_permission_retries_microphone">3</integer>
+</resources>
