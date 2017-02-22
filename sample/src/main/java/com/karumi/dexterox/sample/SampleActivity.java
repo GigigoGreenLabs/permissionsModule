@@ -16,7 +16,6 @@
 
 package com.karumi.dexterox.sample;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,12 +27,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.gigigo.permissions.AndroidPermissionCheckerImpl;
+import com.gigigo.permissions.groups.PermissionGroupCamera;
+import com.gigigo.permissions.groups.PermissionGroupContacts;
+import com.gigigo.permissions.groups.PermissionGroupMicrophone;
 import com.gigigo.permissions.interfaces.Permission;
 import com.gigigo.permissions.interfaces.UserPermissionRequestResponseListener;
-import com.gigigo.permissions.listeners.PermissionCamera;
-import com.gigigo.permissions.listeners.PermissionContacts;
-import com.gigigo.permissions.listeners.PermissionMicrophone;
-import com.karumi.dexterox.Dexter;
+import com.gigigo.permissions.permissions.PermissionCamera;
+import com.gigigo.permissions.permissions.PermissionContacts;
+import com.gigigo.permissions.permissions.PermissionMicrophone;
 import com.karumi.dexterox.PermissionToken;
 import com.karumi.dexterox.listener.multi.CompositeMultiplePermissionsListener;
 import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
@@ -52,9 +53,6 @@ public class SampleActivity extends Activity {
   Button contacts_permission_button, camera_permission_button, audio_permission_button,
       all_permissions_button;
 
-  private PermissionListener contactsPermissionListener;
-  private PermissionListener audioPermissionListener;
-
   private AndroidPermissionCheckerImpl permissionChecker;
   private PermissionContacts permissionContacts;
   private PermissionCamera permissionCamera;
@@ -71,9 +69,9 @@ public class SampleActivity extends Activity {
     contactsPermissionFeedbackView = (TextView) findViewById(R.id.contacts_permission_feedback);
 
     permissionChecker = new AndroidPermissionCheckerImpl(this);
-    permissionContacts = new PermissionContacts(this);
-    permissionCamera = new PermissionCamera(this);
-    permissionMicrophone = new PermissionMicrophone(this);
+    permissionContacts = new PermissionContacts(this, PermissionGroupContacts.READ_CONTACTS);
+    permissionCamera = new PermissionCamera(this, PermissionGroupCamera.CAMERA);
+    permissionMicrophone = new PermissionMicrophone(this, PermissionGroupMicrophone.RECORD_AUDIO);
 
     contacts_permission_button = (Button) findViewById(R.id.contacts_permission_button);
     camera_permission_button = (Button) findViewById(R.id.camera_permission_button);

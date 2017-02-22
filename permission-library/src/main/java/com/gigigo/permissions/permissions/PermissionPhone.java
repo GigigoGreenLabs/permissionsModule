@@ -1,19 +1,22 @@
-package com.gigigo.permissions.listeners;
+package com.gigigo.permissions.permissions;
 
 import android.content.Context;
 import com.gigigo.permissions.R;
+import com.gigigo.permissions.groups.PermissionGroupPhone;
 import com.gigigo.permissions.interfaces.Permission;
 
 public class PermissionPhone implements Permission {
 
   private final Context context;
+  private final PermissionGroupPhone permissionGroupPhone;
 
-  public PermissionPhone(Context context) {
+  public PermissionPhone(Context context, PermissionGroupPhone permissionGroupPhone) {
     this.context = context;
+    this.permissionGroupPhone = permissionGroupPhone;
   }
 
   @Override public String getAndroidPermissionStringType() {
-    return "Manifest.permission.CALL_PHONE";
+    return permissionGroupPhone.getPermission();
   }
 
   @Override public int getPermissionSettingsDeniedFeedback() {

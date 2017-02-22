@@ -1,21 +1,20 @@
-package com.gigigo.permissions.listeners;
+package com.gigigo.permissions.permissions;
 
-import android.Manifest;
 import android.content.Context;
 import com.gigigo.permissions.R;
 import com.gigigo.permissions.interfaces.Permission;
 
-public class PermissionContacts implements Permission {
+public class PermissionLocation implements Permission {
 
   private final Context context;
 
-  public PermissionContacts(Context context) {
+  public PermissionLocation(Context context) {
     this.context = context;
   }
 
   @Override
   public String getAndroidPermissionStringType() {
-    return Manifest.permission.READ_CONTACTS;
+    return "android.permission.ACCESS_FINE_LOCATION";
   }
 
   @Override
@@ -25,21 +24,21 @@ public class PermissionContacts implements Permission {
 
   @Override
   public int getPermissionDeniedFeedback() {
-    return R.string.ggg_permission_denied_contacts;
+    return R.string.ggg_permission_denied_location;
   }
 
   @Override
   public int getPermissionRationaleTitle() {
-    return R.string.ggg_permission_rationale_title_contacts;
+    return R.string.ggg_permission_rationale_title_location;
   }
 
   @Override
   public int getPermissionRationaleMessage() {
-    return R.string.ggg_permission_rationale_message_contacts;
+    return R.string.ggg_permission_rationale_message_location;
   }
 
   @Override
   public int getNumRetry() {
-    return context.getResources().getInteger(R.integer.ggg_permission_retries_contacts);
+    return context.getResources().getInteger(R.integer.ggg_permission_retries_location);
   }
 }

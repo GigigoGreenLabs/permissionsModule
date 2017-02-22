@@ -1,20 +1,23 @@
-package com.gigigo.permissions.listeners;
+package com.gigigo.permissions.permissions;
 
 import android.content.Context;
 import com.gigigo.permissions.R;
+import com.gigigo.permissions.groups.PermissionGroupMicrophone;
 import com.gigigo.permissions.interfaces.Permission;
 
 public class PermissionMicrophone implements Permission {
 
   private final Context context;
+  private final PermissionGroupMicrophone permissionGroupMicrophone;
 
-  public PermissionMicrophone(Context context) {
+  public PermissionMicrophone(Context context, PermissionGroupMicrophone permissionGroupMicrophone) {
     this.context = context;
+    this.permissionGroupMicrophone = permissionGroupMicrophone;
   }
 
   @Override
   public String getAndroidPermissionStringType() {
-    return "android.permission.RECORD_AUDIO";
+    return permissionGroupMicrophone.getPermission();
   }
 
   @Override

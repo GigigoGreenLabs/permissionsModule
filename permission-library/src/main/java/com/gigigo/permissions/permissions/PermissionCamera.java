@@ -1,20 +1,23 @@
-package com.gigigo.permissions.listeners;
+package com.gigigo.permissions.permissions;
 
 import android.Manifest;
 import android.content.Context;
 import com.gigigo.permissions.R;
+import com.gigigo.permissions.groups.PermissionGroupCamera;
 import com.gigigo.permissions.interfaces.Permission;
 
 public class PermissionCamera implements Permission {
 
   private final Context context;
+  private final PermissionGroupCamera permissionGroupCamera;
 
-  public PermissionCamera(Context context) {
+  public PermissionCamera(Context context, PermissionGroupCamera permissionGroupCamera) {
     this.context = context;
+    this.permissionGroupCamera = permissionGroupCamera;
   }
 
   @Override public String getAndroidPermissionStringType() {
-    return Manifest.permission.CAMERA;
+    return permissionGroupCamera.getPermission();
   }
 
   @Override public int getPermissionSettingsDeniedFeedback() {

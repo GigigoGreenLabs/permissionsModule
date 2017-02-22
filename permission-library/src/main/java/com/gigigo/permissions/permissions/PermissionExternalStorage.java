@@ -1,19 +1,22 @@
-package com.gigigo.permissions.listeners;
+package com.gigigo.permissions.permissions;
 
 import android.content.Context;
 import com.gigigo.permissions.R;
+import com.gigigo.permissions.groups.PermissionGroupExternalStorage;
 import com.gigigo.permissions.interfaces.Permission;
 
 public class PermissionExternalStorage implements Permission {
 
   private final Context context;
+  private final PermissionGroupExternalStorage permissionGroupExternalStorage;
 
-  public PermissionExternalStorage(Context context) {
+  public PermissionExternalStorage(Context context, PermissionGroupExternalStorage permissionGroupExternalStorage) {
     this.context = context;
+    this.permissionGroupExternalStorage = permissionGroupExternalStorage;
   }
 
   @Override public String getAndroidPermissionStringType() {
-    return "Manifest.permission.WRITE_EXTERNAL_STORAGE";
+    return permissionGroupExternalStorage.getPermission();
   }
 
   @Override public int getPermissionSettingsDeniedFeedback() {
