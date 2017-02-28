@@ -32,7 +32,7 @@ for example:
 ```
 
 
-# Getting started #1
+## Getting started #1
  Initialize Permission Manager:
  ```java
  PermissionManager.initialize(this.getApplicationContext());
@@ -97,7 +97,7 @@ permissionChecker = new PermissionCheckerImpl((PermissionActivity)this);
 Your activity must to extends PermissionActivity
 
 
-# Asking Permissions
+## Asking Permissions
 You can ask each one permission one by one, setting a number of retries or asking all permission your app need in only one multi question permission
 #### Single Permission
 Asking if the permission is granted:
