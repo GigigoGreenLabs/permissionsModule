@@ -3,7 +3,10 @@ This library provide a easy solution for resolve permission asking in API 23<.
 The compile from supports library v7-23 or v4-23, is not necesary, all dependencie are inse the module.
 
 ## Add Dependency
-```java
+
+In our rootproject build.gradle file:
+
+```groovy
 allprojects {
     repositories {
         jcenter()
@@ -11,7 +14,12 @@ allprojects {
     }
 }
 ```
-Compile //todo
+
+And in your android application build.gradle:
+
+```groovy
+ compile 'com.github.GigigoGreenLabs:permissionsModule:3.0'
+```
 
 ## Manifest
 You must to especify userpermissions in AndroidManifest.
