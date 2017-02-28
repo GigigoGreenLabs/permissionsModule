@@ -25,17 +25,17 @@ import android.view.View;
  */
 public interface ValueAnimatorCompat {
 
-    public void setTarget(View view);
+    void setTarget(View view);
 
-    public void addListener(AnimatorListenerCompat listener);
+    void addListener(AnimatorListenerCompat listener);
 
-    public void setDuration(long duration);
+    void setDuration(long duration);
 
-    public void start();
+    void start();
 
-    public void cancel();
+    void cancel();
 
     void addUpdateListener(AnimatorUpdateListenerCompat animatorUpdateListener);
 
-    public float getAnimatedFraction();
+    float getAnimatedFraction();
 }

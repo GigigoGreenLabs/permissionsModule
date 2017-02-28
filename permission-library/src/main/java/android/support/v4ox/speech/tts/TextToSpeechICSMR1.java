@@ -25,7 +25,7 @@ class TextToSpeechICSMR1 {
     public static final String KEY_FEATURE_EMBEDDED_SYNTHESIS = "embeddedTts";
     public static final String KEY_FEATURE_NETWORK_SYNTHESIS = "networkTts";
 
-    static interface UtteranceProgressListenerICSMR1 {
+    interface UtteranceProgressListenerICSMR1 {
         void onDone(String utteranceId);
         void onError(String utteranceId);
         void onStart(String utteranceId);

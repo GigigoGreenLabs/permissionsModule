@@ -23,7 +23,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import com.gigigo.permissions.ui.PermissionsUIViews;
-import com.karumi.dexterox.Dexter;
+import com.karumi.dexterox.PermissionManager;
 import com.karumi.dexterox.PermissionToken;
 import com.karumi.dexterox.listener.PermissionDeniedResponse;
 import com.karumi.dexterox.listener.PermissionGrantedResponse;
@@ -48,13 +48,13 @@ public abstract class AbstractPermissionListener implements PermissionListener {
 
   @Override public void onPermissionGranted(PermissionGrantedResponse response) {
     if (userPermissionRequestResponseListener != null) {
-      userPermissionRequestResponseListener.onPermissionAllowed(true);
+      userPermissionRequestResponseListener.onPermissionAllowed(true,readNumRetryDone());
     }
   }
 
   @Override public void onPermissionDenied(PermissionDeniedResponse response) {
     if (userPermissionRequestResponseListener != null) {
-      userPermissionRequestResponseListener.onPermissionAllowed(false);
+      userPermissionRequestResponseListener.onPermissionAllowed(false,readNumRetryDone());
     }
   }
 
@@ -75,14 +75,14 @@ public abstract class AbstractPermissionListener implements PermissionListener {
     //no retry close permission request
     if (getNumRetry() == 0) {
       rationaleResponse.cancelPermissionRequest();
-      Dexter.closeActivity();   //kill dexterActivity
+      PermissionManager.closeActivity();   //kill dexterActivity
     }
 
     if (getNumRetry() > 0) writeNewRetry();
 
     if (getNumRetry() > 0 && readNumRetryDone() >= getNumRetry()) {
       rationaleResponse.cancelPermissionRequest();
-      Dexter.closeActivity();
+      PermissionManager.closeActivity();
     }
   }
 
@@ -156,8 +156,9 @@ public abstract class AbstractPermissionListener implements PermissionListener {
       megaHash = hashCodeObject(this.getPermissionDeniedFeedback());
       megaHash = megaHash + hashCodeObject(this.getPermissionRationaleMessage());
       megaHash = megaHash + hashCodeObject(this.getPermissionRationaleTitle());
-      // megaHash = megaHash + hashCodeObject(this.getNumRetry());
+      megaHash = megaHash + hashCodeObject(this.getNumRetry());
       megaHash = megaHash + hashCodeObject(activity.getApplicationContext().getPackageName());
+
     } catch (Exception e) {
       Log.i("ERROR ", e.getMessage());
     } catch (Throwable throwable) {

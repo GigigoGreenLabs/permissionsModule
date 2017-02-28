@@ -167,11 +167,7 @@ public final class MenuItemImpl implements SupportMenuItem {
             }
         }
 
-        if (mActionProvider != null && mActionProvider.onPerformDefaultAction()) {
-            return true;
-        }
-
-        return false;
+        return mActionProvider != null && mActionProvider.onPerformDefaultAction();
     }
 
     @Override

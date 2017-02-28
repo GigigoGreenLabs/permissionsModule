@@ -66,8 +66,8 @@ public class ActivityCompat extends ContextCompat {
          *
          * @see #requestPermissions(android.app.Activity, String[], int)
          */
-        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                @NonNull int[] grantResults);
+        void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+            @NonNull int[] grantResults);
     }
 
     /**
@@ -329,7 +329,7 @@ public class ActivityCompat extends ContextCompat {
                                 permissions[i], packageName);
                     }
 
-                    ((OnRequestPermissionsResultCallback) activity).onRequestPermissionsResult(
+                    activity.onRequestPermissionsResult(
                             requestCode, permissions, grantResults);
                 }
             });

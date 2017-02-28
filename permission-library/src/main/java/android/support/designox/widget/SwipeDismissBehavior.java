@@ -97,7 +97,7 @@ public class SwipeDismissBehavior<V extends View> extends CoordinatorLayout.Beha
         /**
          * Called when {@code view} has been dismissed via swiping.
          */
-        public void onDismiss(View view);
+        void onDismiss(View view);
 
         /**
          * Called when the drag state has changed.
@@ -105,7 +105,7 @@ public class SwipeDismissBehavior<V extends View> extends CoordinatorLayout.Beha
          * @param state the new state. One of
          * {@link #STATE_IDLE}, {@link #STATE_DRAGGING} or {@link #STATE_SETTLING}.
          */
-        public void onDragStateChanged(int state);
+        void onDragStateChanged(int state);
     }
 
     /**

@@ -732,11 +732,7 @@ public class WindowDecorActionBar extends ActionBar implements
             boolean showingForMode) {
         if (showingForMode) {
             return true;
-        } else if (hiddenByApp || hiddenBySystem) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return !(hiddenByApp || hiddenBySystem);
     }
 
     private void updateVisibility(boolean fromSystem) {

@@ -32,11 +32,11 @@ public interface CollapsibleActionView {
      * Called when this view is expanded as an action view. See {@link
      * android.support.v4.view.MenuItemCompat#expandActionView(android.view.MenuItem)}.
      */
-    public void onActionViewExpanded();
+    void onActionViewExpanded();
 
     /**
      * Called when this view is collapsed as an action view. See {@link
      * android.support.v4.view.MenuItemCompat#collapseActionView(android.view.MenuItem)}.
      */
-    public void onActionViewCollapsed();
+    void onActionViewCollapsed();
 }

@@ -27,8 +27,8 @@ public final class ViewConfigurationCompat {
      * Interface for the full API.
      */
     interface ViewConfigurationVersionImpl {
-        public int getScaledPagingTouchSlop(ViewConfiguration config);
-        public boolean hasPermanentMenuKey(ViewConfiguration config);
+        int getScaledPagingTouchSlop(ViewConfiguration config);
+        boolean hasPermanentMenuKey(ViewConfiguration config);
     }
 
     /**

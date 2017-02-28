@@ -23,10 +23,10 @@ import android.graphics.Rect;
  */
 public interface FitWindowsViewGroup {
 
-    public interface OnFitSystemWindowsListener {
+    interface OnFitSystemWindowsListener {
         void onFitSystemWindows(Rect insets);
     }
 
-    public void setOnFitSystemWindowsListener(OnFitSystemWindowsListener listener);
+    void setOnFitSystemWindowsListener(OnFitSystemWindowsListener listener);
 
 }

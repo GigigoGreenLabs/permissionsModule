@@ -30,17 +30,16 @@ import java.util.List;
 public final class AccessibilityManagerCompat {
 
     interface AccessibilityManagerVersionImpl {
-        public Object newAccessiblityStateChangeListener(
-                AccessibilityStateChangeListenerCompat listener);
-        public boolean addAccessibilityStateChangeListener(AccessibilityManager manager,
-                AccessibilityStateChangeListenerCompat listener);
-        public boolean removeAccessibilityStateChangeListener(AccessibilityManager manager,
-                AccessibilityStateChangeListenerCompat listener);
-        public List<AccessibilityServiceInfo> getEnabledAccessibilityServiceList(
-                AccessibilityManager manager,int feedbackTypeFlags);
-        public List<AccessibilityServiceInfo> getInstalledAccessibilityServiceList(
-                AccessibilityManager manager);
-        public boolean isTouchExplorationEnabled(AccessibilityManager manager);
+        Object newAccessiblityStateChangeListener(AccessibilityStateChangeListenerCompat listener);
+        boolean addAccessibilityStateChangeListener(AccessibilityManager manager,
+            AccessibilityStateChangeListenerCompat listener);
+        boolean removeAccessibilityStateChangeListener(AccessibilityManager manager,
+            AccessibilityStateChangeListenerCompat listener);
+        List<AccessibilityServiceInfo> getEnabledAccessibilityServiceList(
+            AccessibilityManager manager, int feedbackTypeFlags);
+        List<AccessibilityServiceInfo> getInstalledAccessibilityServiceList(
+            AccessibilityManager manager);
+        boolean isTouchExplorationEnabled(AccessibilityManager manager);
     }
 
     static class AccessibilityManagerStubImpl implements AccessibilityManagerVersionImpl {

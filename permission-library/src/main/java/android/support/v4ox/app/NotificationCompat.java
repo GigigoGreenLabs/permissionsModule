@@ -444,17 +444,17 @@ public class NotificationCompat {
     private static final NotificationCompatImpl IMPL;
 
     interface NotificationCompatImpl {
-        public Notification build(Builder b, BuilderExtender extender);
-        public Bundle getExtras(Notification n);
-        public int getActionCount(Notification n);
-        public Action getAction(Notification n, int actionIndex);
-        public Action[] getActionsFromParcelableArrayList(ArrayList<Parcelable> parcelables);
-        public ArrayList<Parcelable> getParcelableArrayListForActions(Action[] actions);
-        public String getCategory(Notification n);
-        public boolean getLocalOnly(Notification n);
-        public String getGroup(Notification n);
-        public boolean isGroupSummary(Notification n);
-        public String getSortKey(Notification n);
+        Notification build(Builder b, BuilderExtender extender);
+        Bundle getExtras(Notification n);
+        int getActionCount(Notification n);
+        Action getAction(Notification n, int actionIndex);
+        Action[] getActionsFromParcelableArrayList(ArrayList<Parcelable> parcelables);
+        ArrayList<Parcelable> getParcelableArrayListForActions(Action[] actions);
+        String getCategory(Notification n);
+        boolean getLocalOnly(Notification n);
+        String getGroup(Notification n);
+        boolean isGroupSummary(Notification n);
+        String getSortKey(Notification n);
         Bundle getBundleForUnreadConversation(NotificationCompatBase.UnreadConversation uc);
         NotificationCompatBase.UnreadConversation getUnreadConversationFromBundle(
                 Bundle b, NotificationCompatBase.UnreadConversation.Factory factory,
@@ -1972,7 +1972,7 @@ public class NotificationCompat {
              * @param builder the builder to be modified.
              * @return the build object for chaining.
              */
-            public Builder extend(Builder builder);
+            Builder extend(Builder builder);
         }
 
         /**
@@ -2193,7 +2193,7 @@ public class NotificationCompat {
          * @param builder the builder to be modified.
          * @return the build object for chaining.
          */
-        public Builder extend(Builder builder);
+        Builder extend(Builder builder);
     }
 
     /**

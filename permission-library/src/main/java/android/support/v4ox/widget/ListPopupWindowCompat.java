@@ -28,7 +28,7 @@ public final class ListPopupWindowCompat {
      * Interface for the full API.
      */
     interface ListPopupWindowImpl {
-        public OnTouchListener createDragToOpenListener(Object listPopupWindow, View src);
+        OnTouchListener createDragToOpenListener(Object listPopupWindow, View src);
     }
 
     /**

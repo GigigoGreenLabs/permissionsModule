@@ -100,7 +100,7 @@ class ActivityChooserModel extends DataSetObservable {
          *
          * @param dataModel The model.
          */
-        public void setActivityChooserModel(ActivityChooserModel dataModel);
+        void setActivityChooserModel(ActivityChooserModel dataModel);
     }
 
     /**
@@ -119,8 +119,8 @@ class ActivityChooserModel extends DataSetObservable {
          */
         // This cannot be done by a simple comparator since an Activity weight
         // is computed from history. Note that Activity implements Comparable.
-        public void sort(Intent intent, List<ActivityResolveInfo> activities,
-                List<HistoricalRecord> historicalRecords);
+        void sort(Intent intent, List<ActivityResolveInfo> activities,
+            List<HistoricalRecord> historicalRecords);
     }
 
     /**
@@ -144,7 +144,7 @@ class ActivityChooserModel extends DataSetObservable {
          *
          * @see ActivityChooserModel#chooseActivity(int)
          */
-        public boolean onChooseActivity(ActivityChooserModel host, Intent intent);
+        boolean onChooseActivity(ActivityChooserModel host, Intent intent);
     }
 
     /**
@@ -829,10 +829,7 @@ class ActivityChooserModel extends DataSetObservable {
             if (time != other.time) {
                 return false;
             }
-            if (Float.floatToIntBits(weight) != Float.floatToIntBits(other.weight)) {
-                return false;
-            }
-            return true;
+            return Float.floatToIntBits(weight) == Float.floatToIntBits(other.weight);
         }
 
         @Override
@@ -888,10 +885,7 @@ class ActivityChooserModel extends DataSetObservable {
                 return false;
             }
             ActivityResolveInfo other = (ActivityResolveInfo) obj;
-            if (Float.floatToIntBits(weight) != Float.floatToIntBits(other.weight)) {
-                return false;
-            }
-            return true;
+            return Float.floatToIntBits(weight) == Float.floatToIntBits(other.weight);
         }
 
         public int compareTo(ActivityResolveInfo another) {

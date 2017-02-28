@@ -969,7 +969,7 @@ public class AppBarLayout extends LinearLayout {
                 // If we have some scrolling range, and we're currently within the min and max
                 // offsets, calculate a new offset
                 newOffset = MathUtils.constrain(newOffset, minOffset, maxOffset);
-                AppBarLayout appBarLayout = (AppBarLayout) header;
+                AppBarLayout appBarLayout = header;
                 if (curOffset != newOffset) {
                     final int interpolatedOffset = appBarLayout.hasChildWithInterpolator()
                             ? interpolateOffset(appBarLayout, newOffset)

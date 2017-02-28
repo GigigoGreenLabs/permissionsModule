@@ -37,46 +37,46 @@ public final class ViewPropertyAnimatorCompat {
     }
 
     interface ViewPropertyAnimatorCompatImpl {
-        public void setDuration(ViewPropertyAnimatorCompat vpa, View view, long value);
-        public long getDuration(ViewPropertyAnimatorCompat vpa, View view);
-        public void setInterpolator(ViewPropertyAnimatorCompat vpa, View view, Interpolator value);
-        public Interpolator getInterpolator(ViewPropertyAnimatorCompat vpa, View view);
-        public void setStartDelay(ViewPropertyAnimatorCompat vpa, View view, long value);
-        public long getStartDelay(ViewPropertyAnimatorCompat vpa, View view);
-        public void alpha(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void alphaBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotation(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotationBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotationX(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotationXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotationY(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void rotationYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void scaleX(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void scaleXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void scaleY(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void scaleYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void cancel(ViewPropertyAnimatorCompat vpa, View view);
-        public void x(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void xBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void y(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void yBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void z(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void zBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationX(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationY(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationZ(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void translationZBy(ViewPropertyAnimatorCompat vpa, View view, float value);
-        public void start(ViewPropertyAnimatorCompat vpa, View view);
-        public void withLayer(ViewPropertyAnimatorCompat vpa, View view);
-        public void withStartAction(ViewPropertyAnimatorCompat vpa, View view, Runnable runnable);
-        public void withEndAction(ViewPropertyAnimatorCompat vpa, View view, Runnable runnable);
-        public void setListener(ViewPropertyAnimatorCompat vpa, View view,
-                ViewPropertyAnimatorListener listener);
-        public void setUpdateListener(ViewPropertyAnimatorCompat vpa, View view,
-                ViewPropertyAnimatorUpdateListener listener);
-    };
+        void setDuration(ViewPropertyAnimatorCompat vpa, View view, long value);
+        long getDuration(ViewPropertyAnimatorCompat vpa, View view);
+        void setInterpolator(ViewPropertyAnimatorCompat vpa, View view, Interpolator value);
+        Interpolator getInterpolator(ViewPropertyAnimatorCompat vpa, View view);
+        void setStartDelay(ViewPropertyAnimatorCompat vpa, View view, long value);
+        long getStartDelay(ViewPropertyAnimatorCompat vpa, View view);
+        void alpha(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void alphaBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotation(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotationBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotationX(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotationXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotationY(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void rotationYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void scaleX(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void scaleXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void scaleY(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void scaleYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void cancel(ViewPropertyAnimatorCompat vpa, View view);
+        void x(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void xBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void y(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void yBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void z(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void zBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationX(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationXBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationY(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationYBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationZ(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void translationZBy(ViewPropertyAnimatorCompat vpa, View view, float value);
+        void start(ViewPropertyAnimatorCompat vpa, View view);
+        void withLayer(ViewPropertyAnimatorCompat vpa, View view);
+        void withStartAction(ViewPropertyAnimatorCompat vpa, View view, Runnable runnable);
+        void withEndAction(ViewPropertyAnimatorCompat vpa, View view, Runnable runnable);
+        void setListener(ViewPropertyAnimatorCompat vpa, View view,
+            ViewPropertyAnimatorListener listener);
+        void setUpdateListener(ViewPropertyAnimatorCompat vpa, View view,
+            ViewPropertyAnimatorUpdateListener listener);
+    }
 
     static class BaseViewPropertyAnimatorCompatImpl implements ViewPropertyAnimatorCompatImpl {
         WeakHashMap<View, Runnable> mStarterMap = null;
@@ -331,7 +331,7 @@ public final class ViewPropertyAnimatorCompat {
                     startAnimation(mVpa, view);
                 }
             }
-        };
+        }
 
         private void removeStartMessage(View view) {
             Runnable starter = null;
@@ -591,7 +591,7 @@ public final class ViewPropertyAnimatorCompat {
                     listener.onAnimationCancel(view);
                 }
             }
-        };
+        }
     }
 
     static class JBViewPropertyAnimatorCompatImpl extends ICSViewPropertyAnimatorCompatImpl {
@@ -621,7 +621,7 @@ public final class ViewPropertyAnimatorCompat {
 
         @Override
         public Interpolator getInterpolator(ViewPropertyAnimatorCompat vpa, View view) {
-            return (Interpolator) ViewPropertyAnimatorCompatJellybeanMr2.getInterpolator(view);
+            return ViewPropertyAnimatorCompatJellybeanMr2.getInterpolator(view);
         }
     }
 

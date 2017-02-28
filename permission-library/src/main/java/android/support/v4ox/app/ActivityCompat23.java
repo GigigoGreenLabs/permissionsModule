@@ -20,7 +20,7 @@ import android.app.Activity;
 
 class ActivityCompatApi23 {
     public interface RequestPermissionsRequestCodeValidator {
-        public void validateRequestPermissionsRequestCode(int requestCode);
+        void validateRequestPermissionsRequestCode(int requestCode);
     }
 
     public static void requestPermissions(Activity activity, String[] permissions,

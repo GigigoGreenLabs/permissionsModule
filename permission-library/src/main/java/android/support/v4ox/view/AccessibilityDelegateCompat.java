@@ -30,26 +30,21 @@ import android.view.accessibility.AccessibilityEvent;
  */
 public class AccessibilityDelegateCompat {
 
-    static interface AccessibilityDelegateImpl {
-        public Object newAccessiblityDelegateDefaultImpl();
-        public Object newAccessiblityDelegateBridge(AccessibilityDelegateCompat listener);
-        public boolean dispatchPopulateAccessibilityEvent(Object delegate, View host,
-                AccessibilityEvent event);
-        public void onInitializeAccessibilityEvent(Object delegate, View host,
-                AccessibilityEvent event);
-        public void onInitializeAccessibilityNodeInfo(Object delegate, View host,
-                AccessibilityNodeInfoCompat info);
-        public void onPopulateAccessibilityEvent(Object delegate, View host,
-                AccessibilityEvent event);
-        public boolean onRequestSendAccessibilityEvent(Object delegate, ViewGroup host, View child,
-                AccessibilityEvent event);
-        public void sendAccessibilityEvent(Object delegate, View host, int eventType);
-        public void sendAccessibilityEventUnchecked(Object delegate, View host,
-                AccessibilityEvent event);
-        public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(Object delegate,
-                View host);
-        public boolean performAccessibilityAction(Object delegate, View host, int action,
-                Bundle args);
+    interface AccessibilityDelegateImpl {
+        Object newAccessiblityDelegateDefaultImpl();
+        Object newAccessiblityDelegateBridge(AccessibilityDelegateCompat listener);
+        boolean dispatchPopulateAccessibilityEvent(Object delegate, View host,
+            AccessibilityEvent event);
+        void onInitializeAccessibilityEvent(Object delegate, View host, AccessibilityEvent event);
+        void onInitializeAccessibilityNodeInfo(Object delegate, View host,
+            AccessibilityNodeInfoCompat info);
+        void onPopulateAccessibilityEvent(Object delegate, View host, AccessibilityEvent event);
+        boolean onRequestSendAccessibilityEvent(Object delegate, ViewGroup host, View child,
+            AccessibilityEvent event);
+        void sendAccessibilityEvent(Object delegate, View host, int eventType);
+        void sendAccessibilityEventUnchecked(Object delegate, View host, AccessibilityEvent event);
+        AccessibilityNodeProviderCompat getAccessibilityNodeProvider(Object delegate, View host);
+        boolean performAccessibilityAction(Object delegate, View host, int action, Bundle args);
     }
 
     static class AccessibilityDelegateStubImpl implements AccessibilityDelegateImpl {

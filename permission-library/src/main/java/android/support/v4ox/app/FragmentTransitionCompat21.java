@@ -51,7 +51,7 @@ class FragmentTransitionCompat21 {
                 exitTransition = null;
             } else {
                 viewList.add(nonExistentView);
-                addTargets((Transition) exitTransition, viewList);
+                addTargets(exitTransition, viewList);
             }
         }
         return exitTransition;

@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 <resources>
-  <string name="app_name">Dexter</string>
+  <string name="app_name">Permissions</string>
   <string name="ask_for_camera_permission_button">Camera</string>
   <string name="ask_for_contacts_permission_button">Contacts</string>
   <string name="ask_for_audio_permission_button">Audio</string>

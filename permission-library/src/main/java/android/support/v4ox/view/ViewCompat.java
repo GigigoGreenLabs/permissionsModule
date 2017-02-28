@@ -344,86 +344,86 @@ public final class ViewCompat {
     public static final int SCROLL_INDICATOR_END = 0x20;
 
     interface ViewCompatImpl {
-        public boolean canScrollHorizontally(View v, int direction);
-        public boolean canScrollVertically(View v, int direction);
-        public int getOverScrollMode(View v);
-        public void setOverScrollMode(View v, int mode);
-        public void onInitializeAccessibilityEvent(View v, AccessibilityEvent event);
-        public void onPopulateAccessibilityEvent(View v, AccessibilityEvent event);
-        public void onInitializeAccessibilityNodeInfo(View v, AccessibilityNodeInfoCompat info);
-        public void setAccessibilityDelegate(View v, @Nullable AccessibilityDelegateCompat delegate);
-        public boolean hasAccessibilityDelegate(View v);
-        public boolean hasTransientState(View view);
-        public void setHasTransientState(View view, boolean hasTransientState);
-        public void postInvalidateOnAnimation(View view);
-        public void postInvalidateOnAnimation(View view, int left, int top, int right, int bottom);
-        public void postOnAnimation(View view, Runnable action);
-        public void postOnAnimationDelayed(View view, Runnable action, long delayMillis);
-        public int getImportantForAccessibility(View view);
-        public void setImportantForAccessibility(View view, int mode);
-        public boolean isImportantForAccessibility(View view);
-        public boolean performAccessibilityAction(View view, int action, Bundle arguments);
-        public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View view);
-        public float getAlpha(View view);
-        public void setLayerType(View view, int layerType, Paint paint);
-        public int getLayerType(View view);
-        public int getLabelFor(View view);
-        public void setLabelFor(View view, int id);
-        public void setLayerPaint(View view, Paint paint);
-        public int getLayoutDirection(View view);
-        public void setLayoutDirection(View view, int layoutDirection);
-        public ViewParent getParentForAccessibility(View view);
-        public boolean isOpaque(View view);
-        public int resolveSizeAndState(int size, int measureSpec, int childMeasuredState);
-        public int getMeasuredWidthAndState(View view);
-        public int getMeasuredHeightAndState(View view);
-        public int getMeasuredState(View view);
-        public int getAccessibilityLiveRegion(View view);
-        public void setAccessibilityLiveRegion(View view, int mode);
-        public int getPaddingStart(View view);
-        public int getPaddingEnd(View view);
-        public void setPaddingRelative(View view, int start, int top, int end, int bottom);
-        public void dispatchStartTemporaryDetach(View view);
-        public void dispatchFinishTemporaryDetach(View view);
-        public float getX(View view);
-        public float getY(View view);
-        public float getRotation(View view);
-        public float getRotationX(View view);
-        public float getRotationY(View view);
-        public float getScaleX(View view);
-        public float getScaleY(View view);
-        public float getTranslationX(View view);
-        public float getTranslationY(View view);
-        public int getMinimumWidth(View view);
-        public int getMinimumHeight(View view);
-        public ViewPropertyAnimatorCompat animate(View view);
-        public void setRotation(View view, float value);
-        public void setRotationX(View view, float value);
-        public void setRotationY(View view, float value);
-        public void setScaleX(View view, float value);
-        public void setScaleY(View view, float value);
-        public void setTranslationX(View view, float value);
-        public void setTranslationY(View view, float value);
-        public void setX(View view, float value);
-        public void setY(View view, float value);
-        public void setAlpha(View view, float value);
-        public void setPivotX(View view, float value);
-        public void setPivotY(View view, float value);
-        public float getPivotX(View view);
-        public float getPivotY(View view);
-        public void setElevation(View view, float elevation);
-        public float getElevation(View view);
-        public void setTranslationZ(View view, float translationZ);
-        public float getTranslationZ(View view);
-        public void setClipBounds(View view, Rect clipBounds);
-        public Rect getClipBounds(View view);
-        public void setTransitionName(View view, String transitionName);
-        public String getTransitionName(View view);
-        public int getWindowSystemUiVisibility(View view);
-        public void requestApplyInsets(View view);
-        public void setChildrenDrawingOrderEnabled(ViewGroup viewGroup, boolean enabled);
-        public boolean getFitsSystemWindows(View view);
-        public boolean hasOverlappingRendering(View view);
+        boolean canScrollHorizontally(View v, int direction);
+        boolean canScrollVertically(View v, int direction);
+        int getOverScrollMode(View v);
+        void setOverScrollMode(View v, int mode);
+        void onInitializeAccessibilityEvent(View v, AccessibilityEvent event);
+        void onPopulateAccessibilityEvent(View v, AccessibilityEvent event);
+        void onInitializeAccessibilityNodeInfo(View v, AccessibilityNodeInfoCompat info);
+        void setAccessibilityDelegate(View v, @Nullable AccessibilityDelegateCompat delegate);
+        boolean hasAccessibilityDelegate(View v);
+        boolean hasTransientState(View view);
+        void setHasTransientState(View view, boolean hasTransientState);
+        void postInvalidateOnAnimation(View view);
+        void postInvalidateOnAnimation(View view, int left, int top, int right, int bottom);
+        void postOnAnimation(View view, Runnable action);
+        void postOnAnimationDelayed(View view, Runnable action, long delayMillis);
+        int getImportantForAccessibility(View view);
+        void setImportantForAccessibility(View view, int mode);
+        boolean isImportantForAccessibility(View view);
+        boolean performAccessibilityAction(View view, int action, Bundle arguments);
+        AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View view);
+        float getAlpha(View view);
+        void setLayerType(View view, int layerType, Paint paint);
+        int getLayerType(View view);
+        int getLabelFor(View view);
+        void setLabelFor(View view, int id);
+        void setLayerPaint(View view, Paint paint);
+        int getLayoutDirection(View view);
+        void setLayoutDirection(View view, int layoutDirection);
+        ViewParent getParentForAccessibility(View view);
+        boolean isOpaque(View view);
+        int resolveSizeAndState(int size, int measureSpec, int childMeasuredState);
+        int getMeasuredWidthAndState(View view);
+        int getMeasuredHeightAndState(View view);
+        int getMeasuredState(View view);
+        int getAccessibilityLiveRegion(View view);
+        void setAccessibilityLiveRegion(View view, int mode);
+        int getPaddingStart(View view);
+        int getPaddingEnd(View view);
+        void setPaddingRelative(View view, int start, int top, int end, int bottom);
+        void dispatchStartTemporaryDetach(View view);
+        void dispatchFinishTemporaryDetach(View view);
+        float getX(View view);
+        float getY(View view);
+        float getRotation(View view);
+        float getRotationX(View view);
+        float getRotationY(View view);
+        float getScaleX(View view);
+        float getScaleY(View view);
+        float getTranslationX(View view);
+        float getTranslationY(View view);
+        int getMinimumWidth(View view);
+        int getMinimumHeight(View view);
+        ViewPropertyAnimatorCompat animate(View view);
+        void setRotation(View view, float value);
+        void setRotationX(View view, float value);
+        void setRotationY(View view, float value);
+        void setScaleX(View view, float value);
+        void setScaleY(View view, float value);
+        void setTranslationX(View view, float value);
+        void setTranslationY(View view, float value);
+        void setX(View view, float value);
+        void setY(View view, float value);
+        void setAlpha(View view, float value);
+        void setPivotX(View view, float value);
+        void setPivotY(View view, float value);
+        float getPivotX(View view);
+        float getPivotY(View view);
+        void setElevation(View view, float elevation);
+        float getElevation(View view);
+        void setTranslationZ(View view, float translationZ);
+        float getTranslationZ(View view);
+        void setClipBounds(View view, Rect clipBounds);
+        Rect getClipBounds(View view);
+        void setTransitionName(View view, String transitionName);
+        String getTransitionName(View view);
+        int getWindowSystemUiVisibility(View view);
+        void requestApplyInsets(View view);
+        void setChildrenDrawingOrderEnabled(ViewGroup viewGroup, boolean enabled);
+        boolean getFitsSystemWindows(View view);
+        boolean hasOverlappingRendering(View view);
         void setFitsSystemWindows(View view, boolean fitSystemWindows);
         void jumpDrawablesToCurrentState(View v);
         void setOnApplyWindowInsetsListener(View view, OnApplyWindowInsetsListener listener);
@@ -449,14 +449,14 @@ public final class ViewCompat {
         boolean dispatchNestedPreFling(View view, float velocityX, float velocityY);
         boolean isLaidOut(View view);
         int combineMeasuredStates(int curState, int newState);
-        public float getZ(View view);
-        public boolean isAttachedToWindow(View view);
-        public boolean hasOnClickListeners(View view);
-        public void setScrollIndicators(View view, int indicators);
-        public void setScrollIndicators(View view, int indicators, int mask);
-        public int getScrollIndicators(View view);
-        public void offsetTopAndBottom(View view, int offset);
-        public void offsetLeftAndRight(View view, int offset);
+        float getZ(View view);
+        boolean isAttachedToWindow(View view);
+        boolean hasOnClickListeners(View view);
+        void setScrollIndicators(View view, int indicators);
+        void setScrollIndicators(View view, int indicators, int mask);
+        int getScrollIndicators(View view);
+        void offsetTopAndBottom(View view, int offset);
+        void offsetLeftAndRight(View view, int offset);
     }
 
     static class BaseViewCompatImpl implements ViewCompatImpl {
@@ -901,14 +901,14 @@ public final class ViewCompat {
 
         public void setNestedScrollingEnabled(View view, boolean enabled) {
             if (view instanceof NestedScrollingChild) {
-                ((NestedScrollingChild) view).setNestedScrollingEnabled(enabled);
+                view.setNestedScrollingEnabled(enabled);
             }
         }
 
         @Override
         public boolean isNestedScrollingEnabled(View view) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).isNestedScrollingEnabled();
+                return view.isNestedScrollingEnabled();
             }
             return false;
         }
@@ -959,7 +959,7 @@ public final class ViewCompat {
 
         public boolean startNestedScroll(View view, int axes) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).startNestedScroll(axes);
+                return view.startNestedScroll(axes);
             }
             return false;
         }
@@ -967,14 +967,14 @@ public final class ViewCompat {
         @Override
         public void stopNestedScroll(View view) {
             if (view instanceof NestedScrollingChild) {
-                ((NestedScrollingChild) view).stopNestedScroll();
+                view.stopNestedScroll();
             }
         }
 
         @Override
         public boolean hasNestedScrollingParent(View view) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).hasNestedScrollingParent();
+                return view.hasNestedScrollingParent();
             }
             return false;
         }
@@ -983,7 +983,7 @@ public final class ViewCompat {
         public boolean dispatchNestedScroll(View view, int dxConsumed, int dyConsumed,
                 int dxUnconsumed, int dyUnconsumed, int[] offsetInWindow) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).dispatchNestedScroll(dxConsumed, dyConsumed,
+                return view.dispatchNestedScroll(dxConsumed, dyConsumed,
                         dxUnconsumed, dyUnconsumed, offsetInWindow);
             }
             return false;
@@ -993,7 +993,7 @@ public final class ViewCompat {
         public boolean dispatchNestedPreScroll(View view, int dx, int dy,
                 int[] consumed, int[] offsetInWindow) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).dispatchNestedPreScroll(dx, dy, consumed,
+                return view.dispatchNestedPreScroll(dx, dy, consumed,
                         offsetInWindow);
             }
             return false;
@@ -1003,7 +1003,7 @@ public final class ViewCompat {
         public boolean dispatchNestedFling(View view, float velocityX, float velocityY,
                 boolean consumed) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).dispatchNestedFling(velocityX, velocityY,
+                return view.dispatchNestedFling(velocityX, velocityY,
                         consumed);
             }
             return false;
@@ -1012,7 +1012,7 @@ public final class ViewCompat {
         @Override
         public boolean dispatchNestedPreFling(View view, float velocityX, float velocityY) {
             if (view instanceof NestedScrollingChild) {
-                return ((NestedScrollingChild) view).dispatchNestedPreFling(velocityX, velocityY);
+                return view.dispatchNestedPreFling(velocityX, velocityY);
             }
             return false;
         }

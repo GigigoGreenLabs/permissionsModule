@@ -27,11 +27,10 @@ import java.util.List;
  */
 class AccessibilityNodeProviderCompatKitKat {
     interface AccessibilityNodeInfoBridge {
-        public Object createAccessibilityNodeInfo(int virtualViewId);
-        public boolean performAction(int virtualViewId, int action, Bundle arguments);
-        public List<Object> findAccessibilityNodeInfosByText(String text,
-            int virtualViewId);
-        public Object findFocus(int focus);
+        Object createAccessibilityNodeInfo(int virtualViewId);
+        boolean performAction(int virtualViewId, int action, Bundle arguments);
+        List<Object> findAccessibilityNodeInfosByText(String text, int virtualViewId);
+        Object findFocus(int focus);
     }
 
     public static Object newAccessibilityNodeProviderBridge(

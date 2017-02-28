@@ -25,21 +25,21 @@ import android.os.Build;
  */
 public class AccessibilityWindowInfoCompat {
 
-    private static interface AccessibilityWindowInfoImpl {
-        public Object obtain();
-        public Object obtain(Object info);
-        public int getType(Object info);
-        public int getLayer(Object info);
-        public Object getRoot(Object info);
-        public Object getParent(Object info);
-        public int getId(Object info);
-        public void getBoundsInScreen(Object info, Rect outBounds);
-        public boolean isActive(Object info);
-        public boolean isFocused(Object info);
-        public boolean isAccessibilityFocused(Object info);
-        public int getChildCount(Object info);
-        public Object getChild(Object info, int index);
-        public void recycle(Object info);
+    private interface AccessibilityWindowInfoImpl {
+        Object obtain();
+        Object obtain(Object info);
+        int getType(Object info);
+        int getLayer(Object info);
+        Object getRoot(Object info);
+        Object getParent(Object info);
+        int getId(Object info);
+        void getBoundsInScreen(Object info, Rect outBounds);
+        boolean isActive(Object info);
+        boolean isFocused(Object info);
+        boolean isAccessibilityFocused(Object info);
+        int getChildCount(Object info);
+        Object getChild(Object info, int index);
+        void recycle(Object info);
     }
 
     private static class AccessibilityWindowInfoStubImpl implements  AccessibilityWindowInfoImpl {

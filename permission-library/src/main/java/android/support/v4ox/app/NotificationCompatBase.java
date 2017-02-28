@@ -36,7 +36,7 @@ public class NotificationCompatBase {
         public interface Factory {
             Action build(int icon, CharSequence title, PendingIntent actionIntent,
                     Bundle extras, RemoteInputCompatBase.RemoteInput[] remoteInputs);
-            public Action[] newArray(int length);
+            Action[] newArray(int length);
         }
     }
 

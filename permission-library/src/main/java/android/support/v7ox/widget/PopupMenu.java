@@ -57,7 +57,7 @@ public class PopupMenu implements MenuBuilder.Callback, MenuPresenter.Callback {
          *
          * @param menu The PopupMenu that was dismissed.
          */
-        public void onDismiss(PopupMenu menu);
+        void onDismiss(PopupMenu menu);
     }
 
     /**
@@ -301,6 +301,6 @@ public class PopupMenu implements MenuBuilder.Callback, MenuPresenter.Callback {
          * @param item {@link MenuItem} that was clicked
          * @return <code>true</code> if the event was handled, <code>false</code> otherwise.
          */
-        public boolean onMenuItemClick(MenuItem item);
+        boolean onMenuItemClick(MenuItem item);
     }
 }

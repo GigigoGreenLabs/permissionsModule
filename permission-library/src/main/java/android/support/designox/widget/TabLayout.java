@@ -198,14 +198,14 @@ public class TabLayout extends HorizontalScrollView {
          *
          * @param tab The tab that was selected
          */
-        public void onTabSelected(Tab tab);
+        void onTabSelected(Tab tab);
 
         /**
          * Called when a tab exits the selected state.
          *
          * @param tab The tab that was unselected
          */
-        public void onTabUnselected(Tab tab);
+        void onTabUnselected(Tab tab);
 
         /**
          * Called when a tab that is already selected is chosen again by the user. Some applications
@@ -213,7 +213,7 @@ public class TabLayout extends HorizontalScrollView {
          *
          * @param tab The tab that was reselected.
          */
-        public void onTabReselected(Tab tab);
+        void onTabReselected(Tab tab);
     }
 
     private final ArrayList<Tab> mTabs = new ArrayList<>();

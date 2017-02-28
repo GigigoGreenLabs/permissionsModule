@@ -25,7 +25,7 @@ import android.view.accessibility.AccessibilityEvent;
  */
 public final class AccessibilityEventCompat {
 
-    static interface AccessibilityEventVersionImpl {
+    interface AccessibilityEventVersionImpl {
         int getRecordCount(AccessibilityEvent event);
         void appendRecord(AccessibilityEvent event, Object record);
         Object getRecord(AccessibilityEvent event, int index);

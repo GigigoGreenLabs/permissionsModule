@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+    <include layout="@layout/header"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="54dp"
+      android:layout_marginTop="54dp"
+      android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+    <Button android:id="@+id/btnAskPermission"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:text="Ask Single Permission"
+        style="@style/PermissionButton"/>
+    <TextView
+        android:id="@+id/txtSinglePermission"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/feedback_height"
+        android:text="@string/permission_unknown_feedback"
+        style="@style/PermissionFeedback"
+    />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+    <Button android:id="@+id/btnAskAllPermissions"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:text="Ask Multi Permissions"
+        style="@style/PermissionButton"/>
+      <TextView
+          android:id="@+id/txtMultiPermission"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/feedback_height"
+          android:text="@string/permission_unknown_feedback"
+          style="@style/PermissionFeedback"
+      />
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>

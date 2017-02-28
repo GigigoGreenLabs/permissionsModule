@@ -28,7 +28,7 @@ import java.util.List;
 class AccessibilityManagerCompatIcs {
 
     interface AccessibilityStateChangeListenerBridge {
-        public void onAccessibilityStateChanged(boolean enabled);
+        void onAccessibilityStateChanged(boolean enabled);
     }
 
     public static Object newAccessibilityStateChangeListener(

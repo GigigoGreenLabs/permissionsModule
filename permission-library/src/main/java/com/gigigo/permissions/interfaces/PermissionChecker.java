@@ -19,12 +19,17 @@
 package com.gigigo.permissions.interfaces;
 
 import android.app.Activity;
+import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
 
 public interface PermissionChecker {
 
-  void askForPermission(Permission permission, UserPermissionRequestResponseListener userResponse);
+  void askForPermission( UserPermissionRequestResponseListener userResponse,Permission permission);
+
+  void askForPermissions(MultiplePermissionsListener permissionsListener,
+      Permission... permissions);
 
   void continuePendingPermissionsRequestsIfPossible();
 
   boolean isGranted(Permission permission);
+  boolean isAllGranted(Permission... permission);
 }

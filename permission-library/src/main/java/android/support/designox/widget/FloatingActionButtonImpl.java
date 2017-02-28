@@ -39,8 +39,8 @@ abstract class FloatingActionButtonImpl {
     float mPressedTranslationZ;
 
     interface InternalVisibilityChangedListener {
-        public void onShown();
-        public void onHidden();
+        void onShown();
+        void onHidden();
     }
 
     static final int SHOW_HIDE_ANIM_DURATION = 200;

@@ -751,7 +751,7 @@ public class ActionMenuView extends LinearLayoutCompat implements MenuBuilder.It
          * @param item {@link MenuItem} that was clicked
          * @return <code>true</code> if the event was handled, <code>false</code> otherwise.
          */
-        public boolean onMenuItemClick(MenuItem item);
+        boolean onMenuItemClick(MenuItem item);
     }
 
     private class MenuBuilderCallback implements MenuBuilder.Callback {
@@ -782,8 +782,8 @@ public class ActionMenuView extends LinearLayoutCompat implements MenuBuilder.It
 
     /** @hide */
     public interface ActionMenuChildView {
-        public boolean needsDividerBefore();
-        public boolean needsDividerAfter();
+        boolean needsDividerBefore();
+        boolean needsDividerAfter();
     }
 
     public static class LayoutParams extends LinearLayoutCompat.LayoutParams {

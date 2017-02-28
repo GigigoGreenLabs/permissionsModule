@@ -28,14 +28,14 @@ import android.view.accessibility.AccessibilityNodeInfo;
 class AccessibilityDelegateCompatIcs {
 
     public interface AccessibilityDelegateBridge {
-        public boolean dispatchPopulateAccessibilityEvent(View host, AccessibilityEvent event);
-        public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event);
-        public void onInitializeAccessibilityNodeInfo(View host, Object info);
-        public void onPopulateAccessibilityEvent(View host, AccessibilityEvent event);
-        public boolean onRequestSendAccessibilityEvent(ViewGroup host, View child,
+        boolean dispatchPopulateAccessibilityEvent(View host, AccessibilityEvent event);
+        void onInitializeAccessibilityEvent(View host, AccessibilityEvent event);
+        void onInitializeAccessibilityNodeInfo(View host, Object info);
+        void onPopulateAccessibilityEvent(View host, AccessibilityEvent event);
+        boolean onRequestSendAccessibilityEvent(ViewGroup host, View child,
             AccessibilityEvent event);
-        public void sendAccessibilityEvent(View host, int eventType);
-        public void sendAccessibilityEventUnchecked(View host, AccessibilityEvent event);
+        void sendAccessibilityEvent(View host, int eventType);
+        void sendAccessibilityEventUnchecked(View host, AccessibilityEvent event);
     }
 
     public static Object newAccessibilityDelegateDefaultImpl() {

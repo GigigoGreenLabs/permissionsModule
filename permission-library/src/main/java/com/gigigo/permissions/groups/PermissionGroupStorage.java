@@ -2,13 +2,13 @@ package com.gigigo.permissions.groups;
 
 import android.Manifest;
 
-public enum PermissionGroupExternalStorage {
+public enum PermissionGroupStorage {
   READ_EXTERNAL_STORAGE(Manifest.permission.READ_EXTERNAL_STORAGE),
   WRITE_EXTERNAL_STORAGE(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
   private final String permission;
 
-  PermissionGroupExternalStorage(String permission) {
+  PermissionGroupStorage(String permission) {
     this.permission = permission;
   }
 

@@ -27,8 +27,8 @@ public final class VelocityTrackerCompat {
      * Interface for the full API.
      */
     interface VelocityTrackerVersionImpl {
-        public float getXVelocity(VelocityTracker tracker, int pointerId);
-        public float getYVelocity(VelocityTracker tracker, int pointerId);
+        float getXVelocity(VelocityTracker tracker, int pointerId);
+        float getYVelocity(VelocityTracker tracker, int pointerId);
     }
 
     /**

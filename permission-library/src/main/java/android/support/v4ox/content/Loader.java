@@ -80,7 +80,7 @@ public class Loader<D> {
          * @param loader the loader that completed the load
          * @param data the result of the load
          */
-        public void onLoadComplete(Loader<D> loader, D data);
+        void onLoadComplete(Loader<D> loader, D data);
     }
 
     /**
@@ -97,7 +97,7 @@ public class Loader<D> {
          *
          * @param loader the loader that canceled the load
          */
-        public void onLoadCanceled(Loader<D> loader);
+        void onLoadCanceled(Loader<D> loader);
     }
 
     /**

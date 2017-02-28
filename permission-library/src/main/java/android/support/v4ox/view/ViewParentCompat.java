@@ -33,8 +33,8 @@ import android.view.accessibility.AccessibilityManager;
 public final class ViewParentCompat {
 
     interface ViewParentCompatImpl {
-        public boolean requestSendAccessibilityEvent(
-                ViewParent parent, View child, AccessibilityEvent event);
+        boolean requestSendAccessibilityEvent(ViewParent parent, View child,
+            AccessibilityEvent event);
         boolean onStartNestedScroll(ViewParent parent, View child, View target,
                 int nestedScrollAxes);
         void onNestedScrollAccepted(ViewParent parent, View child, View target,
@@ -68,7 +68,7 @@ public final class ViewParentCompat {
         public boolean onStartNestedScroll(ViewParent parent, View child, View target,
                 int nestedScrollAxes) {
             if (parent instanceof NestedScrollingParent) {
-                return ((NestedScrollingParent) parent).onStartNestedScroll(child, target,
+                return parent.onStartNestedScroll(child, target,
                         nestedScrollAxes);
             }
             return false;
@@ -78,7 +78,7 @@ public final class ViewParentCompat {
         public void onNestedScrollAccepted(ViewParent parent, View child, View target,
                 int nestedScrollAxes) {
             if (parent instanceof NestedScrollingParent) {
-                ((NestedScrollingParent) parent).onNestedScrollAccepted(child, target,
+                parent.onNestedScrollAccepted(child, target,
                         nestedScrollAxes);
             }
         }
@@ -86,7 +86,7 @@ public final class ViewParentCompat {
         @Override
         public void onStopNestedScroll(ViewParent parent, View target) {
             if (parent instanceof NestedScrollingParent) {
-                ((NestedScrollingParent) parent).onStopNestedScroll(target);
+                parent.onStopNestedScroll(target);
             }
         }
 
@@ -94,7 +94,7 @@ public final class ViewParentCompat {
         public void onNestedScroll(ViewParent parent, View target, int dxConsumed, int dyConsumed,
                 int dxUnconsumed, int dyUnconsumed) {
             if (parent instanceof NestedScrollingParent) {
-                ((NestedScrollingParent) parent).onNestedScroll(target, dxConsumed, dyConsumed,
+                parent.onNestedScroll(target, dxConsumed, dyConsumed,
                         dxUnconsumed, dyUnconsumed);
             }
         }
@@ -103,7 +103,7 @@ public final class ViewParentCompat {
         public void onNestedPreScroll(ViewParent parent, View target, int dx, int dy,
                 int[] consumed) {
             if (parent instanceof NestedScrollingParent) {
-                ((NestedScrollingParent) parent).onNestedPreScroll(target, dx, dy, consumed);
+                parent.onNestedPreScroll(target, dx, dy, consumed);
             }
         }
 
@@ -111,7 +111,7 @@ public final class ViewParentCompat {
         public boolean onNestedFling(ViewParent parent, View target, float velocityX,
                 float velocityY, boolean consumed) {
             if (parent instanceof NestedScrollingParent) {
-                return ((NestedScrollingParent) parent).onNestedFling(target, velocityX, velocityY,
+                return parent.onNestedFling(target, velocityX, velocityY,
                         consumed);
             }
             return false;
@@ -121,7 +121,7 @@ public final class ViewParentCompat {
         public boolean onNestedPreFling(ViewParent parent, View target, float velocityX,
                 float velocityY) {
             if (parent instanceof NestedScrollingParent) {
-                return ((NestedScrollingParent) parent).onNestedPreFling(target, velocityX,
+                return parent.onNestedPreFling(target, velocityX,
                         velocityY);
             }
             return false;

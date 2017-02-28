@@ -23,7 +23,7 @@ import java.util.Locale;
 public final class ICUCompat {
 
     interface ICUCompatImpl {
-        public String maximizeAndGetScript(Locale locale);
+        String maximizeAndGetScript(Locale locale);
     }
 
     static class ICUCompatImplBase implements ICUCompatImpl {

@@ -28,14 +28,13 @@ public final class KeyEventCompat {
      * Interface for the full API.
      */
     interface KeyEventVersionImpl {
-        public int normalizeMetaState(int metaState);
-        public boolean metaStateHasModifiers(int metaState, int modifiers);
-        public boolean metaStateHasNoModifiers(int metaState);
-        public void startTracking(KeyEvent event);
-        public boolean isTracking(KeyEvent event);
-        public Object getKeyDispatcherState(View view);
-        public boolean dispatch(KeyEvent event, KeyEvent.Callback receiver, Object state,
-                    Object target);
+        int normalizeMetaState(int metaState);
+        boolean metaStateHasModifiers(int metaState, int modifiers);
+        boolean metaStateHasNoModifiers(int metaState);
+        void startTracking(KeyEvent event);
+        boolean isTracking(KeyEvent event);
+        Object getKeyDispatcherState(View view);
+        boolean dispatch(KeyEvent event, KeyEvent.Callback receiver, Object state, Object target);
     }
 
     /**

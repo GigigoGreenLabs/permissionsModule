@@ -27,21 +27,21 @@ public class PermissionMicrophone implements Permission {
 
   @Override
   public int getPermissionDeniedFeedback() {
-    return R.string.ggg_permission_denied_contacts;
+    return R.string.ggg_permission_denied_microphone;
   }
 
   @Override
   public int getPermissionRationaleTitle() {
-    return R.string.ggg_permission_rationale_title_contacts;
+    return R.string.ggg_permission_rationale_title_microphone;
   }
 
   @Override
   public int getPermissionRationaleMessage() {
-    return R.string.ggg_permission_rationale_message_contacts;
+    return R.string.ggg_permission_rationale_message_microphone;
   }
 
   @Override
   public int getNumRetry() {
-    return context.getResources().getInteger(R.integer.ggg_permission_retries_contacts);
+    return context.getResources().getInteger(R.integer.ggg_permission_retries_microphone);
   }
 }

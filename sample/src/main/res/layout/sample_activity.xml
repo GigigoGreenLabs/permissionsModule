@@ -18,7 +18,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#fff"
     android:id="@+id/myContent">
 
   <include layout="@layout/header"/>
@@ -97,5 +97,15 @@
       android:layout_marginEnd="@dimen/all_permission_button_margin_right"
       style="@style/PermissionButton"
       />
+
+  <Button
+      android:id="@+id/btnYourOwnPermissionActivity"
+      android:layout_width="@dimen/button_width"
+      android:layout_height="@dimen/button_height"
+      android:text="Your own Permission Activity"
+      android:layout_below="@id/audio_permission_feedback"
+      android:layout_centerHorizontal="true"
+      style="@style/PermissionButton"
+  />
 
 </RelativeLayout>

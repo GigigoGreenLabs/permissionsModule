@@ -34,7 +34,7 @@ public interface ParcelableCompatCreatorCallbacks<T> {
      * @param loader The ClassLoader that this object is being created in.
      * @return Returns a new instance of the Parcelable class.
      */
-    public T createFromParcel(Parcel in, ClassLoader loader);
+    T createFromParcel(Parcel in, ClassLoader loader);
 
     /**
      * Create a new array of the Parcelable class.
@@ -43,5 +43,5 @@ public interface ParcelableCompatCreatorCallbacks<T> {
      * @return Returns an array of the Parcelable class, with every entry
      *         initialized to null.
      */
-    public T[] newArray(int size);
+    T[] newArray(int size);
 }

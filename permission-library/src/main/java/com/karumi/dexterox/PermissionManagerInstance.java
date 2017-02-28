@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Inner implementation of a dexter instance holding the state of the permissions request
  */
-final class DexterInstance {
+final class PermissionManagerInstance {
 
   private static final int PERMISSIONS_REQUEST_CODE = 420;//change
   private static final MultiplePermissionsListener EMPTY_LISTENER =
@@ -54,7 +54,7 @@ final class DexterInstance {
   private Activity activity;
   private MultiplePermissionsListener listener = EMPTY_LISTENER;
 
-  DexterInstance(Context context, AndroidPermissionService androidPermissionService,
+  PermissionManagerInstance(Context context, AndroidPermissionService androidPermissionService,
       IntentProvider intentProvider) {
     this.context = context.getApplicationContext();
     this.androidPermissionService = androidPermissionService;
@@ -104,8 +104,7 @@ final class DexterInstance {
    * Check if there are some permissions pending to be confirmed by the user and restarts the
    * request for permission process.
    */
-  void continuePendingRequestsIfPossible(MultiplePermissionsListener listener,
-      Thread thread) {
+  void continuePendingRequestsIfPossible(MultiplePermissionsListener listener, Thread thread) {
     if (!pendingPermissions.isEmpty()) {
       this.listener = new MultiplePermissionListenerThreadDecorator(listener, thread);
       if (!rationaleAccepted.get()) {
@@ -202,10 +201,19 @@ final class DexterInstance {
     return permissionStates;
   }
 
+  static boolean isPermissionActivityAttached = false;
+
+  public void attachMyOwnPermissionActivity(PermissionActivity permissionActivity) {
+    if (permissionActivity != null) {
+      isPermissionActivityAttached = true;
+    }
+  }
+
   private void startTransparentActivityIfNeeded() {
-    Intent intent = intentProvider.get(context, DexterActivity.class);
+    Intent intent = intentProvider.get(context, PermissionActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    intent.putExtra(PermissionActivity.IS_TRANSPARENT_ACTIVITY, true);
     context.startActivity(intent);
   }
 
@@ -269,13 +277,14 @@ final class DexterInstance {
 
   private void checkNoDexterRequestOngoing() {
     if (isRequestingPermission.getAndSet(true)) {
-      throw new IllegalStateException("Only one Dexter request at a time is allowed");
+      throw new IllegalStateException("Only one PermissionManager request at a time is allowed");
     }
   }
 
   private void checkRequestSomePermission(Collection<String> permissions) {
     if (permissions.isEmpty()) {
-      throw new IllegalStateException("Dexter has to be called with at least one permission");
+      throw new IllegalStateException(
+          "PermissionManager has to be called with at least one permission");
     }
   }
 
@@ -295,8 +304,9 @@ final class DexterInstance {
     pendingPermissions.addAll(permissions);
     multiplePermissionsReport.clear();
     this.listener = new MultiplePermissionListenerThreadDecorator(listener, thread);
-
-    startTransparentActivityIfNeeded();
+    if (!isPermissionActivityAttached) {
+      startTransparentActivityIfNeeded();
+    }
     thread.loop();
   }
 

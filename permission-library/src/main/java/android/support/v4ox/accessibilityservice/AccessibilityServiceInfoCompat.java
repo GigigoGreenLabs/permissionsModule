@@ -28,13 +28,13 @@ import android.view.View;
  */
 public final class AccessibilityServiceInfoCompat {
 
-    static interface AccessibilityServiceInfoVersionImpl {
-        public String getId(AccessibilityServiceInfo info);
-        public ResolveInfo getResolveInfo(AccessibilityServiceInfo info);
-        public boolean getCanRetrieveWindowContent(AccessibilityServiceInfo info);
-        public String getDescription(AccessibilityServiceInfo info);
-        public String getSettingsActivityName(AccessibilityServiceInfo info);
-        public int getCapabilities(AccessibilityServiceInfo info);
+    interface AccessibilityServiceInfoVersionImpl {
+        String getId(AccessibilityServiceInfo info);
+        ResolveInfo getResolveInfo(AccessibilityServiceInfo info);
+        boolean getCanRetrieveWindowContent(AccessibilityServiceInfo info);
+        String getDescription(AccessibilityServiceInfo info);
+        String getSettingsActivityName(AccessibilityServiceInfo info);
+        int getCapabilities(AccessibilityServiceInfo info);
     }
 
     static class AccessibilityServiceInfoStubImpl implements AccessibilityServiceInfoVersionImpl {

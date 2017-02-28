@@ -26,6 +26,6 @@ public interface MyOnRequestPermissionsResultCallback {
      *
      * @see #requestPermissions(android.app.Activity, String[], int)
      */
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults);
+    void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+        @NonNull int[] grantResults);
 }

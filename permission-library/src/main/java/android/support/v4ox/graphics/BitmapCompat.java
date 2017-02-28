@@ -26,9 +26,9 @@ public final class BitmapCompat {
      * Interface for the full API.
      */
     interface BitmapImpl {
-        public boolean hasMipMap(Bitmap bitmap);
-        public void setHasMipMap(Bitmap bitmap, boolean hasMipMap);
-        public int getAllocationByteCount(Bitmap bitmap);
+        boolean hasMipMap(Bitmap bitmap);
+        void setHasMipMap(Bitmap bitmap, boolean hasMipMap);
+        int getAllocationByteCount(Bitmap bitmap);
     }
 
     static class BaseBitmapImpl implements BitmapImpl {

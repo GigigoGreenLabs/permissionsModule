@@ -86,7 +86,7 @@ public final class ViewGroupCompat {
         @Override
         public int getNestedScrollAxes(ViewGroup group) {
             if (group instanceof NestedScrollingParent) {
-                return ((NestedScrollingParent) group).getNestedScrollAxes();
+                return group.getNestedScrollAxes();
             }
             return ViewCompat.SCROLL_AXIS_NONE;
         }

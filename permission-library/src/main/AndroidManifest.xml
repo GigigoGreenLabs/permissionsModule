@@ -20,7 +20,7 @@
 
   <application>
     <activity
-        android:name="com.karumi.dexterox.DexterActivity"
+        android:name="com.karumi.dexterox.PermissionActivity"
         android:theme="@style/Transparent"
         android:launchMode="singleTask"
         android:screenOrientation="portrait"

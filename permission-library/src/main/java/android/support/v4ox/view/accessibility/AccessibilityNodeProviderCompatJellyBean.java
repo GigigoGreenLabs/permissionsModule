@@ -27,10 +27,9 @@ import java.util.List;
  */
 class AccessibilityNodeProviderCompatJellyBean {
     interface AccessibilityNodeInfoBridge {
-        public Object createAccessibilityNodeInfo(int virtualViewId);
-        public boolean performAction(int virtualViewId, int action, Bundle arguments);
-        public List<Object> findAccessibilityNodeInfosByText(String text,
-            int virtualViewId);
+        Object createAccessibilityNodeInfo(int virtualViewId);
+        boolean performAction(int virtualViewId, int action, Bundle arguments);
+        List<Object> findAccessibilityNodeInfosByText(String text, int virtualViewId);
     }
 
     public static Object newAccessibilityNodeProviderBridge(

@@ -84,7 +84,7 @@ class PrintHelperKitkat {
     public static final int COLOR_MODE_COLOR = 2;
 
     public interface OnPrintFinishCallback {
-        public void onFinish();
+        void onFinish();
     }
 
     int mScaleMode = SCALE_MODE_FILL;
@@ -523,7 +523,7 @@ class PrintHelperKitkat {
         }
 
         // Make sure sample size is reasonable
-        if (sampleSize <= 0 || 0 >= (int) (Math.min(w, h) / sampleSize)) {
+        if (sampleSize <= 0 || 0 >= Math.min(w, h) / sampleSize) {
             return null;
         }
         BitmapFactory.Options decodeOptions = null;

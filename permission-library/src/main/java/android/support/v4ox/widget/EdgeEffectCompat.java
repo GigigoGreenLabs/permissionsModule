@@ -44,15 +44,15 @@ public final class EdgeEffectCompat {
     }
 
     interface EdgeEffectImpl {
-        public Object newEdgeEffect(Context context);
-        public void setSize(Object edgeEffect, int width, int height);
-        public boolean isFinished(Object edgeEffect);
-        public void finish(Object edgeEffect);
-        public boolean onPull(Object edgeEffect, float deltaDistance);
-        public boolean onRelease(Object edgeEffect);
-        public boolean onAbsorb(Object edgeEffect, int velocity);
-        public boolean draw(Object edgeEffect, Canvas canvas);
-        public boolean onPull(Object edgeEffect, float deltaDistance, float displacement);
+        Object newEdgeEffect(Context context);
+        void setSize(Object edgeEffect, int width, int height);
+        boolean isFinished(Object edgeEffect);
+        void finish(Object edgeEffect);
+        boolean onPull(Object edgeEffect, float deltaDistance);
+        boolean onRelease(Object edgeEffect);
+        boolean onAbsorb(Object edgeEffect, int velocity);
+        boolean draw(Object edgeEffect, Canvas canvas);
+        boolean onPull(Object edgeEffect, float deltaDistance, float displacement);
     }
 
     /**

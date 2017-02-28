@@ -67,7 +67,7 @@ public final class PrintHelper {
         /**
          * Called when a print operation is finished.
          */
-        public void onFinish();
+        void onFinish();
     }
 
     PrintHelperVersionImpl mImpl;
@@ -78,33 +78,29 @@ public final class PrintHelper {
      * @return True if printing is supported.
      */
     public static boolean systemSupportsPrint() {
-        if (Build.VERSION.SDK_INT >= 19) {
-            // Supported on Android 4.4 or later.
-            return true;
-        }
-        return false;
+        return Build.VERSION.SDK_INT >= 19;
     }
 
     /**
      * Interface implemented by classes that support printing
      */
-    static interface PrintHelperVersionImpl {
+    interface PrintHelperVersionImpl {
 
-        public void setScaleMode(int scaleMode);
+        void setScaleMode(int scaleMode);
 
-        public int getScaleMode();
+        int getScaleMode();
 
-        public void setColorMode(int colorMode);
+        void setColorMode(int colorMode);
 
-        public int getColorMode();
+        int getColorMode();
 
-        public void setOrientation(int orientation);
+        void setOrientation(int orientation);
 
-        public int getOrientation();
+        int getOrientation();
 
-        public void printBitmap(String jobName, Bitmap bitmap, OnPrintFinishCallback callback);
+        void printBitmap(String jobName, Bitmap bitmap, OnPrintFinishCallback callback);
 
-        public void printBitmap(String jobName, Uri imageFile, OnPrintFinishCallback callback)
+        void printBitmap(String jobName, Uri imageFile, OnPrintFinishCallback callback)
                 throws FileNotFoundException;
     }
 

@@ -19,6 +19,7 @@ package com.karumi.dexterox;
 import android.app.Activity;
 import android.content.Context;
 
+import com.gigigo.permissions.interfaces.Permission;
 import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexterox.listener.single.PermissionListener;
 import java.util.Arrays;
@@ -26,32 +27,43 @@ import java.util.Collection;
 
 /**
  * Class to simplify the management of Android runtime permissions
- * Dexter needs to be initialized before checking for a permission using {@link
+ * PermissionManager needs to be initialized before checking for a permission using {@link
  * #initialize(Context)}
  */
-public final class Dexter {
+public final class PermissionManager {
 
-  private static DexterInstance instance;
+  private static PermissionManagerInstance instance;
 
-  public static Activity mDexterActivity;
+  public static Activity mPermissionActivity;
 
   public static void closeActivity() {
-    if (mDexterActivity != null) {
-      mDexterActivity.finish();
+    if (mPermissionActivity != null) {
+      if(mPermissionActivity.getPackageName().equals("com.karumi.dexterox")) //only close the transparent activity, not if userextend the permissionActivity
+         mPermissionActivity.finish();
     }
   }
 
   /**
    * Initializes the library
    *
-   * @param context Context used by Dexter. Use your {@link android.app.Application} to make sure
+   * @param context Context used by PermissionManager. Use your {@link android.app.Application} to
+   * make sure
    * the instance is not cleaned up during your app lifetime
    */
   public static void initialize(Context context) {
     if (instance == null) {
       AndroidPermissionService androidPermissionService = new AndroidPermissionService();
       IntentProvider intentProvider = new IntentProvider();
-      instance = new DexterInstance(context, androidPermissionService, intentProvider);
+      instance = new PermissionManagerInstance(context, androidPermissionService, intentProvider);
+    }
+  }
+
+  public static void initialize(PermissionActivity permissionActivity) {
+    if (instance == null) {
+      AndroidPermissionService androidPermissionService = new AndroidPermissionService();
+      IntentProvider intentProvider = new IntentProvider();
+      instance = new PermissionManagerInstance(permissionActivity.getApplicationContext(), androidPermissionService, intentProvider);
+      instance.attachMyOwnPermissionActivity(permissionActivity);
     }
   }
 
@@ -137,7 +149,8 @@ public final class Dexter {
 
   /**
    * Requests pending permissions if there were permissions lost. This method can be used to
-   * recover the Dexter state during a configuration change, for example when the device is
+   * recover the PermissionManager state during a configuration change, for example when the device
+   * is
    * rotated.
    */
   public static void continuePendingRequestsIfPossible(MultiplePermissionsListener listener) {
@@ -147,7 +160,8 @@ public final class Dexter {
 
   /**
    * Requests pending permission if there was a permissions lost. This method can be used to
-   * recover the Dexter state during a configuration change, for example when the device is
+   * recover the PermissionManager state during a configuration change, for example when the device
+   * is
    * rotated.
    */
   public static void continuePendingRequestIfPossible(PermissionListener listener) {
@@ -157,17 +171,22 @@ public final class Dexter {
 
   private static void checkInstanceNotNull() {
     if (instance == null) {
-      throw new NullPointerException("context == null \n Must call \"initialize\" on Dexter");
+      throw new NullPointerException(
+          "context == null \n Must call \"initialize\" on PermissionManager");
     }
   }
 
   /**
-   * Method called whenever the DexterActivity has been created or recreated and is ready to be
+   * Method called whenever the PermissionActivity has been created or recreated and is ready to be
    * used.
    */
   static void onActivityReady(Activity activity) {
     instance.onActivityReady(activity);
-    mDexterActivity = activity;
+    mPermissionActivity = activity;
+  }
+
+  static void attachMyOwnPermissionActivity(PermissionActivity activity) {
+    if (activity != null) instance.attachMyOwnPermissionActivity(activity);
   }
 
   /**

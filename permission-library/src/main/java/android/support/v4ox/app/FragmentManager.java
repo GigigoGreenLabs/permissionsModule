@@ -86,40 +86,38 @@ public abstract class FragmentManager {
          * representation of the entry that will persist across activity
          * instances.
          */
-        public int getId();
+        int getId();
 
         /**
          * Get the name that was supplied to
          * {@link FragmentTransaction#addToBackStack(String)
          * FragmentTransaction.addToBackStack(String)} when creating this entry.
          */
-        public String getName();
+        String getName();
 
         /**
          * Return the full bread crumb title resource identifier for the entry,
          * or 0 if it does not have one.
          */
-        @StringRes
-        public int getBreadCrumbTitleRes();
+        @StringRes int getBreadCrumbTitleRes();
 
         /**
          * Return the short bread crumb title resource identifier for the entry,
          * or 0 if it does not have one.
          */
-        @StringRes
-        public int getBreadCrumbShortTitleRes();
+        @StringRes int getBreadCrumbShortTitleRes();
 
         /**
          * Return the full bread crumb title for the entry, or null if it
          * does not have one.
          */
-        public CharSequence getBreadCrumbTitle();
+        CharSequence getBreadCrumbTitle();
 
         /**
          * Return the short bread crumb title for the entry, or null if it
          * does not have one.
          */
-        public CharSequence getBreadCrumbShortTitle();
+        CharSequence getBreadCrumbShortTitle();
     }
 
     /**
@@ -129,7 +127,7 @@ public abstract class FragmentManager {
         /**
          * Called whenever the contents of the back stack change.
          */
-        public void onBackStackChanged();
+        void onBackStackChanged();
     }
 
     /**

@@ -20,5 +20,5 @@ package com.gigigo.permissions.interfaces;
 
 
 public interface UserPermissionRequestResponseListener {
-  void onPermissionAllowed(boolean permissionAllowed);
+  void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries );
 }

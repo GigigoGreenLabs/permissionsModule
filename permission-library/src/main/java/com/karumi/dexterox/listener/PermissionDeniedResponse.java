@@ -22,7 +22,7 @@ import android.support.annotationox.NonNull;
  * If a permission was denied, an instance of this class will be returned
  * in the callback.
  */
-public final class PermissionDeniedResponse {
+public final class PermissionDeniedResponse implements PermissionResponse {
 
   private final PermissionRequest requestedPermission;
   private final boolean permanentlyDenied;
@@ -42,7 +42,7 @@ public final class PermissionDeniedResponse {
     return new PermissionDeniedResponse(new PermissionRequest(permission), permanentlyDenied);
   }
 
-  public PermissionRequest getRequestedPermission() {
+  @Override public PermissionRequest getRequestedPermission() {
     return requestedPermission;
   }
 

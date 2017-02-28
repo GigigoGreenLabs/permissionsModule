@@ -26,28 +26,38 @@ import android.view.WindowManager;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public final class DexterActivity extends Activity {
+//final why?
+public class PermissionActivity extends Activity {
+
+  public static final String IS_TRANSPARENT_ACTIVITY = "IS_TRANSPARENT_ACTIVITY";
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Dexter.onActivityReady(this);
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    PermissionManager.onActivityReady(this);
 
+    if (getIntent() != null) {
+      Bundle extras = getIntent().getExtras();
+
+      if (extras!=null && extras.containsKey(IS_TRANSPARENT_ACTIVITY) && extras.getBoolean(
+          IS_TRANSPARENT_ACTIVITY)) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+      }
+    }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       getWindow().setExitTransition(null);
       getWindow().setEnterTransition(null);
-      overridePendingTransition(0,0);
+      overridePendingTransition(0, 0);
     }
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
-    Dexter.mDexterActivity = null;
+    PermissionManager.mPermissionActivity = null;
   }
 
   @Override protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
-    Dexter.onActivityReady(this);
+    PermissionManager.onActivityReady(this);
   }
 
   @Override public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -64,6 +74,6 @@ public final class DexterActivity extends Activity {
       }
     }
 
-    Dexter.onPermissionsRequested(grantedPermissions, deniedPermissions);
+    PermissionManager.onPermissionsRequested(grantedPermissions, deniedPermissions);
   }
 }

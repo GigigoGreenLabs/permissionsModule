@@ -25,9 +25,9 @@ public final class ScaleGestureDetectorCompat {
 
     interface ScaleGestureDetectorImpl {
 
-        public void setQuickScaleEnabled(Object o, boolean enabled);
+        void setQuickScaleEnabled(Object o, boolean enabled);
 
-        public boolean isQuickScaleEnabled(Object o);
+        boolean isQuickScaleEnabled(Object o);
     }
 
     private static class BaseScaleGestureDetectorImpl implements ScaleGestureDetectorImpl {

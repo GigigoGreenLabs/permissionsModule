@@ -257,7 +257,7 @@ public abstract class SharedElementCallback {
         ImageView view = null;
         if (snapshot instanceof Bundle) {
             Bundle bundle = (Bundle) snapshot;
-            Bitmap bitmap = (Bitmap) bundle.getParcelable(BUNDLE_SNAPSHOT_BITMAP);
+            Bitmap bitmap = bundle.getParcelable(BUNDLE_SNAPSHOT_BITMAP);
             if (bitmap == null) {
                 return null;
             }

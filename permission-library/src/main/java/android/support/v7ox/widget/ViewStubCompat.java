@@ -248,7 +248,7 @@ public final class ViewStubCompat extends View {
      *
      * @see android.view.ViewStub#setOnInflateListener(android.view.ViewStub.OnInflateListener)
      */
-    public static interface OnInflateListener {
+    public interface OnInflateListener {
         /**
          * Invoked after a ViewStub successfully inflated its layout resource.
          * This method is invoked after the inflated view was added to the

@@ -761,7 +761,7 @@ class ActionMenuPresenter extends BaseMenuPresenter
         @Override
         public void onCloseMenu(MenuBuilder menu, boolean allMenusAreClosing) {
             if (menu instanceof SubMenuBuilder) {
-                ((SubMenuBuilder) menu).getRootMenu().close(false);
+                menu.getRootMenu().close(false);
             }
             final Callback cb = getCallback();
             if (cb != null) {

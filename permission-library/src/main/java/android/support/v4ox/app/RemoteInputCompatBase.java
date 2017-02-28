@@ -28,9 +28,9 @@ class RemoteInputCompatBase {
         protected abstract Bundle getExtras();
 
         public interface Factory {
-            public RemoteInput build(String resultKey, CharSequence label,
-                    CharSequence[] choices, boolean allowFreeFormInput, Bundle extras);
-            public RemoteInput[] newArray(int length);
+            RemoteInput build(String resultKey, CharSequence label, CharSequence[] choices,
+                boolean allowFreeFormInput, Bundle extras);
+            RemoteInput[] newArray(int length);
         }
     }
 }

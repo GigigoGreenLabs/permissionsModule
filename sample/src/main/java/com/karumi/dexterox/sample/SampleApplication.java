@@ -17,15 +17,17 @@
 package com.karumi.dexterox.sample;
 
 import android.app.Application;
-import com.karumi.dexterox.Dexter;
+import com.karumi.dexterox.PermissionManager;
 
 /**
- * Sample application that initializes the Dexter library.
+ * Sample application that initializes the PermissionManager library.
  */
 public class SampleApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    Dexter.initialize(this);
+    // xa sampleactivity-->
+  //  PermissionManager.initialize(this);
+
   }
 }

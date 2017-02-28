@@ -149,7 +149,7 @@ public class ShareActionProvider extends ActionProvider {
          * @param intent The intent for launching the chosen share target.
          * @return The return result is ignored. Always return false for consistency.
          */
-        public boolean onShareTargetSelected(ShareActionProvider source, Intent intent);
+        boolean onShareTargetSelected(ShareActionProvider source, Intent intent);
     }
 
     /**

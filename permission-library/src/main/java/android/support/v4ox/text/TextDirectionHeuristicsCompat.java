@@ -166,7 +166,7 @@ public final class TextDirectionHeuristicsCompat {
     /**
      * Interface for an algorithm to guess the direction of a paragraph of text.
      */
-    private static interface TextDirectionAlgorithm {
+    private interface TextDirectionAlgorithm {
         /**
          * Returns whether the range of text is RTL according to the algorithm.
          */

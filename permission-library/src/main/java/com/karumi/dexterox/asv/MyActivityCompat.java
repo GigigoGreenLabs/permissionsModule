@@ -99,7 +99,7 @@ public class MyActivityCompat extends Activity implements MyRequestPermissionsRe
                                 permissions[i], packageName);
                     }
 
-                    ((MyOnRequestPermissionsResultCallback) activity).onRequestPermissionsResult(
+                    activity.onRequestPermissionsResult(
                             requestCode, permissions, grantResults);
                 }
             });

@@ -33,10 +33,8 @@ class ICUCompatIcs {
         try {
             final Class<?> clazz = Class.forName("libcore.icu.ICU");
             if (clazz != null) {
-                sGetScriptMethod = clazz.getMethod("getScript",
-                        new Class[]{ String.class });
-                sAddLikelySubtagsMethod = clazz.getMethod("addLikelySubtags",
-                        new Class[]{ String.class });
+                sGetScriptMethod = clazz.getMethod("getScript", String.class);
+                sAddLikelySubtagsMethod = clazz.getMethod("addLikelySubtags", String.class);
             }
         } catch (Exception e) {
             sGetScriptMethod = null;

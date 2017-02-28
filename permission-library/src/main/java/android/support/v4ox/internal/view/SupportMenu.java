@@ -32,25 +32,25 @@ public interface SupportMenu extends android.view.Menu {
      *
      * @hide
      */
-    static final int USER_MASK = 0x0000ffff;
+    int USER_MASK = 0x0000ffff;
     /**
      * Bit shift of the user portion of the order integer.
      *
      * @hide
      */
-    static final int USER_SHIFT = 0;
+    int USER_SHIFT = 0;
 
     /**
      * This is the part of an order integer that supplies the category of the item.
      *
      * @hide
      */
-    static final int CATEGORY_MASK = 0xffff0000;
+    int CATEGORY_MASK = 0xffff0000;
     /**
      * Bit shift of the category portion of the order integer.
      *
      * @hide
      */
-    static final int CATEGORY_SHIFT = 16;
+    int CATEGORY_SHIFT = 16;
 }
 

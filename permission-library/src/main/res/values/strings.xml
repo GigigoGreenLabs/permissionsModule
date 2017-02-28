@@ -22,29 +22,53 @@
   <string name="continueRequestPermissionRationaleTitle">Permission Request</string>
 
   <string name="ggg_permission_settings">Settings</string>
+  <string name="ggg_permission_literal">Permission</string><!-- this res are using in multilelistenerImplbase for show toast result-->
+  <string name="ggg_permission_granted">Granted</string>
+  <string name="ggg_permission_denied">Denied</string>
 
   <string name="ggg_permission_denied_location">Denied location device</string>
   <string name="ggg_permission_rationale_title_location">Location Permissions</string>
   <string name="ggg_permission_rationale_message_location">App needs the device location</string>
+  <integer name="ggg_permission_retries_location">3</integer>
 
   <string name="ggg_permission_denied_camera">Denied camera device</string>
   <string name="ggg_permission_rationale_title_camera">Camera Permissions</string>
   <string name="ggg_permission_rationale_message_camera">App needs the device camera functionality</string>
+  <integer name="ggg_permission_retries_camera">3</integer>
 
   <string name="ggg_permission_denied_phone">Denied phone device</string>
   <string name="ggg_permission_rationale_title_phone">Phone Permissions</string>
   <string name="ggg_permission_rationale_message_phone">App needs phone permission</string>
+  <integer name="ggg_permission_retries_phone">3</integer>
 
   <string name="ggg_permission_denied_storage">Denied external storage device</string>
   <string name="ggg_permission_rationale_title_storage">External Storage Permissions</string>
   <string name="ggg_permission_rationale_message_storage">App needs external storage permission</string>
+  <integer name="ggg_permission_retries_storage">3</integer>
 
   <string name="ggg_permission_denied_contacts">Denied contacts permission</string>
   <string name="ggg_permission_rationale_title_contacts">Contacts Permissions</string>
   <string name="ggg_permission_rationale_message_contacts">App needs to access to your contacts</string>
+  <integer name="ggg_permission_retries_contacts">3</integer>
 
   <string name="ggg_permission_denied_microphone">Denied microphone permission</string>
   <string name="ggg_permission_rationale_title_microphone">Microphone Permissions</string>
   <string name="ggg_permission_rationale_message_microphone">App needs to access to your device microphone</string>
+  <integer name="ggg_permission_retries_microphone">3</integer>
+
+  <string name="ggg_permission_denied_sms">Denied sms permission</string>
+  <string name="ggg_permission_rationale_title_sms">Sms Permissions</string>
+  <string name="ggg_permission_rationale_message_sms">App needs to access to your SMS</string>
+  <integer name="ggg_permission_retries_sms">3</integer>
+
+  <string name="ggg_permission_denied_calendar">Denied calendar permission</string>
+  <string name="ggg_permission_rationale_title_calendar">Calendar Permissions</string>
+  <string name="ggg_permission_rationale_message_calendar">App needs to access to your calendar</string>
+  <integer name="ggg_permission_retries_calendar">3</integer>
+
+  <string name="ggg_permission_denied_sensors">Denied sensors permission</string>
+  <string name="ggg_permission_rationale_title_sensors">Sensors Permissions</string>
+  <string name="ggg_permission_rationale_message_sensors">App needs to access to your device sensors</string>
+  <integer name="ggg_permission_retries_sensors">3</integer>
 
 </resources>

@@ -2,19 +2,23 @@ package com.gigigo.permissions.permissions;
 
 import android.content.Context;
 import com.gigigo.permissions.R;
+import com.gigigo.permissions.groups.PermissionGroupCamera;
+import com.gigigo.permissions.groups.PermissionGroupLocation;
 import com.gigigo.permissions.interfaces.Permission;
 
 public class PermissionLocation implements Permission {
 
   private final Context context;
+  private final PermissionGroupLocation permissionGroupLocation;
 
-  public PermissionLocation(Context context) {
+  public PermissionLocation(Context context,PermissionGroupLocation permissionGroupLocation) {
     this.context = context;
+    this.permissionGroupLocation=permissionGroupLocation;
   }
 
   @Override
   public String getAndroidPermissionStringType() {
-    return "android.permission.ACCESS_FINE_LOCATION";
+    return permissionGroupLocation.getPermission();
   }
 
   @Override

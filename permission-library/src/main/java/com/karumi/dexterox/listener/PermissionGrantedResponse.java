@@ -22,7 +22,7 @@ import android.support.annotationox.NonNull;
  * If a permission was granted, an instance of this class will be returned
  * in the callback.
  */
-public final class PermissionGrantedResponse {
+public final class PermissionGrantedResponse implements  PermissionResponse {
 
   private final PermissionRequest requestedPermission;
 
@@ -37,6 +37,7 @@ public final class PermissionGrantedResponse {
     return new PermissionGrantedResponse(new PermissionRequest(permission));
   }
 
+  @Override
   public PermissionRequest getRequestedPermission() {
     return requestedPermission;
   }

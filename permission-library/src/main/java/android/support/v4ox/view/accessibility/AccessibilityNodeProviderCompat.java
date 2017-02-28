@@ -30,7 +30,7 @@ import java.util.List;
 public class AccessibilityNodeProviderCompat {
 
     interface AccessibilityNodeProviderImpl {
-        public Object newAccessibilityNodeProviderBridge(AccessibilityNodeProviderCompat compat);
+        Object newAccessibilityNodeProviderBridge(AccessibilityNodeProviderCompat compat);
     }
 
     static class AccessibilityNodeProviderStubImpl implements AccessibilityNodeProviderImpl {

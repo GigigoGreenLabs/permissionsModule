@@ -184,7 +184,7 @@ public class ListMenuPresenter implements MenuPresenter, AdapterView.OnItemClick
     public void saveHierarchyState(Bundle outState) {
         SparseArray<Parcelable> viewStates = new SparseArray<Parcelable>();
         if (mMenuView != null) {
-            ((View) mMenuView).saveHierarchyState(viewStates);
+            mMenuView.saveHierarchyState(viewStates);
         }
         outState.putSparseParcelableArray(VIEWS_TAG, viewStates);
     }
@@ -192,7 +192,7 @@ public class ListMenuPresenter implements MenuPresenter, AdapterView.OnItemClick
     public void restoreHierarchyState(Bundle inState) {
         SparseArray<Parcelable> viewStates = inState.getSparseParcelableArray(VIEWS_TAG);
         if (viewStates != null) {
-            ((View) mMenuView).restoreHierarchyState(viewStates);
+            mMenuView.restoreHierarchyState(viewStates);
         }
     }
 

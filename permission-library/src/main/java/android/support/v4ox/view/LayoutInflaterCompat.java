@@ -26,8 +26,8 @@ import android.view.LayoutInflater;
 public final class LayoutInflaterCompat {
 
     interface LayoutInflaterCompatImpl {
-        public void setFactory(LayoutInflater layoutInflater, LayoutInflaterFactory factory);
-        public LayoutInflaterFactory getFactory(LayoutInflater layoutInflater);
+        void setFactory(LayoutInflater layoutInflater, LayoutInflaterFactory factory);
+        LayoutInflaterFactory getFactory(LayoutInflater layoutInflater);
     }
 
     static class LayoutInflaterCompatImplBase implements LayoutInflaterCompatImpl {

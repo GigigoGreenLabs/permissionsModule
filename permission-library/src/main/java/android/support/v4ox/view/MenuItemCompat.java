@@ -96,7 +96,7 @@ public final class MenuItemCompat {
          * @param item Item that was expanded
          * @return true if the item should expand, false if expansion should be suppressed.
          */
-        public boolean onMenuItemActionExpand(MenuItem item);
+        boolean onMenuItemActionExpand(MenuItem item);
 
         /**
          * Called when a menu item with {@link #SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW}
@@ -105,7 +105,7 @@ public final class MenuItemCompat {
          * @param item Item that was collapsed
          * @return true if the item should collapse, false if collapsing should be suppressed.
          */
-        public boolean onMenuItemActionCollapse(MenuItem item);
+        boolean onMenuItemActionCollapse(MenuItem item);
     }
 
     /**
@@ -266,7 +266,7 @@ public final class MenuItemCompat {
      */
     public static void setShowAsAction(MenuItem item, int actionEnum) {
         if (item instanceof SupportMenuItem) {
-            ((SupportMenuItem) item).setShowAsAction(actionEnum);
+            item.setShowAsAction(actionEnum);
         } else {
             IMPL.setShowAsAction(item, actionEnum);
         }
@@ -285,7 +285,7 @@ public final class MenuItemCompat {
      */
     public static MenuItem setActionView(MenuItem item, View view) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).setActionView(view);
+            return item.setActionView(view);
         }
         return IMPL.setActionView(item, view);
     }
@@ -307,7 +307,7 @@ public final class MenuItemCompat {
      */
     public static MenuItem setActionView(MenuItem item, int resId) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).setActionView(resId);
+            return item.setActionView(resId);
         }
         return IMPL.setActionView(item, resId);
     }
@@ -320,7 +320,7 @@ public final class MenuItemCompat {
      */
     public static View getActionView(MenuItem item) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).getActionView();
+            return item.getActionView();
         }
         return IMPL.getActionView(item);
     }
@@ -381,7 +381,7 @@ public final class MenuItemCompat {
      */
     public static boolean expandActionView(MenuItem item) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).expandActionView();
+            return item.expandActionView();
         }
         return IMPL.expandActionView(item);
     }
@@ -400,7 +400,7 @@ public final class MenuItemCompat {
      */
     public static boolean collapseActionView(MenuItem item) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).collapseActionView();
+            return item.collapseActionView();
         }
         return IMPL.collapseActionView(item);
     }
@@ -416,7 +416,7 @@ public final class MenuItemCompat {
      */
     public static boolean isActionViewExpanded(MenuItem item) {
         if (item instanceof SupportMenuItem) {
-            return ((SupportMenuItem) item).isActionViewExpanded();
+            return item.isActionViewExpanded();
         }
         return IMPL.isActionViewExpanded(item);
     }

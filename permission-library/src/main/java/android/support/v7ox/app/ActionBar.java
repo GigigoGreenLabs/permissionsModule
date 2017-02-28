@@ -1098,7 +1098,7 @@ public abstract class ActionBar {
          * @param itemId ID of the item clicked.
          * @return True if the event was handled, false otherwise.
          */
-        public boolean onNavigationItemSelected(int itemPosition, long itemId);
+        boolean onNavigationItemSelected(int itemPosition, long itemId);
     }
 
     /**
@@ -1114,7 +1114,7 @@ public abstract class ActionBar {
          * @param isVisible True if an action bar menu is now visible, false if no action bar
          *                  menus are visible.
          */
-        public void onMenuVisibilityChanged(boolean isVisible);
+        void onMenuVisibilityChanged(boolean isVisible);
     }
 
     /**
@@ -1295,7 +1295,7 @@ public abstract class ActionBar {
          *        executed in a single transaction. This FragmentTransaction does not support
          *        being added to the back stack.
          */
-        public void onTabSelected(Tab tab, FragmentTransaction ft);
+        void onTabSelected(Tab tab, FragmentTransaction ft);
 
         /**
          * Called when a tab exits the selected state.
@@ -1306,7 +1306,7 @@ public abstract class ActionBar {
          *        will be executed in a single transaction. This FragmentTransaction does not
          *        support being added to the back stack.
          */
-        public void onTabUnselected(Tab tab, FragmentTransaction ft);
+        void onTabUnselected(Tab tab, FragmentTransaction ft);
 
         /**
          * Called when a tab that is already selected is chosen again by the user.
@@ -1317,7 +1317,7 @@ public abstract class ActionBar {
          *        once this method returns. This FragmentTransaction does not support
          *        being added to the back stack.
          */
-        public void onTabReselected(Tab tab, FragmentTransaction ft);
+        void onTabReselected(Tab tab, FragmentTransaction ft);
     }
 
     /**

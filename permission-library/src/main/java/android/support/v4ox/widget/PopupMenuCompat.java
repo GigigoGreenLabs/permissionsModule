@@ -27,7 +27,7 @@ public final class PopupMenuCompat {
      * Interface for the full API.
      */
     interface PopupMenuImpl {
-        public OnTouchListener getDragToOpenListener(Object popupMenu);
+        OnTouchListener getDragToOpenListener(Object popupMenu);
     }
 
     /**

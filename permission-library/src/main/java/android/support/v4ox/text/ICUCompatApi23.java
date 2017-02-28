@@ -32,8 +32,7 @@ class ICUCompatApi23 {
         try {
             // This class should always exist on API-23 since it's CTS tested.
             final Class<?> clazz = Class.forName("libcore.icu.ICU");
-            sAddLikelySubtagsMethod = clazz.getMethod("addLikelySubtags",
-                    new Class[]{ Locale.class });
+            sAddLikelySubtagsMethod = clazz.getMethod("addLikelySubtags", Locale.class);
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }

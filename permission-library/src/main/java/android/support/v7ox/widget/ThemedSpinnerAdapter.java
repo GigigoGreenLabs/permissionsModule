@@ -102,7 +102,7 @@ public interface ThemedSpinnerAdapter extends SpinnerAdapter {
      * }
      * </pre>
      */
-    public final static class Helper {
+    final class Helper {
         private final Context mContext;
         private final LayoutInflater mInflater;
         private LayoutInflater mDropDownInflater;

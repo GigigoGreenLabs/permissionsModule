@@ -490,7 +490,7 @@ class AppCompatDelegateImplV7 extends AppCompatDelegateImplBase
         // The decorContent may have a foreground drawable set (windowContentOverlay).
         // Remove this as we handle it ourselves
         if (decorContent instanceof FrameLayout) {
-            ((FrameLayout) decorContent).setForeground(null);
+            decorContent.setForeground(null);
         }
 
         abcContent.setAttachListener(new ContentFrameLayout.OnAttachListener() {

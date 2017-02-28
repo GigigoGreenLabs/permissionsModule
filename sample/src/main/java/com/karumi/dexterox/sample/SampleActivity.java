@@ -20,13 +20,14 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.gigigo.permissions.AndroidPermissionCheckerImpl;
+import com.gigigo.permissions.PermissionCheckerImpl;
 import com.gigigo.permissions.groups.PermissionGroupCamera;
 import com.gigigo.permissions.groups.PermissionGroupContacts;
 import com.gigigo.permissions.groups.PermissionGroupMicrophone;
@@ -35,14 +36,12 @@ import com.gigigo.permissions.interfaces.UserPermissionRequestResponseListener;
 import com.gigigo.permissions.permissions.PermissionCamera;
 import com.gigigo.permissions.permissions.PermissionContacts;
 import com.gigigo.permissions.permissions.PermissionMicrophone;
+import com.karumi.dexterox.PermissionManager;
 import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.multi.CompositeMultiplePermissionsListener;
 import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexterox.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
-import com.karumi.dexterox.listener.single.PermissionListener;
 
 /**
- * Sample activity showing the permission request process with Dexter.
+ * Sample activity showing the permission request process with PermissionManager.
  */
 public class SampleActivity extends Activity {
 
@@ -51,24 +50,29 @@ public class SampleActivity extends Activity {
   TextView contactsPermissionFeedbackView;
 
   Button contacts_permission_button, camera_permission_button, audio_permission_button,
-      all_permissions_button;
+      all_permissions_button, btnYourOwnPermissionActivity;
 
-  private AndroidPermissionCheckerImpl permissionChecker;
-  private PermissionContacts permissionContacts;
+  private PermissionCheckerImpl permissionChecker;
+
   private PermissionCamera permissionCamera;
   private PermissionMicrophone permissionMicrophone;
-
+  private PermissionContacts permissionContacts;
   private ViewGroup rootView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.sample_activity);
+    //step1 Initialize PermissionManager
+    PermissionManager.initialize(this.getApplicationContext());
 
     audioPermissionFeedbackView = (TextView) findViewById(R.id.audio_permission_feedback);
     cameraPermissionFeedbackView = (TextView) findViewById(R.id.camera_permission_feedback);
     contactsPermissionFeedbackView = (TextView) findViewById(R.id.contacts_permission_feedback);
 
-    permissionChecker = new AndroidPermissionCheckerImpl(this);
+    //step2 Declare permissionChecker
+    permissionChecker = new PermissionCheckerImpl(this);
+
+    //step3 declare Permissions
     permissionContacts = new PermissionContacts(this, PermissionGroupContacts.READ_CONTACTS);
     permissionCamera = new PermissionCamera(this, PermissionGroupCamera.CAMERA);
     permissionMicrophone = new PermissionMicrophone(this, PermissionGroupMicrophone.RECORD_AUDIO);
@@ -77,6 +81,14 @@ public class SampleActivity extends Activity {
     camera_permission_button = (Button) findViewById(R.id.camera_permission_button);
     audio_permission_button = (Button) findViewById(R.id.audio_permission_button);
     all_permissions_button = (Button) findViewById(R.id.all_permissions_button);
+
+    btnYourOwnPermissionActivity = (Button) findViewById(R.id.btnYourOwnPermissionActivity);
+
+    btnYourOwnPermissionActivity.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        onYourownActivityClicked();
+      }
+    });
 
     contacts_permission_button.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
@@ -104,76 +116,68 @@ public class SampleActivity extends Activity {
   }
 
   public void onAllPermissionsButtonClicked() {
-
+    //step4 Multiple permissions asking
     MultiplePermissionsListener feedbackViewMultiplePermissionListener =
         new SampleMultiplePermissionListener(this);
-
-    SnackbarOnAnyDeniedMultiplePermissionsListener snackbarOnAnyDeniedMultiplePermissionsListener =
-        SnackbarOnAnyDeniedMultiplePermissionsListener.Builder.with(rootView,
-            R.string.all_permissions_denied_feedback)
-            .withOpenSettingsButton(R.string.permission_rationale_settings_button_text)
-            .build();
-
-    permissionChecker.askForPermissions(feedbackViewMultiplePermissionListener, permissionCamera, permissionContacts,
-        permissionMicrophone);
-
-    SnackbarOnAnyDeniedMultiplePermissionsListener build =
-        SnackbarOnAnyDeniedMultiplePermissionsListener.Builder.with(rootView,
-            R.string.all_permissions_denied_feedback)
-            .withOpenSettingsButton(R.string.permission_rationale_settings_button_text)
-            .build();
-
-    CompositeMultiplePermissionsListener allPermissionsListener =
-        new CompositeMultiplePermissionsListener(feedbackViewMultiplePermissionListener, build);
-
+    permissionChecker.askForPermissions(feedbackViewMultiplePermissionListener, permissionCamera,
+        permissionContacts, permissionMicrophone);
   }
 
   public void onCameraPermissionButtonClicked() {
-    boolean granted = permissionChecker.isGranted(permissionCamera);
+    //step5 single Permission with Retries
+    boolean granted = permissionChecker.isGranted(permissionCamera);//step6 is granted
     if (!granted) {
-      permissionChecker.askForPermission(permissionCamera,
-          new UserPermissionRequestResponseListener() {
-            @Override public void onPermissionAllowed(boolean permissionAllowed) {
-              if (permissionAllowed) {
-                showPermissionGranted(permissionCamera);
-              } else {
-                showPermissionDenied(permissionCamera);
-              }
-            }
-          });
+      //step7 askforPermission
+      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+        @Override
+        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
+          if (permissionAllowed) {
+            showPermissionGranted(permissionCamera, numberDoneRetries);
+          } else {
+            showPermissionDenied(permissionCamera, numberDoneRetries);
+          }
+        }
+      }, permissionCamera);
     }
   }
 
   public void onContactsPermissionButtonClicked() {
     boolean granted = permissionChecker.isGranted(permissionContacts);
     if (!granted) {
-      permissionChecker.askForPermission(permissionContacts,
-          new UserPermissionRequestResponseListener() {
-            @Override public void onPermissionAllowed(boolean permissionAllowed) {
-              if (permissionAllowed) {
-                showPermissionGranted(permissionContacts);
-              } else {
-                showPermissionDenied(permissionContacts);
-              }
-            }
-          });
+      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+        @Override
+        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
+          if (permissionAllowed) {
+            showPermissionGranted(permissionContacts, numberDoneRetries);
+          } else {
+            showPermissionDenied(permissionContacts, numberDoneRetries);
+          }
+        }
+      }, permissionContacts);
     }
   }
 
   public void onAudioPermissionButtonClicked() {
     boolean granted = permissionChecker.isGranted(permissionMicrophone);
     if (!granted) {
-      permissionChecker.askForPermission(permissionMicrophone,
-          new UserPermissionRequestResponseListener() {
-            @Override public void onPermissionAllowed(boolean permissionAllowed) {
-              if (permissionAllowed) {
-                showPermissionGranted(permissionMicrophone);
-              } else {
-                showPermissionDenied(permissionMicrophone);
-              }
-            }
-          });
+      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+        @Override
+        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
+          if (permissionAllowed) {
+            showPermissionGranted(permissionMicrophone, numberDoneRetries);
+          } else {
+            showPermissionDenied(permissionMicrophone, numberDoneRetries);
+          }
+        }
+      }, permissionMicrophone);
     }
+  }
+
+  public void onYourownActivityClicked() {
+    Intent intent = new Intent(this, PermissionActivitySample.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+    this.startActivity(intent);
   }
 
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -200,14 +204,20 @@ public class SampleActivity extends Activity {
         .show();
   }
 
-  public void showPermissionGranted(Permission permission) {
+  public void showPermissionGranted(Permission permission, int numberDoneRetries) {
     TextView feedbackView = getFeedbackViewForPermission(permission);
-    feedbackView.setText(R.string.permission_granted_feedback);
+    feedbackView.setText(this.getResources().getString(R.string.permission_granted_feedback)
+        + " "
+        + numberDoneRetries
+        + " retries");
   }
 
-  public void showPermissionDenied(Permission permission) {
+  public void showPermissionDenied(Permission permission, int numberDoneRetries) {
     TextView feedbackView = getFeedbackViewForPermission(permission);
-    feedbackView.setText(R.string.permission_denied_feedback);
+    feedbackView.setText(this.getResources().getString(R.string.permission_denied_feedback)
+        + " "
+        + numberDoneRetries
+        + " retries");
   }
 
   private TextView getFeedbackViewForPermission(Permission permission) {

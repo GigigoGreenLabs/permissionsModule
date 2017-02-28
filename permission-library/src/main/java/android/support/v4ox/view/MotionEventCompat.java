@@ -28,12 +28,12 @@ public final class MotionEventCompat {
      * Interface for the full API.
      */
     interface MotionEventVersionImpl {
-        public int findPointerIndex(MotionEvent event, int pointerId);
-        public int getPointerId(MotionEvent event, int pointerIndex);
-        public float getX(MotionEvent event, int pointerIndex);
-        public float getY(MotionEvent event, int pointerIndex);
-        public int getPointerCount(MotionEvent event);
-        public int getSource(MotionEvent event);
+        int findPointerIndex(MotionEvent event, int pointerId);
+        int getPointerId(MotionEvent event, int pointerIndex);
+        float getX(MotionEvent event, int pointerIndex);
+        float getY(MotionEvent event, int pointerIndex);
+        int getPointerCount(MotionEvent event);
+        int getSource(MotionEvent event);
         float getAxisValue(MotionEvent event, int axis);
         float getAxisValue(MotionEvent event, int axis, int pointerIndex);
     }

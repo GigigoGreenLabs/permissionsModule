@@ -27,7 +27,8 @@ import com.gigigo.permissions.interfaces.PermissionChecker;
 import com.gigigo.permissions.interfaces.UserPermissionRequestResponseListener;
 import com.gigigo.permissions.listeners.ContinueRequestPermissionListenerImpl;
 import com.gigigo.permissions.listeners.GenericPermissionListenerImpl;
-import com.karumi.dexterox.Dexter;
+import com.karumi.dexterox.PermissionActivity;
+import com.karumi.dexterox.PermissionManager;
 import com.karumi.dexterox.listener.multi.CompositeMultiplePermissionsListener;
 import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexterox.listener.single.CompositePermissionListener;
@@ -35,41 +36,46 @@ import com.karumi.dexterox.listener.single.PermissionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class AndroidPermissionCheckerImpl implements PermissionChecker {
+public class PermissionCheckerImpl implements PermissionChecker {
 
   private final Activity activity;
 
-  public AndroidPermissionCheckerImpl(Activity activity) {
-    Dexter.initialize(activity);
+  public PermissionCheckerImpl(Activity activity) {
+    PermissionManager.initialize(activity);
     this.activity = activity;
   }
 
-  @Override
-  public void askForPermission(Permission permission, UserPermissionRequestResponseListener userResponse) {
-    if (Dexter.isRequestOngoing()) {
+  public PermissionCheckerImpl(PermissionActivity activity) {
+    PermissionManager.initialize(activity);
+    this.activity = activity;
+  }
+
+  @Override public void askForPermission(UserPermissionRequestResponseListener userResponse,
+      Permission permission) {
+    if (PermissionManager.isRequestOngoing()) {
       return;
     }
-
-    PermissionListener[] listeners = createListeners(permission, userResponse);
-
-    Dexter.checkPermission(new CompositePermissionListener(listeners),
+    PermissionManager.checkPermission(
+        new GenericPermissionListenerImpl(permission, userResponse, this.activity),
         permission.getAndroidPermissionStringType());
   }
 
-  public void askForPermissions(MultiplePermissionsListener permissionsListener, Permission... permissions) {
-    if (Dexter.isRequestOngoing()) {
+  @Override public void askForPermissions(MultiplePermissionsListener permissionsListener,
+      Permission... permissions) {
+    if (PermissionManager.isRequestOngoing()) {
       return;
     }
 
-    CompositeMultiplePermissionsListener compositeMultiplePermissionsListener = new CompositeMultiplePermissionsListener(permissionsListener);
+    CompositeMultiplePermissionsListener compositeMultiplePermissionsListener =
+        new CompositeMultiplePermissionsListener(permissionsListener);
 
     Collection<String> permissionList = retrievePermissionNames(permissions);
 
-    Dexter.checkPermissions(compositeMultiplePermissionsListener, permissionList);
+    PermissionManager.checkPermissions(compositeMultiplePermissionsListener, permissionList);
   }
 
   @Override public void continuePendingPermissionsRequestsIfPossible() {
-    Dexter.continuePendingRequestIfPossible(
+    PermissionManager.continuePendingRequestIfPossible(
         new ContinueRequestPermissionListenerImpl(activity));
   }
 
@@ -77,6 +83,20 @@ public class AndroidPermissionCheckerImpl implements PermissionChecker {
     int permissionGranted =
         ContextCompat.checkSelfPermission(activity, permission.getAndroidPermissionStringType());
     return PackageManager.PERMISSION_GRANTED == permissionGranted;
+  }
+
+  @Override public boolean isAllGranted(Permission... permissions) {
+
+    for (int i = 0; i < permissions.length - 1; i++) {
+      Permission permission = permissions[i];
+      int permissionGranted =
+          ContextCompat.checkSelfPermission(activity, permission.getAndroidPermissionStringType());
+      boolean isPermissionGranted = PackageManager.PERMISSION_GRANTED == permissionGranted;
+
+      if (!isPermissionGranted) return false;
+    }
+
+    return true;
   }
 
   private PermissionListener[] createListeners(Permission permission,
