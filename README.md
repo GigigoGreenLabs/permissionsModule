@@ -180,6 +180,9 @@ onPermissionRationaleShouldBeShown
 
 ## Resources Literals/Retries
 You can override the next resources in your app:
+
+If put -1 value in retries integer resource, this mean infinite retries.(If user check "never ask again"
+in system android Dialog, the retries finish)
 ```xml
 <string name="continueRequestPermissionAllowedFeedback">All permissions have been allowed</string>
   <string name="continueRequestPermissionSettingsDeniedFeedback">SETTINGS</string>
