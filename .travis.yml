@@ -1,13 +1,106 @@
 language: android
+jdk: oraclejdk8
+
+branches:
+  only:
+  - master
+
+before_cache:
+  - rm -f  ${TRAVIS_BUILD_DIR}/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr ${TRAVIS_BUILD_DIR}/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/.gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/.gradle/wrapper/
+    - ${TRAVIS_BUILD_DIR}/.android/build-cache
+
+notifications:
+  slack:
+    secure: Ebtcxx9sROg9FbpTwFchxL24POD2OchXvJP3/TLeJ3QkBsVedgfeWh/pFGkGVtfOvaXmxFzrfif0b+2B3x56kFdfAprNvcCvIvfFks8xeeQYRibKSMzrOG2Wu8D1UeyBbWfyAhhOClKbTWLnE7/8Vwa5esZFoGJIvS8JBb/QfVdN4WifsLJXsEW4Ydr84dyfqokA9rqwUotDJPa+3SHD2pZG6FTGD4ewuxdJvyJxTGJlXkCXuik05cafe36/0+5Yl1w7OzBzAiS1g5Vp+qrcDLihoPjvCzufmbt/ecjHWHT0uHd9UTSu1wmpXaTDOZJf30advg1FWJslzBQeNBKh0ZY/+Zgw9tRqsLPPqIdj9avqgOeGfdVaZmAe15sL3UaeacaPcvQl3XgvxE/4FTpR9mMdSCLYIraylcfGpPQr1Wl3UUAhf/xBLIdhnmjAzvSqx9+7cPyPl6I1axOkXRb4e1SIw9Izq+lFf+U54lU/IoIyc4SiG6n6frzgZIwOKYNLOwfmPhEE37QPb+0eRhTz0R9Kb7m099iPVfYo0Ul5f0NWPyJD3avwDr8GSe6XC74wfFnVboA6bTIwWJzRq7X+qFTIkJdHsAdRysjsD6BenzFWLSP01NOO0v4DED0A/h++VQerlDqbgCj0FjbfSuxXNrLd4GmoRyVA1hkq0rdc1vg=
+
+env:
+  global:
+    - API=25 # Android API level 25 by default
+    - TAG=google_apis # Google APIs by default, alternatively use default but not always available
+    - ABI=armeabi-v7a # ARM ABI v7a by default
+    - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
+    - ANDROID_HOME=/usr/local/android-sdk-24.0.2 # Depends on the cookbooks version used in the VM
+    - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
+    - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 android:
   components:
-    - tools
-    - build-tools-23.0.2
-    - android-23
-    - extra-android-support
-    - extra-google-m2repository
-    - extra-android-m2repository
+    - tools # Update preinstalled tools from revision 24.0.2 to 24.4.1
+    - build-tools-24.0.3 # Match build-tools version used in build.gradle
+    - platform-tools # Update platform-tools to revision 25.0.3+
+    - tools # Update tools from revision 24.4.1 to 25.2.5
 
+before_install:
+    - pip install --user codecov
+    - chmod +x gradlew
+    - export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
+    - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
+install:
+    # List and delete unnecessary components to free space
+    - sdkmanager --list || true  - sdkmanager --uninstall "system-images;android-15;default;armeabi-v7a"
+    - sdkmanager --uninstall "system-images;android-16;default;armeabi-v7a"
+    - sdkmanager --uninstall "system-images;android-17;default;armeabi-v7a"
+    - sdkmanager --uninstall "system-images;android-18;default;armeabi-v7a"
+    - sdkmanager --uninstall "system-images;android-19;default;armeabi-v7a"
+    - sdkmanager --uninstall "system-images;android-21;default;armeabi-v7a"
+    - sdkmanager --uninstall "extras;google;google_play_services"
+    - sdkmanager --uninstall "extras;android;support"
+    - sdkmanager --uninstall "platforms;android-10"
+    - sdkmanager --uninstall "platforms;android-15"
+    - sdkmanager --uninstall "platforms;android-16"
+    - sdkmanager --uninstall "platforms;android-17"
+    - sdkmanager --uninstall "platforms;android-18"
+    - sdkmanager --uninstall "platforms;android-19"
+    - sdkmanager --uninstall "platforms;android-20"
+    - sdkmanager --uninstall "platforms;android-21"
+    - sdkmanager --uninstall "build-tools;21.1.2"
+
+    # Update sdk tools to latest version and install/update components
+    - echo yes | sdkmanager "tools"
+    - echo yes | sdkmanager "platforms;android-25" # Latest platform required by SDK tools
+    - echo yes | sdkmanager "platforms;android-${API}" # Android platform required by emulator
+    - echo yes | sdkmanager "extras;android;m2repository"
+    - echo yes | sdkmanager "extras;google;m2repository"
+    - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+    - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+    - echo yes | sdkmanager "$EMULATOR" # Install emulator system image
+
+    # Create and start emulator
+    - echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
+    - emulator -avd acib -engine classic -no-window -verbose &
+    # Start adbd, wait for device connected and show android serial to avoid heavy parallel tasks
+    - adb wait-for-device get-serialno
+    # Show version and download Gradle Wrapper if it's not already cached
+    - ./gradlew --version
+    # Clean project and download missing dependencies and components
+    - ./gradlew clean
+    # Check components status
+    - sdkmanager --list || true
+
+before_script:
+    # Wait for emulator fully-booted and disable animations
+    - android-wait-for-emulator
+    - adb shell settings put global window_animation_scale 0 &
+    - adb shell settings put global transition_animation_scale 0 &
+    - adb shell settings put global animator_duration_scale 0 &
+    - sleep 30
+    - adb shell input keyevent 82 &
+    - sleep 15
 script:
-  ./gradlew checkstyle build
+    - "./gradlew build jacocoTestReport"
+    - "./gradlew check"
+after_script:
+    # Show tests and lint results
+    - cat ${TRAVIS_BUILD_DIR}/*/build/outputs/androidTest-results/connected/*
+    - cat ${TRAVIS_BUILD_DIR}/*/build/reports/lint-results.xml
+
+after_success:
+    - "./gradlew jacocoFullReport"
+    - codecov
+    - bash <(curl -s https://codecov.io/bash)
