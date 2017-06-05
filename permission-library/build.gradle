@@ -1,20 +1,19 @@
 apply plugin: 'com.android.library'
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.Gigigo-Android-Devs'
 
 android {
-  lintOptions {
-    abortOnError false
-  }
-
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion parent.ext.androidCompileSdkVersion
+  buildToolsVersion parent.ext.androidBuildToolsVersion
 
   defaultConfig {
-    minSdkVersion 10
-    targetSdkVersion 23
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion parent.ext.androidMinSdkVersion
+    targetSdkVersion parent.ext.androidTargetSdkVersion
+
+    versionCode generateAutoVersionCode()
   }
+
   buildTypes {
     debug {
       debuggable true
@@ -23,9 +22,13 @@ android {
       minifyEnabled false
     }
   }
+
+  lintOptions {
+    abortOnError false
+  }
 }
 
 dependencies {
-  testCompile 'junit:junit:4.12'
-  testCompile "org.mockito:mockito-core:1.9.5"
+  testCompile parent.ext.testLibraries.junit
+  testCompile parent.ext.testLibraries.mockito
 }

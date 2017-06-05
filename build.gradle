@@ -1,38 +1,43 @@
+apply from: 'dependencies.gradle'
+apply from: 'common_methods.gradle'
+
 buildscript {
   repositories {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.1.2'
+    classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
   }
 }
 
 allprojects {
+  ext {
+    // Android config
+    androidCompileSdkVersion = 23
+    androidBuildToolsVersion = '24.0.3'
+    androidMinSdkVersion = 10
+    androidTargetSdkVersion = 23
+  }
+
   repositories {
+    jcenter()
     mavenCentral()
     maven { url "https://jitpack.io" }
   }
-//
-//  apply plugin: 'checkstyle'
-//
-//  task checkstyle(type: Checkstyle) {
-//    configFile file("${project.rootDir}/config/checkstyle.xml")
-//    source 'src'
-//    include '**/*.java'
-//    exclude '**/gen/**'
-//
-//    classpath = files()
-//  }
 
-//  if (JavaVersion.current().isJava8Compatible()) {
-//    allprojects {
-//      tasks.withType(Javadoc) {
-//        options.addStringOption('Xdoclint:none', '-quiet')
-//      }
-//    }
-//  }
+  apply plugin: 'checkstyle'
+
+  task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+  }
 }
 
 task clean(type: Delete) {
-  delete rootProject.buildDir
+  delete buildDir
 }

@@ -1,18 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.karumi.dexter.sample"
-        minSdkVersion 18
-        targetSdkVersion 23
+        minSdkVersion 18 //rootProject.androidMinSdkVersion
+        targetSdkVersion rootProject.androidTargetSdkVersion
+
+        applicationId "com.karumi.dexterox.sample"
         versionCode 1
         versionName "1.0"
-//        jackOptions {
-//            enabled true
-//        }
     }
     buildTypes {
         debug {
@@ -26,100 +24,10 @@ android {
         targetCompatibility 1.7
         sourceCompatibility 1.7
     }
-
-    packagingOptions {
-        //funcking butterknife  exclude 'META-INF/services/javax.annotation.processing.Processor'
-    }
 }
 
 dependencies {
-    //compile fileTree(include: ['*.jar'], dir: 'libs')
-    //compile 'com.android.support:appcompat-v7:18.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:19.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:19.0.1' //verified
-    //compile 'com.android.support:appcompat-v7:19.1.0'//verified
-    //compile 'com.android.support:appcompat-v7:20.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:21.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:21.0.2' //verified
-    //compile 'com.android.support:appcompat-v7:21.0.3' //verified
-    //compile 'com.android.support:appcompat-v7:22.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:22.1.0' //verified
-    //compile 'com.android.support:appcompat-v7:22.2.0' //verified
-    //compile 'com.android.support:appcompat-v7:22.2.1' //verified
-    //compile 'com.android.support:appcompat-v7:23.0.0' //verified
-    //compile 'com.android.support:appcompat-v7:23.1.1' //verified
-    //compile 'com.android.support:appcompat-v7:23.2.0' //verified
-    //compile 'com.android.support:appcompat-v7:23.2.1' //verified
-    //compile 'com.android.support:appcompat-v7:23.3.0' //verified
-    //compile 'com.android.support:appcompat-v7:23.4.0' //verified
-    //compile 'com.android.support:appcompat-v7:24.0.0' //verified
-    //compile 'com.android.support:design:24.0.0'//verified
-    //compile 'com.android.support:recyclerview-v7:24.0.0'//verified
-    //compile 'com.android.support:appcompat-v7:24.1.0' //verified
-    //compile 'com.android.support:design:24.1.0' //verified
-    //compile 'com.android.support:recyclerview-v7:24.1.0'//verified
-    //compile 'com.android.support:appcompat-v7:24.1.1'//verified
-    //compile 'com.android.support:design:24.1.1'//verified
-    //compile 'com.android.support:recyclerview-v7:24.1.1'//verified
-    //compile 'com.android.support:appcompat-v7:24.2.0'//verified
-    //compile 'com.android.support:design:24.2.0'//verified
-    //compile 'com.android.support:recyclerview-v7:24.2.0'//verified
-    //compile 'com.android.support:appcompat-v7:24.2.1'//verified
-    //compile 'com.android.support:design:24.2.1'//verified
-    //compile 'com.android.support:recyclerview-v7:24.2.1'//verified
-    //compile 'com.android.support:appcompat-v7:25.0.0'//verified
-    //compile 'com.android.support:design:25.0.0'//verified
-    //compile 'com.android.support:recyclerview-v7:25.0.0'//verified
-
-/*
-    */
-
-//compile 'com.google.android.gms:play-services-gcm:7.0.0'//verified
-//compile 'com.google.android.gms:play-services-location:7.0.0'//verified
-
-//compile 'com.google.android.gms:play-services-gcm:7.3.0' //verified
-//compile 'com.google.android.gms:play-services-location:7.3.0' //verified
-
-// compile 'com.google.android.gms:play-services-gcm:7.5.0' //verified
-// compile 'com.google.android.gms:play-services-location:7.5.0' //verified
-
-//compile 'com.google.android.gms:play-services-gcm:7.8.0' //verified
-//compile 'com.google.android.gms:play-services-location:7.8.0' //verified
-//
-//compile 'com.google.android.gms:play-services-gcm:8.1.0'//verified
-//compile 'com.google.android.gms:play-services-location:8.1.0'//verified
-//
-//compile 'com.google.android.gms:play-services-gcm:8.3.0'//verified
-//compile 'com.google.android.gms:play-services-location:8.3.0'//verified
-//
-//compile 'com.google.android.gms:play-services-gcm:8.4.0' //verified
-//compile 'com.google.android.gms:play-services-location:8.4.0' //verified
-//
-//compile 'com.google.android.gms:play-services-gcm:9.0.0' //verified
-//compile 'com.google.android.gms:play-services-location:9.0.0' //verified
-//
-//compile 'com.google.android.gms:play-services-gcm:9.0.1' //verified
-//compile 'com.google.android.gms:play-services-location:9.0.1'//verified
-//
-//compile 'com.google.android.gms:play-services-gcm:9.0.2'//verified
-//compile 'com.google.android.gms:play-services-location:9.0.2'//verified
-//
-//compile 'com.google.android.gms:play-services-gcm:9.2.0' //verified
-//compile 'com.google.android.gms:play-services-location:9.2.0' //verified
-//
-//compile 'com.google.android.gms:play-services-gcm:9.2.1'//verified
-//compile 'com.google.android.gms:play-services-location:9.2.1'//verified
-
-    compile project(':permission-library')
-    //compile 'com.github.GigigoGreenLabs.repackagedLibs:dagger-compiler:2.2.2'
-    // compile 'com.github.GigigoGreenLabs.repackagedLibs:dagger:2.2.2'
-
-//compile 'com.github.Applivery:applivery-android-sdk:1.1.0-RC4'
-//compile 'com.github.GigigoGreenLabs.gggUtilsSuite:ggg-java-lib:1.0'
-//compile 'com.github.GigigoGreenLabs.gggUtilsSuite:ggglogger:1.0'
-//compile 'com.github.GigigoGreenLabs.gggUtilsSuite:ggglib:1.0'
-
-//compile 'com.github.Gigigo-Android-Devs.gigigo-imageLoader-library-android:imageloader-glide:v1.0'
+    compile parent.ext.modules.permissionLibrary
 
     /*dependencies Whoah*/
     compile 'com.github.Gigigo-Android-Devs:gigigo-baseRecyclerAdapter-library-android:v1.2.1'
@@ -129,18 +37,4 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.google.code.gson:gson:2.3.1'
-
-//    compile 'com.google.android.gms:play-services-base:9.8.0'
-//    compile 'com.google.android.gms:play-services-location:9.8.0'
-//    compile 'com.google.android.gms:play-services-gcm:9.8.0'
-
-
-/* compile ('com.github.orchextra.Orchextra-android-sdk:orchextrasdk:0.3-ocm:play9Release@aar')
-             {
-                 transitive =true//avoid error of layoutscrollflags
-                 exclude group: 'io.realm'
-                 exclude group : 'com.karumi.dexterox'
-             }
-     compile 'com.github.GigigoGreenLabs.imgRecogModule:vuforiaimplementation:1.3'*/
-
 }
