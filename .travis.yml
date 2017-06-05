@@ -93,7 +93,7 @@ before_script:
     - adb shell input keyevent 82 &
     - sleep 15
 script:
-    - "./gradlew build"
+    - "./gradlew build jacocoTestReport"
     - "./gradlew check"
 after_script:
     # Show tests and lint results
