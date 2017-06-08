@@ -1,7 +1,5 @@
 /*
- * Created by Orchextra
- *
- * Copyright (C) 2016 Gigigo Mobile Services SL
+ * Copyright (C) 2015 Karumi.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +14,20 @@
  * limitations under the License.
  */
 
-allprojects {
-  ext {
-    libraries = [androidSupportV7: 'com.android.support:appcompat-v7:24.2.1',
+package com.gigigo.ggglib.permission.demo_app;
 
-                 gggLibDevice    : 'com.github.gigigoapps.gigigo-android-lib:ggglib.device:1.0.13',
-                 gggLibLogger    : 'com.github.gigigoapps.gigigo-android-lib:ggglib.logger:1.0.13']
+import android.app.Application;
+import com.karumi.dexterox.PermissionManager;
 
-    testLibraries = [mockito: 'org.mockito:mockito-core:2.7.9',
-                     junit  : 'junit:junit:4.12']
+/**
+ * Sample application that initializes the PermissionManager library.
+ */
+public class SampleApplication extends Application {
 
-    modules = [gggLibPermission: project(':ggglib.permission')]
+  @Override public void onCreate() {
+    super.onCreate();
+    // xa sampleactivity-->
+  //  PermissionManager.initialize(this);
+
   }
 }

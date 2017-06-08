@@ -1,5 +1,5 @@
 /*
- * Created by Orchextra
+ * Created by Gigigo Android Team
  *
  * Copyright (C) 2016 Gigigo Mobile Services SL
  *
@@ -16,16 +16,8 @@
  * limitations under the License.
  */
 
-allprojects {
-  ext {
-    libraries = [androidSupportV7: 'com.android.support:appcompat-v7:24.2.1',
+package com.gigigo.ggglib.permission.listeners;
 
-                 gggLibDevice    : 'com.github.gigigoapps.gigigo-android-lib:ggglib.device:1.0.13',
-                 gggLibLogger    : 'com.github.gigigoapps.gigigo-android-lib:ggglib.logger:1.0.13']
-
-    testLibraries = [mockito: 'org.mockito:mockito-core:2.7.9',
-                     junit  : 'junit:junit:4.12']
-
-    modules = [gggLibPermission: project(':ggglib.permission')]
-  }
+public interface UserPermissionRequestResponseListener {
+  void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries);
 }

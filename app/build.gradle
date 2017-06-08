@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion rootProject.ext.androidCompileSdkVersion
+  buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+  defaultConfig {
+    minSdkVersion rootProject.androidMinSdkVersion
+    targetSdkVersion rootProject.androidTargetSdkVersion
+
+    applicationId "com.gigigo.ggglib.permissions.demo_app"
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    debug {
+      debuggable true
+    }
+    release {
+      minifyEnabled false
+    }
+  }
+  compileOptions {
+    targetCompatibility 1.7
+    sourceCompatibility 1.7
+  }
+}
+
+dependencies {
+  compile parent.ext.modules.gggLibPermissions
+
+  compile 'com.github.Gigigo-Android-Devs:gigigo-baseRecyclerAdapter-library-android:v1.2.1'
+  compile 'me.panavtec:threaddecoratedview-common:1.5.3'
+  compile 'me.panavtec:threaddecoratedview-compiler:1.5.3'
+  compile 'com.squareup.retrofit2:retrofit:2.0.2'
+  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+  compile 'com.google.code.gson:gson:2.3.1'
+}

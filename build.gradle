@@ -17,7 +17,7 @@ allprojects {
     // Android config
     androidCompileSdkVersion = 23
     androidBuildToolsVersion = '24.0.3'
-    androidMinSdkVersion = 10
+    androidMinSdkVersion = 18
     androidTargetSdkVersion = 23
   }
 
