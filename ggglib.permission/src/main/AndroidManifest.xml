@@ -16,8 +16,8 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gigigo.ggglib.permission"
-    >
-
+  xmlns:tools="http://schemas.android.com/tools" >
+  <uses-permission-sdk-23 tools:node="removeAll" />
   <application>
     <activity
         android:name="com.karumi.dexterox.PermissionActivity"

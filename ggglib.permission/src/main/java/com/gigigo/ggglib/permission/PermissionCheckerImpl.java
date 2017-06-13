@@ -34,7 +34,7 @@ import com.karumi.dexterox.listener.single.PermissionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class PermissionCheckerImpl implements PermissionChecker {
+ class PermissionCheckerImpl implements PermissionChecker {
 
   private final Activity activity;
 

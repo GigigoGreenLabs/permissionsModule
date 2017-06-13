@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.gigigo.ggglib.permission.PermissionCheckerImpl;
+import android.widget.Toast;
 import com.gigigo.ggglib.permission.groups.PermissionGroupCalendar;
 import com.gigigo.ggglib.permission.groups.PermissionGroupLocation;
 import com.gigigo.ggglib.permission.groups.PermissionGroupPhone;
-import com.gigigo.ggglib.permission.interfaces.Permission;
-import com.gigigo.ggglib.permission.interfaces.UserPermissionRequestResponseListener;
+import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
+import com.gigigo.ggglib.permission.permissions.Permission;
 import com.gigigo.ggglib.permission.permissions.PermissionCalendar;
 import com.gigigo.ggglib.permission.permissions.PermissionLocation;
 import com.gigigo.ggglib.permission.permissions.PermissionPhone;
@@ -26,22 +26,21 @@ import java.util.List;
 public class PermissionActivitySample extends PermissionActivity implements View.OnClickListener {
   Button btnAskingPermission;
   TextView txtSingle, txtMulti;
-  private PermissionPhone permissionPhone =
-      new PermissionPhone(this, PermissionGroupPhone.CALL_PHONE);
-  private PermissionCheckerImpl permissionChecker;
+  private PermissionPhone permissionPhone = new PermissionPhone(PermissionGroupPhone.CALL_PHONE);
+
 
   //region allpermissions
   Button btnAskAllPermissions;
   private PermissionCalendar permissionCalendar =
-      new PermissionCalendar(this, PermissionGroupCalendar.READ_CALENDAR);
+      new PermissionCalendar(PermissionGroupCalendar.READ_CALENDAR);
   private PermissionLocation permissionLocation =
-      new PermissionLocation(this, PermissionGroupLocation.ACCESS_FINE_LOCATION);
+      new PermissionLocation(PermissionGroupLocation.ACCESS_FINE_LOCATION);
 
   //endregion
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    permissionChecker = new PermissionCheckerImpl(this);
+
 
     setContentView(R.layout.permission_activity);
 
@@ -95,10 +94,13 @@ public class PermissionActivitySample extends PermissionActivity implements View
     txtMulti.setText("All permissions on RationaleView");
   }
 
+
   private void askAllPermissionsClick() {
-    boolean granted = permissionChecker.isAllGranted(permissionCalendar, permissionLocation);
+    Toast.makeText(this,"NO WORKING YET!!",Toast.LENGTH_LONG).show();
+
+    boolean granted = SampleApplication.permissionWrapper.isAllGranted(permissionCalendar, permissionLocation);
     if (!granted) {
-      permissionChecker.askForPermissions(new MultiplePermissionsListener() {
+      SampleApplication.permissionWrapper.askForPermissions(new MultiplePermissionsListener() {
         @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
           if (report.areAllPermissionsGranted()) {
             showPermissionGranted(null, 0);
@@ -120,9 +122,9 @@ public class PermissionActivitySample extends PermissionActivity implements View
   //region single permission
   private void askPhonePermissionClick() {
 
-    boolean granted = permissionChecker.isGranted(permissionPhone);
+    boolean granted = SampleApplication.permissionWrapper.isGranted(permissionPhone);
     if (!granted) {
-      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+      SampleApplication.permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           if (permissionAllowed) {

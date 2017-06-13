@@ -27,7 +27,7 @@
   <uses-permission android:name="android.permission.CALL_PHONE"/>
 
   <application
-      android:name="com.karumi.dexterox.sample.SampleApplication"
+      android:name=".SampleApplication"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
@@ -36,7 +36,7 @@
       >
 
     <activity
-        android:name="com.karumi.dexterox.sample.SampleActivity"
+        android:name=".SampleActivity"
         android:screenOrientation="portrait"
         >
       <intent-filter>
@@ -45,7 +45,7 @@
       </intent-filter>
     </activity>
     <activity
-        android:name="com.karumi.dexterox.sample.PermissionActivitySample"
+        android:name=".PermissionActivitySample"
         android:launchMode="singleTask"
         android:screenOrientation="portrait"
         >

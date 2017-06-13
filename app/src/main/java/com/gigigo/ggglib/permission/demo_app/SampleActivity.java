@@ -27,12 +27,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.gigigo.ggglib.permission.PermissionCheckerImpl;
+import android.widget.Toast;
 import com.gigigo.ggglib.permission.groups.PermissionGroupCamera;
 import com.gigigo.ggglib.permission.groups.PermissionGroupContacts;
 import com.gigigo.ggglib.permission.groups.PermissionGroupMicrophone;
-import com.gigigo.ggglib.permission.interfaces.Permission;
-import com.gigigo.ggglib.permission.interfaces.UserPermissionRequestResponseListener;
+import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
+import com.gigigo.ggglib.permission.permissions.Permission;
 import com.gigigo.ggglib.permission.permissions.PermissionCamera;
 import com.gigigo.ggglib.permission.permissions.PermissionContacts;
 import com.gigigo.ggglib.permission.permissions.PermissionMicrophone;
@@ -52,8 +52,6 @@ public class SampleActivity extends Activity {
   Button contacts_permission_button, camera_permission_button, audio_permission_button,
       all_permissions_button, btnYourOwnPermissionActivity;
 
-  private PermissionCheckerImpl permissionChecker;
-
   private PermissionCamera permissionCamera;
   private PermissionMicrophone permissionMicrophone;
   private PermissionContacts permissionContacts;
@@ -69,13 +67,12 @@ public class SampleActivity extends Activity {
     cameraPermissionFeedbackView = (TextView) findViewById(R.id.camera_permission_feedback);
     contactsPermissionFeedbackView = (TextView) findViewById(R.id.contacts_permission_feedback);
 
-    //step2 Declare permissionChecker
-    permissionChecker = new PermissionCheckerImpl(this);
+    //step2 get permissionWrapper from Application(Dagger Rules)
 
     //step3 declare Permissions
-    permissionContacts = new PermissionContacts(this, PermissionGroupContacts.READ_CONTACTS);
-    permissionCamera = new PermissionCamera(this, PermissionGroupCamera.CAMERA);
-    permissionMicrophone = new PermissionMicrophone(this, PermissionGroupMicrophone.RECORD_AUDIO);
+    permissionContacts = new PermissionContacts(PermissionGroupContacts.READ_CONTACTS);
+    permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
+    permissionMicrophone = new PermissionMicrophone(PermissionGroupMicrophone.RECORD_AUDIO);
 
     contacts_permission_button = (Button) findViewById(R.id.contacts_permission_button);
     camera_permission_button = (Button) findViewById(R.id.camera_permission_button);
@@ -116,19 +113,21 @@ public class SampleActivity extends Activity {
   }
 
   public void onAllPermissionsButtonClicked() {
+    //todo no WORK YET
+    Toast.makeText(this,"NO WORKING YET, fix in lib, this code are ok",Toast.LENGTH_LONG).show();
     //step4 Multiple permissions asking
     MultiplePermissionsListener feedbackViewMultiplePermissionListener =
         new SampleMultiplePermissionListener(this);
-    permissionChecker.askForPermissions(feedbackViewMultiplePermissionListener, permissionCamera,
+    SampleApplication.permissionWrapper.askForPermissions(feedbackViewMultiplePermissionListener, permissionCamera,
         permissionContacts, permissionMicrophone);
   }
 
   public void onCameraPermissionButtonClicked() {
     //step5 single Permission with Retries
-    boolean granted = permissionChecker.isGranted(permissionCamera);//step6 is granted
+    boolean granted = SampleApplication.permissionWrapper.isGranted(permissionCamera);//step6 is granted
     if (!granted) {
       //step7 askforPermission
-      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+      SampleApplication.permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           if (permissionAllowed) {
@@ -142,9 +141,9 @@ public class SampleActivity extends Activity {
   }
 
   public void onContactsPermissionButtonClicked() {
-    boolean granted = permissionChecker.isGranted(permissionContacts);
+    boolean granted = SampleApplication.permissionWrapper.isGranted(permissionContacts);
     if (!granted) {
-      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+      SampleApplication.permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           if (permissionAllowed) {
@@ -158,9 +157,9 @@ public class SampleActivity extends Activity {
   }
 
   public void onAudioPermissionButtonClicked() {
-    boolean granted = permissionChecker.isGranted(permissionMicrophone);
+    boolean granted = SampleApplication.permissionWrapper.isGranted(permissionMicrophone);
     if (!granted) {
-      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+      SampleApplication.permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           if (permissionAllowed) {
@@ -174,6 +173,7 @@ public class SampleActivity extends Activity {
   }
 
   public void onYourownActivityClicked() {
+    //todo wtf is this man???
     Intent intent = new Intent(this, PermissionActivitySample.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
