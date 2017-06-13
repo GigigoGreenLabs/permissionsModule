@@ -17,6 +17,12 @@
 package com.gigigo.ggglib.permission.demo_app;
 
 import android.app.Application;
+import com.gigigo.ggglib.device.providers.ContextProvider;
+import com.gigigo.ggglib.permission.PermissionChecker;
+import com.gigigo.ggglib.permission.PermissionCheckerImpl;
+import com.gigigo.ggglib.permission.groups.PermissionGroupCamera;
+import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
+import com.gigigo.ggglib.permission.permissions.PermissionCamera;
 import com.karumi.dexterox.PermissionManager;
 
 /**
@@ -26,8 +32,25 @@ public class SampleApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    // xa sampleactivity-->
-  //  PermissionManager.initialize(this);
+    PermissionManager.initialize(this);
 
+    checkPermissions();
+  }
+
+  private void checkPermissions() {
+
+    PermissionChecker permissionChecker = new PermissionCheckerImpl();
+
+    PermissionCamera permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
+
+    boolean isGranted = permissionChecker.isGranted(permissionCamera);
+    if (!isGranted) {
+      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+        @Override
+        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
+          int i = 1;
+        }
+      }, permissionCamera);
+    }
   }
 }
