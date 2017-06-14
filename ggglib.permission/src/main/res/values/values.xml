@@ -158,7 +158,7 @@
     </style>
     <style name="Widget.Design.BottomSheet.Modal" parent="android:Widget">
         <item name="android:background">?android:attr/colorBackground</item>
-        <item name="android:elevation">@dimen/design_bottom_sheet_modal_elevation</item>
+        <!--<item name="android:elevation">@dimen/design_bottom_sheet_modal_elevation</item>-->
         <item name="behavior_peekHeight_ox">@dimen/design_bottom_sheet_modal_peek_height</item>
         <item name="behavior_hideable_ox">true</item>
     </style>

@@ -20,7 +20,7 @@ package com.gigigo.ggglib.permission.listeners;
 
 import android.app.Activity;
 import com.gigigo.ggglib.permission.R;
-import com.gigigo.ggglib.permission.listeners.single.AbstractPermissionListener;
+import com.gigigo.ggglib.permission.AbstractPermissionListener;
 
 public class ContinueRequestPermissionListenerImpl extends AbstractPermissionListener {
 
@@ -29,15 +29,15 @@ public class ContinueRequestPermissionListenerImpl extends AbstractPermissionLis
   }
 
   @Override public int getPermissionDeniedFeedback() {
-    return R.string.continueRequestPermissionDeniedFeedback;
+    return R.string.ggg_permission_denied_feedback;
   }
 
   @Override public int getPermissionRationaleMessage() {
-    return R.string.continueRequestPermissionRationaleMessage;
+    return R.string.ggg_permission_denied_feedback_rationale;
   }
 
   @Override public int getPermissionRationaleTitle() {
-    return R.string.continueRequestPermissionRationaleTitle;
+    return R.string.ggg_permission_denied_feedback_rationale_title;
   }
 
   @Override public int getNumRetry() {
@@ -45,6 +45,6 @@ public class ContinueRequestPermissionListenerImpl extends AbstractPermissionLis
   }
 
   @Override public int getPermissionSettingsDeniedFeedback() {
-    return R.string.continueRequestPermissionSettingsDeniedFeedback;
+    return R.string.ggg_permission_settings;
   }
 }

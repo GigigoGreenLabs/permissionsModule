@@ -16,15 +16,14 @@
 
 package com.gigigo.ggglib.permission.demo_app;
 
-import android.widget.Toast;
-import com.karumi.dexterox.MultiplePermissionsReport;
-import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.PermissionDeniedResponse;
-import com.karumi.dexterox.listener.PermissionGrantedResponse;
-import com.karumi.dexterox.listener.PermissionRequest;
-import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
+import com.gigigo.ggglib.permission.MultiplePermissionsReport;
+import com.gigigo.ggglib.permission.PermissionToken;
+import com.gigigo.ggglib.permission.listener.PermissionDeniedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionGrantedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 import java.util.List;
-
+@Deprecated //asv mejor en el ejemplo mostrar el new en el aksingpermissions q hacer esto
 public class SampleMultiplePermissionListener implements MultiplePermissionsListener {
 
   private final SampleActivity activity;
@@ -36,12 +35,12 @@ public class SampleMultiplePermissionListener implements MultiplePermissionsList
   @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
     for (PermissionGrantedResponse response : report.getGrantedPermissionResponses()) {
       //activity.showPermissionGranted(response.getPermissionName());
-      Toast.makeText(activity, "Permiso Concedido", Toast.LENGTH_SHORT).show();
+      System.out.println("Permiso concecido");
     }
 
     for (PermissionDeniedResponse response : report.getDeniedPermissionResponses()) {
       //activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
-      Toast.makeText(activity, "Permiso Denegado", Toast.LENGTH_SHORT).show();
+      System.out.println("Permiso Denegado");
     }
   }
 

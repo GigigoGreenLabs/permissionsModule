@@ -17,84 +17,66 @@
 package com.gigigo.ggglib.permission.demo_app;
 
 import android.app.Application;
-import android.widget.Toast;
+import com.gigigo.ggglib.permission.MultiplePermissionsReport;
+import com.gigigo.ggglib.permission.PermissionToken;
 import com.gigigo.ggglib.permission.PermissionWrapper;
 import com.gigigo.ggglib.permission.groups.PermissionGroupCamera;
+import com.gigigo.ggglib.permission.groups.PermissionGroupLocation;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.PermissionCamera;
-import com.karumi.dexterox.PermissionManager;
+import com.gigigo.ggglib.permission.permissions.PermissionLocation;
+import java.util.List;
 
 /**
  * Sample application that initializes the PermissionManager library.
  */
 public class SampleApplication extends Application {
- static PermissionWrapper permissionWrapper  ;
+  static PermissionWrapper mPermissionWrapper;
+
   @Override public void onCreate() {
     super.onCreate();
-    PermissionManager.initialize(this);
+    mPermissionWrapper = new PermissionWrapper(this);//todo instance? initialize instead constructor?
 
-    checkPermissions();
-    //region checkpermission NEW
-    permissionWrapper = new PermissionWrapper(this);//todo instance? initialize instead constructor?
-    checkPermissionNEW();
-    //checkALLPermissionNEW();
-    //endregion
+    //asv estas peticiones de permisos, en ppio no funcionarian, xo funciona la de single =_0,
 
-
+    checkPermission();
+   //checkALLPermission();
   }
 
-
-
-  private void checkPermissions() {
-/* OLD PermissionChecker is public only in package permissions
-    PermissionChecker permissionChecker = new PermissionCheckerImpl();
-
+  private void checkPermission() {
     PermissionCamera permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
 
-    boolean isGranted = permissionChecker.isGranted(permissionCamera);
+    boolean isGranted = mPermissionWrapper.isGranted(permissionCamera);
     if (!isGranted) {
-      permissionChecker.askForPermission(new UserPermissionRequestResponseListener() {
+      mPermissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           int i = 1;
-        }
-      }, permissionCamera);
-    }*/
-  }
-
-
-
-
-  private void checkPermissionNEW() {
-
-    PermissionCamera permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
-
-    boolean isGranted = permissionWrapper.isGranted(permissionCamera);
-    if (!isGranted) {
-      permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
-        @Override
-        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
-          int i = 1;
-          Toast.makeText(SampleApplication.this,"Permiso concecido",Toast.LENGTH_LONG).show();
+          System.out.println("Permiso concecido");
         }
       }, permissionCamera);
     }
   }
 
-
-  private void checkALLPermissionNEW() {
-   /* PermissionCamera permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
+  private void checkALLPermission () {
+    PermissionCamera permissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
     PermissionLocation permissionLocation = new PermissionLocation(PermissionGroupLocation.ACCESS_FINE_LOCATION);
 
-    boolean isGranted = PermissionManager.isGranted(permissionCamera);
+    boolean isGranted = mPermissionWrapper.isAllGranted(permissionCamera,permissionLocation);
     if (!isGranted) {
-      PermissionManager.askForPermission(new UserPermissionRequestResponseListener() {
-        @Override
-        public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
-          int i = 1;
-        }
-      }, permissionCamera);
-    }*/
-  }
+      mPermissionWrapper.askForPermissions(new MultiplePermissionsListener() {
+        @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
 
+        }
+
+        @Override
+        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions,
+            PermissionToken token) {
+
+        }
+      });
+    }
+  }
 }

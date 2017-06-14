@@ -17,14 +17,15 @@ package com.gigigo.ggglib.permission.demo_app;
 
 import android.os.Handler;
 import android.os.Looper;
-import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.PermissionDeniedResponse;
-import com.karumi.dexterox.listener.PermissionGrantedResponse;
-import com.karumi.dexterox.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.PermissionToken;
+import com.gigigo.ggglib.permission.listener.PermissionDeniedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionGrantedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
 
 /**
  * Sample listener that shows how to handle permission request callbacks on a background thread
  */
+@Deprecated //asv esto tampoco entiendo que pinta, xq si se esta utilizando un activity(muerta) desde background...
 public class SampleBackgroundThreadPermissionListener extends SamplePermissionListener {
 
   private Handler handler = new Handler(Looper.getMainLooper());

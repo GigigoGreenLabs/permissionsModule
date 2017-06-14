@@ -15,11 +15,11 @@
   ~ limitations under the License.
   -->
 <resources>
-  <string name="continueRequestPermissionAllowedFeedback">All permissions have been allowed</string>
-  <string name="continueRequestPermissionSettingsDeniedFeedback">SETTINGS</string>
-  <string name="continueRequestPermissionDeniedFeedback">Permissions denied are necessary for doing some tasks</string>
-  <string name="continueRequestPermissionRationaleMessage">Permissions denied are necessary for doing some tasks, allow it!</string>
-  <string name="continueRequestPermissionRationaleTitle">Permission Request</string>
+  <!--<string name="continueRequestPermissionAllowedFeedback">All permissions have been allowed</string>-->
+  <!--<string name="continueRequestPermissionSettingsDeniedFeedback">SETTINGS</string>-->
+  <string name="ggg_permission_denied_feedback">Permissions denied are necessary for doing some tasks</string>
+  <string name="ggg_permission_denied_feedback_rationale">Permissions denied are necessary for doing some tasks, allow it!</string>
+  <string name="ggg_permission_denied_feedback_rationale_title">Permission Request</string>
 
   <string name="ggg_permission_settings">Settings</string>
   <string name="ggg_permission_literal">Permission</string><!-- this res are using in multilelistenerImplbase for show toast result-->

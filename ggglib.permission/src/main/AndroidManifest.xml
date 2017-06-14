@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 Karumi.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +14,15 @@
   ~ limitations under the License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gigigo.ggglib.permission"
-  xmlns:tools="http://schemas.android.com/tools" >
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.gigigo.ggglib.permission">
   <uses-permission-sdk-23 tools:node="removeAll" />
   <application>
     <activity
-        android:name="com.karumi.dexterox.PermissionActivity"
-        android:theme="@style/Transparent"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait"
-        />
+      android:name=".PermissionActivity"
+      android:launchMode="singleTask"
+      android:screenOrientation="portrait"
+      android:theme="@style/Transparent" />
   </application>
 
 </manifest>

@@ -19,7 +19,7 @@
 package com.gigigo.ggglib.permission.listeners;
 
 import android.app.Activity;
-import com.gigigo.ggglib.permission.listeners.single.AbstractPermissionListener;
+import com.gigigo.ggglib.permission.AbstractPermissionListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
 
 public class GenericPermissionListenerImpl extends AbstractPermissionListener {
@@ -46,7 +46,11 @@ public class GenericPermissionListenerImpl extends AbstractPermissionListener {
   }
 
   @Override public int getNumRetry() {
-    return permission.getNumRetry();
+    if(this.getActivity()!=null) {
+      return this.getActivity().getResources().getInteger(permission.getNumRetry());
+    }
+    else
+      return 5;//by default
   }
 
   @Override public int getPermissionSettingsDeniedFeedback() {

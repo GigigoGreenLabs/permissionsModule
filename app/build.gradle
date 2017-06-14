@@ -29,12 +29,12 @@ android {
 dependencies {
   compile parent.ext.modules.gggLibPermission
   compile parent.ext.libraries.gggLibDevice
-
+/*
   compile 'com.github.Gigigo-Android-Devs:gigigo-baseRecyclerAdapter-library-android:v1.2.1'
   compile 'me.panavtec:threaddecoratedview-common:1.5.3'
   compile 'me.panavtec:threaddecoratedview-compiler:1.5.3'
   compile 'com.squareup.retrofit2:retrofit:2.0.2'
   compile 'com.squareup.okhttp3:okhttp:3.4.1'
   compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-  compile 'com.google.code.gson:gson:2.3.1'
+  compile 'com.google.code.gson:gson:2.3.1'*/
 }

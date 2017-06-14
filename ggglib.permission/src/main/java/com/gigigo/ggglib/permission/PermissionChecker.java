@@ -20,7 +20,7 @@ package com.gigigo.ggglib.permission;
 
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
-import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 
 public interface PermissionChecker {
 

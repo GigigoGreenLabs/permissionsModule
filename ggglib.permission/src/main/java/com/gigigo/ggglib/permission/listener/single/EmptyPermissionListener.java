@@ -14,32 +14,29 @@
  * limitations under the License.
  */
 
-package com.gigigo.ggglib.permission.demo_app;
+package com.gigigo.ggglib.permission.listener.single;
 
 import com.gigigo.ggglib.permission.PermissionToken;
 import com.gigigo.ggglib.permission.listener.PermissionDeniedResponse;
 import com.gigigo.ggglib.permission.listener.PermissionGrantedResponse;
 import com.gigigo.ggglib.permission.listener.PermissionRequest;
-import com.gigigo.ggglib.permission.listener.single.PermissionListener;
-@Deprecated //asv tampoco entiendo que pinta, mejor hacerlo en el askpermission, si se utilizase en todos los akspermission, todavia...
-public class SamplePermissionListener implements PermissionListener {
 
-  private final SampleActivity activity;
-
-  public SamplePermissionListener(SampleActivity activity) {
-    this.activity = activity;
-  }
+/**
+ * Empty implementation of {@link PermissionListener} to allow extensions to implement only the
+ * required methods
+ */
+public class EmptyPermissionListener implements PermissionListener {
 
   @Override public void onPermissionGranted(PermissionGrantedResponse response) {
-    //activity.showPermissionGranted(response..getPermissionName());
+
   }
 
   @Override public void onPermissionDenied(PermissionDeniedResponse response) {
-    //activity.showPermissionDenied(response.getPermissionName(), response.isPermanentlyDenied());
+
   }
 
   @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission,
       PermissionToken token) {
-    activity.showPermissionRationale(token);
+
   }
 }

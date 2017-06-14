@@ -26,17 +26,15 @@ import com.gigigo.ggglib.permission.listeners.ContinueRequestPermissionListenerI
 import com.gigigo.ggglib.permission.listeners.GenericPermissionListenerImpl;
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
-import com.karumi.dexterox.PermissionActivity;
-import com.karumi.dexterox.PermissionManager;
-import com.karumi.dexterox.listener.multi.CompositeMultiplePermissionsListener;
-import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexterox.listener.single.PermissionListener;
+import com.gigigo.ggglib.permission.listener.multi.CompositeMultiplePermissionsListener;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
+import com.gigigo.ggglib.permission.listener.single.PermissionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
  class PermissionCheckerImpl implements PermissionChecker {
 
-  private final Activity activity;
+  private  Activity activity;
 
   public PermissionCheckerImpl(Activity activity) {
     PermissionManager.initialize(activity);
@@ -122,4 +120,12 @@ import java.util.Collection;
     }
     return permissionList;
   }
-}
+
+   public Activity getActivity() {
+     return activity;
+   }
+
+   public void setActivity(Activity activity) {
+     this.activity = activity;
+   }
+ }

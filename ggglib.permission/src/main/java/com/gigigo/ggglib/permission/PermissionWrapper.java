@@ -1,111 +1,102 @@
 package com.gigigo.ggglib.permission;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
-import com.karumi.dexterox.PermissionManager;
-import com.karumi.dexterox.listener.multi.CompositeMultiplePermissionsListener;
-import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by nubor on 13/06/2017.
  */
 
 public class PermissionWrapper {
-  PermissionManager mPermissionManager;
-  PermissionCheckerImpl mPermissionChecker;
+
+  static PermissionCheckerImpl mPermissionChecker;
   static PermissionModuleLifeCycle mPermissionModuleLifeCycle;
+  Application mApp;
 
   public PermissionWrapper(Application app) {
     mPermissionModuleLifeCycle = new PermissionModuleLifeCycle();
+
     app.registerActivityLifecycleCallbacks(mPermissionModuleLifeCycle);
-    //mPermissionManager= new PermissionManager();
-    //PermissionManager.initialize(app.getApplicationContext());
-    //mPermissionManager=PermissionManager.
 
-    //mPermissionChecker= new PermissionCheckerImpl()
-
+    PermissionManager.initialize(app.getApplicationContext());
+    mPermissionChecker = new PermissionCheckerImpl(mPermissionModuleLifeCycle.getCurrentActivity());
+    mApp = app;
   }
 
   public boolean isGranted(Permission permission) {
-
-    return false;
-  }
-
-  public boolean isAllGranted(Permission... permission) {
-
-    return false;
-  }
-
-  public void askForPermission(UserPermissionRequestResponseListener userResponse,
-      Permission permission) {
-
-    //todo isRequestOngoing ?¿ wtf must dissapear
-    if (PermissionManager.isRequestOngoing()) {
-      return;
+    if (mPermissionModuleLifeCycle.isActivityContextAvailable()) {
+      mPermissionChecker.setActivity(mPermissionModuleLifeCycle.getCurrentActivity());
+      return mPermissionChecker.isGranted(permission);
     }
+    return false;
+  }
+
+  public boolean isAllGranted(Permission... permissions) {
 
     if (mPermissionModuleLifeCycle.isActivityContextAvailable()) {
-      PermissionCheckerImpl perchecker=new PermissionCheckerImpl(mPermissionModuleLifeCycle.getCurrentActivity());
-      perchecker.askForPermission(userResponse,permission);
-      //PermissionManager.checkPermission(new GenericPermissionListenerImpl(permission, userResponse,
-      //        mPermissionModuleLifeCycle.getCurrentActivity()),
-      //    permission.getAndroidPermissionStringType());
+      mPermissionChecker.setActivity(mPermissionModuleLifeCycle.getCurrentActivity());
+      return mPermissionChecker.isAllGranted(permissions);
     }
-    else
-    {
-      //todo keep permission and listener in static public
-      //open de transparentactivity ask for this permission
-
-    }
+    return false;
   }
-//region multiplepermissions NO WORK YET
-  public void askForPermissions(MultiplePermissionsListener permissionsListener,
-      Permission... permissions) {
 
-
-    //todo isRequestOngoing ?¿ wtf must dissapear
+  public  void askForPermission(UserPermissionRequestResponseListener userResponse,
+      Permission permission) {
     if (PermissionManager.isRequestOngoing()) {
       return;
     }
+    if (mPermissionModuleLifeCycle.isActivityContextAvailable()) {
+      mPermissionChecker.setActivity(mPermissionModuleLifeCycle.getCurrentActivity());
+      mPermissionChecker.askForPermission(userResponse, permission);
+    } else {
+      //todo  transladar esta vaina al permissionchecker
+      mUserPermissionRequestResponseListener = userResponse;
+      mPermission = permission;
+      startTransparentActivityIfNeeded();
+    }
+  }
 
-    CompositeMultiplePermissionsListener compositeMultiplePermissionsListener =
+  static UserPermissionRequestResponseListener mUserPermissionRequestResponseListener;
+  static Permission mPermission;
+
+  private void startTransparentActivityIfNeeded() {
+    Intent intent =
+        new IntentProvider().get(mApp.getApplicationContext(), PermissionActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    intent.putExtra(PermissionActivity.IS_TRANSPARENT_ACTIVITY, true);
+    mApp.getApplicationContext().startActivity(intent);
+  }
+
+  //region multiplepermissions NO WORK YET
+  public void askForPermissions(MultiplePermissionsListener permissionsListener,
+      Permission... permissions) {
+    if (PermissionManager.isRequestOngoing()) {
+      return;
+    }
+    if (mPermissionModuleLifeCycle.isActivityContextAvailable()) {
+      mPermissionChecker.setActivity(mPermissionModuleLifeCycle.getCurrentActivity());
+      mPermissionChecker.askForPermissions(permissionsListener, permissions);
+    }
+   /*  CompositeMultiplePermissionsListener compositeMultiplePermissionsListener =
         new CompositeMultiplePermissionsListener(permissionsListener);
 
     Collection<String> permissionList = retrievePermissionNames(permissions);
 
     PermissionManager.checkPermissions(compositeMultiplePermissionsListener, permissionList);
-   /* 1º
+   1º
     checkPermissions(permissionsListener, permissions, ThreadFactory.makeMainThread());
     checkMultiplePermissions(listener, permissions, thread);
     */
   }
-
-  private void checkMultiplePermissions(MultiplePermissionsListener listener,
-      Collection<String> permissions, Thread thread) {
-    /*
-    checkNoDexterRequestOngoing();
-    checkRequestSomePermission(permissions);
-
-    pendingPermissions.clear();
-    pendingPermissions.addAll(permissions);
-    multiplePermissionsReport.clear();
-    this.listener = new MultiplePermissionListenerThreadDecorator(listener, thread);
-    if (!mPermissionModuleLifeCycle.isActivityContextAvailable()) {
-      startTransparentActivityIfNeeded();
-    }
-    thread.loop();
-    */
-  }
-
-  private Collection<String> retrievePermissionNames(Permission[] permissions) {
-    Collection<String> permissionList = new ArrayList<>();
-    for (Permission permission : permissions) {
-      permissionList.add(permission.getAndroidPermissionStringType());
-    }
-    return permissionList;
-  }
   //endregion
+
+  public void attachMyOwnPermissionActivity(Activity activity) {
+    //nothing todo
+    // PermissionManager.attachMyOwnPermissionActivity(activity);
+  }
 }

@@ -2,19 +2,20 @@ package com.gigigo.ggglib.permission.listeners.multi;
 
 import android.content.Context;
 import com.gigigo.ggglib.permission.R;
-import com.gigigo.ggglib.permission.ui.PermissionsUIViews;
-import com.karumi.dexterox.MultiplePermissionsReport;
-import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.PermissionDeniedResponse;
-import com.karumi.dexterox.listener.PermissionGrantedResponse;
-import com.karumi.dexterox.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.PermissionsUIViews;
+import com.gigigo.ggglib.permission.MultiplePermissionsReport;
+import com.gigigo.ggglib.permission.PermissionToken;
+import com.gigigo.ggglib.permission.listener.PermissionDeniedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionGrantedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
 import java.util.List;
 
 /**
  * Created by nubor on 23/02/2017.
  */
+@Deprecated //asv esto era una impl para test, mejor borrarlo
 public class MultiplePermissionsListenerImpl
-    implements com.karumi.dexterox.listener.multi.MultiplePermissionsListener {
+    implements com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener {
   private final Context mContext;
 
   public MultiplePermissionsListenerImpl(Context context) {

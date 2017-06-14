@@ -4,20 +4,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+import com.gigigo.ggglib.permission.MultiplePermissionsReport;
+import com.gigigo.ggglib.permission.PermissionActivity;
+import com.gigigo.ggglib.permission.PermissionToken;
 import com.gigigo.ggglib.permission.groups.PermissionGroupCalendar;
 import com.gigigo.ggglib.permission.groups.PermissionGroupLocation;
 import com.gigigo.ggglib.permission.groups.PermissionGroupPhone;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
 import com.gigigo.ggglib.permission.permissions.PermissionCalendar;
 import com.gigigo.ggglib.permission.permissions.PermissionLocation;
 import com.gigigo.ggglib.permission.permissions.PermissionPhone;
-import com.karumi.dexterox.MultiplePermissionsReport;
-import com.karumi.dexterox.PermissionActivity;
-import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.PermissionRequest;
-import com.karumi.dexterox.listener.multi.MultiplePermissionsListener;
 import java.util.List;
 
 /**
@@ -96,11 +95,9 @@ public class PermissionActivitySample extends PermissionActivity implements View
 
 
   private void askAllPermissionsClick() {
-    Toast.makeText(this,"NO WORKING YET!!",Toast.LENGTH_LONG).show();
-
-    boolean granted = SampleApplication.permissionWrapper.isAllGranted(permissionCalendar, permissionLocation);
+    boolean granted = SampleApplication.mPermissionWrapper.isAllGranted(permissionCalendar, permissionLocation);
     if (!granted) {
-      SampleApplication.permissionWrapper.askForPermissions(new MultiplePermissionsListener() {
+      SampleApplication.mPermissionWrapper.askForPermissions(new MultiplePermissionsListener() {
         @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
           if (report.areAllPermissionsGranted()) {
             showPermissionGranted(null, 0);
@@ -122,9 +119,9 @@ public class PermissionActivitySample extends PermissionActivity implements View
   //region single permission
   private void askPhonePermissionClick() {
 
-    boolean granted = SampleApplication.permissionWrapper.isGranted(permissionPhone);
+    boolean granted = SampleApplication.mPermissionWrapper.isGranted(permissionPhone);
     if (!granted) {
-      SampleApplication.permissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
+      SampleApplication.mPermissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
         @Override
         public void onPermissionAllowed(boolean permissionAllowed, int numberDoneRetries) {
           if (permissionAllowed) {
