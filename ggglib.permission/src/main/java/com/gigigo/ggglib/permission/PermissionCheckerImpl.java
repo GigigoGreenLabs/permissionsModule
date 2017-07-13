@@ -32,7 +32,7 @@ import com.gigigo.ggglib.permission.listener.single.PermissionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
- class PermissionCheckerImpl implements PermissionChecker {
+ public class PermissionCheckerImpl implements PermissionChecker {
 
   private  Activity activity;
 
