@@ -28,7 +28,7 @@ import java.util.Collection;
  * PermissionManager needs to be initialized before checking for a permission using {@link
  * #initialize(Context)}
  */
- final class PermissionManager {
+ public final class PermissionManager {
 
   private static PermissionManagerInstance instance;
 
@@ -36,8 +36,9 @@ import java.util.Collection;
 
   public static void closeActivity() {
     if (mPermissionActivity != null) {
-      if(mPermissionActivity.getPackageName().equals("com.karumi.dexterox")) //only close the transparent activity, not if userextend the permissionActivity
-         mPermissionActivity.finish();
+      if(mPermissionActivity.getPackageName().equals("com.gigigo.ggglib.permission")) //only close the transparent activity, not if userextend the permissionActivity
+
+        mPermissionActivity.finish();
     }
   }
 
