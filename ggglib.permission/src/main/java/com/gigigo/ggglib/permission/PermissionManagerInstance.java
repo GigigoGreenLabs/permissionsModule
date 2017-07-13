@@ -210,6 +210,7 @@ final class PermissionManagerInstance {
   }
 
   private void startTransparentActivityIfNeeded() {
+    System.out.println("PermissionManagerInstance  startTransparentActivityIfNeeded");
     Intent intent = intentProvider.get(context, PermissionActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

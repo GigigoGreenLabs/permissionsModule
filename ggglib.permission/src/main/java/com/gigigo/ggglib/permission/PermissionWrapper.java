@@ -3,6 +3,7 @@ package com.gigigo.ggglib.permission;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.os.Build;
 import com.gigigo.ggglib.permission.listener.multi.MultiplePermissionsListener;
 import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.ggglib.permission.permissions.Permission;
@@ -20,7 +21,9 @@ public class PermissionWrapper {
   public PermissionWrapper(Application app) {
     mPermissionModuleLifeCycle = new PermissionModuleLifeCycle();
 
-    app.registerActivityLifecycleCallbacks(mPermissionModuleLifeCycle);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+      app.registerActivityLifecycleCallbacks(mPermissionModuleLifeCycle);
+    }
 
     PermissionManager.initialize(app.getApplicationContext());
     mPermissionChecker = new PermissionCheckerImpl(mPermissionModuleLifeCycle.getCurrentActivity());
@@ -64,8 +67,9 @@ public class PermissionWrapper {
   static Permission mPermission;
 
   private void startTransparentActivityIfNeeded() {
-    Intent intent =
-        new IntentProvider().get(mApp.getApplicationContext(), PermissionActivity.class);
+
+    System.out.println("PermissionWrapper  startTransparentActivityIfNeeded");
+    Intent intent =  new IntentProvider().get(mApp.getApplicationContext(), PermissionActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
     intent.putExtra(PermissionActivity.IS_TRANSPARENT_ACTIVITY, true);
@@ -75,6 +79,12 @@ public class PermissionWrapper {
   //region multiplepermissions NO WORK YET
   public void askForPermissions(MultiplePermissionsListener permissionsListener,
       Permission... permissions) {
+
+
+
+    System.out.println("PermissionWrapper  askForPermissions :S");
+
+
     if (PermissionManager.isRequestOngoing()) {
       return;
     }
