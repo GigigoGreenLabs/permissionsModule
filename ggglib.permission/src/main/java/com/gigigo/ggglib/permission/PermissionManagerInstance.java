@@ -241,20 +241,27 @@ final class PermissionManagerInstance {
   }
 
   private void updatePermissionsAsGranted(Collection<String> permissions) {
-    for (String permission : permissions) {
-      PermissionGrantedResponse response = PermissionGrantedResponse.from(permission);
-      multiplePermissionsReport.addGrantedPermissionResponse(response);
+    if(activity!=null) {
+      for (String permission : permissions) {
+        PermissionGrantedResponse response = PermissionGrantedResponse.from(permission);
+        multiplePermissionsReport.addGrantedPermissionResponse(response);
+      }
+      onPermissionsChecked(permissions);
     }
-    onPermissionsChecked(permissions);
   }
 
   private void updatePermissionsAsDenied(Collection<String> permissions) {
-    for (String permission : permissions) {
-      PermissionDeniedResponse response = PermissionDeniedResponse.from(permission,
-          !androidPermissionService.shouldShowRequestPermissionRationale(activity, permission));
-      multiplePermissionsReport.addDeniedPermissionResponse(response);
+    if (activity != null) {
+      for (String permission : permissions) {
+
+        boolean should = androidPermissionService
+            .shouldShowRequestPermissionRationale(activity, permission);
+        PermissionDeniedResponse response = PermissionDeniedResponse.from(permission, !should);
+        multiplePermissionsReport.addDeniedPermissionResponse(response);
+      }
+
+      onPermissionsChecked(permissions);
     }
-    onPermissionsChecked(permissions);
   }
 
   private void onPermissionsChecked(Collection<String> permissions) {
